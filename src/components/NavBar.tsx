@@ -1,4 +1,4 @@
-import { use, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
   useEffect(() => {
@@ -30,6 +30,13 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
             </a>
 
             <a
+              href="#about"
+              className="text-gary-300 hove:text-white transition-colors"
+            >
+              About
+            </a>
+
+            <a
               href="#projects"
               className="text-gary-300 hove:text-white transition-colors"
             >
@@ -41,13 +48,6 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
               className="text-gary-300 hove:text-white transition-colors"
             >
               Contact
-            </a>
-
-            <a
-              href="#home"
-              className="text-gary-300 hove:text-white transition-colors"
-            >
-              Home
             </a>
           </div>
         </div>
