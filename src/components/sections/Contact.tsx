@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { RevealOnScroll } from '../RevealOnScroll';
 import emailjs from 'emailjs-com';
 
@@ -8,28 +9,51 @@ export const Contact = () => {
     email: '',
     message: '',
   });
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
+  const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-  const handleSubmit = (e: any) => {
+  const handleRecaptchaChange = (value: string | null) => {
+    setRecaptchaValue(value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
-      .then(() => {
-        alert('Mesage sent successfully');
-        setFormData({
-          name: '',
-          email: '',
-          message: '',
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('Error');
+    if (!recaptchaValue) {
+      alert('Por favor, verifica que no eres un robot');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        e.target as HTMLFormElement,
+        PUBLIC_KEY
+      );
+      alert('Message sent successfully');
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
       });
+      // Reset reCAPTCHA
+      recaptchaRef.current?.reset();
+      setRecaptchaValue(null);
+    } catch (err) {
+      console.log(err);
+      alert('Error sending message');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -88,11 +112,24 @@ export const Contact = () => {
               />
             </div>
 
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={RECAPTCHA_SITE_KEY}
+              onChange={handleRecaptchaChange}
+              className="flex justify-center"
+              theme="dark"
+            />
+
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+              disabled={isSubmitting || !recaptchaValue}
+              className={`w-full bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden ${
+                !isSubmitting && recaptchaValue
+                  ? 'hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]'
+                  : 'opacity-70 cursor-not-allowed'
+              }`}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>
