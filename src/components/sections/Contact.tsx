@@ -75,13 +75,12 @@ export const Contact = () => {
                 required
                 value={formData.name}
                 placeholder="Name..."
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
               />
             </div>
-
             <div className="relative">
               <input
                 type="email"
@@ -90,13 +89,12 @@ export const Contact = () => {
                 required
                 value={formData.email}
                 placeholder="example@gmail.com"
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
               />
             </div>
-
             <div className="relative">
               <textarea
                 id="message"
@@ -105,21 +103,21 @@ export const Contact = () => {
                 value={formData.message}
                 rows={5}
                 placeholder="Your Message..."
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white transition focus:outline-none focus:border-blue-500 focus:bg-blue-500/5"
+                className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none  focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
               />
             </div>
-
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={RECAPTCHA_SITE_KEY}
               onChange={handleRecaptchaChange}
               className="flex justify-center"
-              theme="dark"
+              theme={`${
+                localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+              }`}
             />
-
             <button
               type="submit"
               disabled={isSubmitting || !recaptchaValue}
