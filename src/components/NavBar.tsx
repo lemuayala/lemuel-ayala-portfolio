@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../context/LanguageContext';
 
 export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
+  const { t, changeLanguage } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';

@@ -1,0 +1,14 @@
+{
+    "navbar": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "home": {
+        "hi": "Hola, soy Lemuel Ayala",
+        "description": "Soy un desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    }
+}

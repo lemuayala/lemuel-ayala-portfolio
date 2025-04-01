@@ -1,0 +1,14 @@
+{
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "home": {
+        "hi": "Hi, I'm Lemuel Ayala",
+        "description": "I'm a full stack developer with over 5 years of experience, passionate about technology and innovation.",
+        "projects": "View Projects",
+        "contact": "Contact Me"
+    }
+}
