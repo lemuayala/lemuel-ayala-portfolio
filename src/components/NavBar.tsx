@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { Menu, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
@@ -9,9 +9,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
   });
 
-  const [theme, setTheme] = useState(
-    localStorage.getItem('theme') || 'dark' // Oscuro por defecto
-  );
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
     document.body.classList.toggle('dark', theme === 'dark');
@@ -19,7 +17,6 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
   }, [theme]);
 
   const toggleTheme = () => {
-    console.log(theme);
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
@@ -38,7 +35,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
             className="w-7 h-5 relative cursor-pointer z-40 md:hidden"
             onClick={() => setMenuOpen((prev: boolean) => !prev)}
           >
-            &#9776;
+            <Menu></Menu>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
