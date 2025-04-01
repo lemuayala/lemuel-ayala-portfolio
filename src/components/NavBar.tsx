@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
   });
@@ -43,29 +50,54 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
               href="#home"
               className="text-gary-300 hove:text-white transition-colors"
             >
-              Home
+              {t('navbar.home')}
             </a>
 
             <a
               href="#about"
               className="text-gary-300 hove:text-white transition-colors"
             >
-              About
+              {t('navbar.about')}
             </a>
 
             <a
               href="#projects"
               className="text-gary-300 hove:text-white transition-colors"
             >
-              Projects
+              {t('navbar.projects')}
             </a>
 
             <a
               href="#contact"
               className="text-gary-300 hove:text-white transition-colors"
             >
-              Contact
+              {t('navbar.contact')}
             </a>
+
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => changeLanguage('es')}
+                className="mr-2 w-7 h-5 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(116,186,57,0.4)] active:scale-95"
+                aria-label="Cambiar a español"
+              >
+                <img
+                  src="https://purecatamphetamine.github.io/country-flag-icons/3x2/AR.svg"
+                  alt="Español"
+                  className="w-full h-full object-cover rounded transform transition-transform duration-300 hover:scale-105"
+                />
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className="w-7 h-5 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(1,33,105,0.4)] active:scale-95"
+                aria-label="Change to English"
+              >
+                <img
+                  src="https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
+                  alt="English"
+                  className="w-full h-full object-cover rounded transform transition-transform duration-300 hover:scale-105"
+                />
+              </button>
+            </div>
 
             <button
               onClick={toggleTheme}
