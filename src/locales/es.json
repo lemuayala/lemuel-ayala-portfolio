@@ -10,5 +10,19 @@
         "description": "Soy un desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
         "projects": "Proyectos",
         "contact": "Contacto"
+    },
+    "about": {
+        "about": "Sobre mí",
+        "description": "Soy un <strong>Analista Programador Fullstack </strong> con más de 5 años de experiencia en el sector bancario, web/móvil y en empresas multinacionales especializadas en soluciones backoffice. Me destaco en el desarrollo de nuevas funcionalidades, integración de APIs y gestión de bases de datos, asegurando soluciones eficientes y escalables. Mi enfoque combina desarrollo frontend con <strong>Angular y React </strong>, y backend con .NET Framework, .NET Core y ASP.NET MVC. Me desenvuelvo en entornos dinámicos, aplicando metodologías ágiles como Scrum para garantizar entregas de calidad. Siempre en constante aprendizaje, me especializo en la implementación de tecnologías modernas y optimización de código, asegurando el cumplimiento de objetivos en cada proyecto en el que participo.",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "work": "Experiencia laboral",
+        "education": {
+            "education": "Educación",
+            "apu": "Analista Progrsmador Universitario",
+            "universidad": "Universidad Nacional de Jujuy (Argentina)",
+            "tecnico": "Técnico en Informática",
+            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' (2015)"
+        }
     }
 }

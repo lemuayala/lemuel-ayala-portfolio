@@ -10,5 +10,19 @@
         "description": "I'm a full stack developer with over 5 years of experience, passionate about technology and innovation.",
         "projects": "View Projects",
         "contact": "Contact Me"
+    },
+    "about": {
+        "about": "About Me",
+        "description": "I am a <strong>Fullstack Programmer Analyst</strong> with over 5 years of experience in the banking, web/mobile sector, and multinational companies specializing in back-office solutions. I excel in developing new features, API integration, and database management, ensuring efficient and scalable solutions.My expertise includes frontend development with <strong>Angular and React</strong>, and backend with .NET Framework, .NET Core, and ASP.NET MVC. I thrive in dynamic environments, applying agile methodologies like Scrum to ensure high-quality deliverables. Committed to continuous learning, I specialize in implementing modern technologies and optimizing code, ensuring the successful achievement of project goals.",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "work": "Work Experience",
+        "education": {
+            "education": "Education",
+            "apu": "Programmer Analyst",
+            "universidad": "Jujuy National University (Argentina)",
+            "tecnico": "Information Technology Technician",
+            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' (2015)"
+        }
     }
 }
