@@ -9,20 +9,118 @@
         "hi": "Hola, soy Lemuel Ayala",
         "description": "Soy un desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
         "projects": "Proyectos",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "downloadCV": "Descargar CV"
     },
     "about": {
         "about": "Sobre mí",
         "description": "Soy un <strong>Analista Programador Fullstack </strong> con más de 5 años de experiencia en el sector bancario, web/móvil y en empresas multinacionales especializadas en soluciones backoffice. Me destaco en el desarrollo de nuevas funcionalidades, integración de APIs y gestión de bases de datos, asegurando soluciones eficientes y escalables. Mi enfoque combina desarrollo frontend con <strong>Angular y React </strong>, y backend con .NET Framework, .NET Core y ASP.NET MVC. Me desenvuelvo en entornos dinámicos, aplicando metodologías ágiles como Scrum para garantizar entregas de calidad. Siempre en constante aprendizaje, me especializo en la implementación de tecnologías modernas y optimización de código, asegurando el cumplimiento de objetivos en cada proyecto en el que participo.",
         "frontend": "Frontend",
         "backend": "Backend",
-        "work": "Experiencia laboral",
+        "work": {
+            "title": "Experiencia laboral",
+            "technologies": "Tecnologías",
+            "clients": "Clientes",
+            "jobs": [
+                {
+                    "company": "CETAP SA (Argentina)",
+                    "position": "Desarrollador Sr",
+                    "date": "Junio 2024 - Actualidad",
+                    "description": "Desarrollo de herramientas de reportes de incidentes para YPF.",
+                    "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
+                    "client": "YPF"
+                },
+                {
+                    "company": "ATIO Group (México - remoto desde Argentina)",
+                    "position": "Software Engineer",
+                    "date": "Marzo 2024 - Junio 2024",
+                    "description": "Desarrollo y mantenimiento de una herramienta para el control de servicios y datos de gasolineras.",
+                    "technologies": ".NET Framework, ASP.NET MVC, .NET Core, JavaScript, JQuery, Kendo UI",
+                    "client": "ATIO Group"
+                },
+                {
+                    "company": "Freelance (Remoto)",
+                    "position": "Fullstack Developer",
+                    "date": "Enero 2024 - Marzo 2024",
+                    "description": "Desarrollo de una plataforma de control de pagos inmobiliarios.",
+                    "technologies": "Angular, .NET Core, Material UI",
+                    "client": "Novit - Nordelta"
+                },
+                {
+                    "company": "13:e Protein Import (Estocolmo, Suecia - Remoto)",
+                    "position": "Frontend Developer",
+                    "date": "Mayo 2023 - Diciembre 2023",
+                    "description": "Implementación de una plataforma de ventas y exportaciones.",
+                    "technologies": "Angular, JavaScript, TypeScript, Material UI",
+                    "client": "13:e Protein Import"
+                },
+                {
+                    "company": "Teleperformance MAR (Bogotá, Colombia)",
+                    "position": "Semi Senior Fullstack Developer",
+                    "date": "Agosto 2021 - Mayo 2023",
+                    "description": "Desarrollo de herramientas back-office y extensiones web.",
+                    "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
+                    "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
+                },
+                {
+                    "company": "Openix IT Solutions (Jujuy, Argentina)",
+                    "position": "Desarrollador Mobile/Web Fullstack",
+                    "date": "Octubre 2018 - Agosto 2021",
+                    "description": "Desarrollo del sistema de Home Banking para Ficohsa.",
+                    "technologies": "AngularJS, ASP.NET, WCF Services, SQL, Android (Java), iOS (Swift)",
+                    "client": "Infocorp Group (Uruguay)"
+                }
+            ]
+        },
         "education": {
             "education": "Educación",
             "apu": "Analista Progrsmador Universitario",
             "universidad": "Universidad Nacional de Jujuy (Argentina)",
             "tecnico": "Técnico en Informática",
             "edm": "Escuela de Minas 'Dr. Horacio Carrillo' (2015)"
+        },
+        "certifications": {
+            "title": "Cursos y Certificaciones",
+            "list": [
+                {
+                    "institution": "CERTIPROF",
+                    "course": "Scrum Foundation Professional Certificate, Lifelong Learning"
+                },
+                {
+                    "institution": "UDEMY",
+                    "course": "Fundamentos de Angular"
+                },
+                {
+                    "institution": "GOOGLE ACTÍVATE",
+                    "course": "Desarrollo de Apps Móviles"
+                },
+                {
+                    "institution": "LINKEDIN LEARNING",
+                    "course": "Fundamentos del desarrollo web: Fullstack o Frontend"
+                },
+                {
+                    "institution": "PLATZI",
+                    "courses": [
+                        "Principios SOLID en C# y .NET",
+                        "Buenas Prácticas y Código Limpio en C#",
+                        "Unit Testing con C# y .NET",
+                        "Manejo de Datos en C# con LINQ",
+                        "SwiftUI desde Cero",
+                        "Aplicaciones iOS con SwiftUI",
+                        "SwiftUI: Porteo y Ciclo de Vida de Aplicaciones",
+                        "Introducción a React Native"
+                    ]
+                }
+            ]
         }
+    },
+    "contact": {
+        "title": "Mantenete en Contacto",
+        "form": {
+            "name": "Nombre...",
+            "email": "ejemplo@email.com",
+            "message": "Tu Mensaje..."
+        },
+        "submit": "Enviar Mensaje"
     }
 }

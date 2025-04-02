@@ -28,7 +28,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
             href=""
             className="font-mono text-2xl font-bold text-gray-800 dark:text-white "
           >
-            lemuelayala<span className="text-blue-500 ">.tech</span>
+            lemuayala<span className="text-blue-500 ">.tech</span>
           </a>
 
           <div

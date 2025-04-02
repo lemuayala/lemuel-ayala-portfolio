@@ -3,6 +3,8 @@ import { useLanguage } from '../../context/LanguageContext';
 import { RevealOnScroll } from '../RevealOnScroll';
 
 export const About = () => {
+  const { t } = useLanguage();
+
   const frontendSkills = [
     'Angular',
     'React',
@@ -26,7 +28,8 @@ export const About = () => {
     'SQL Server',
   ];
 
-  const { t } = useLanguage();
+  const jobs = t('about.work.jobs') as any as Array<any>;
+  const certifications = t('about.certifications.list') as any as Array<any>;
 
   return (
     <section
@@ -88,33 +91,58 @@ export const About = () => {
                     <strong> {t('about.education.tecnico')} </strong> -{' '}
                     {t('about.education.edm')}
                   </li>
-                  <li className="mb-2">
-                    Relevant Coursework - Programming Languages, Databases,
-                    Algorithms, Software Engineering, Web Development, etc.
+                  <li>
+                    <h2 className="font-bold">
+                      {t('about.certifications.title')}
+                    </h2>
+                    <ul>
+                      {certifications.map((cert, index) => (
+                        <li key={index} className="mb-2">
+                          <strong className="text-blue-400">
+                            {cert.institution}:
+                          </strong>{' '}
+                          {cert.courses ? (
+                            <ul>
+                              {cert.courses.map(
+                                (course: string, idx: number) => (
+                                  <li key={idx}>{course}</li>
+                                )
+                              )}
+                            </ul>
+                          ) : (
+                            cert.course
+                          )}
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 </ul>
               </div>
 
               <div className="p-6 rounded-xl border-black/10 dark:border-white/10 border hover:-translate-y-1 transition-all">
-                <h3 className="text-xl font-bold mb-4">Work Experience</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  {t('about.work.title')}
+                </h3>
                 <div className="space-y-4 text-gray-600 dark:text-gray-300">
                   <div>
-                    <h4>Junior Software Developer (2021 - Present)</h4>
-                    <p>
-                      Responsible for the development and maintenance of a
-                      scalable and user-friendly web application. Collaborated
-                      with cross-functional teams to deliver high-quality
-                      software solutions.
-                    </p>
-                  </div>
-                  <div>
-                    <h4>Junior Software Developer (2021 - Present)</h4>
-                    <p>
-                      Responsible for the development and maintenance of a
-                      scalable and user-friendly web application. Collaborated
-                      with cross-functional teams to deliver high-quality
-                      software solutions.
-                    </p>
+                    {jobs.map((job, index) => (
+                      <div key={index} className="mb-6  ">
+                        <h3 className="text-xl font-bold">{job?.company}</h3>
+                        <p className="text-sm text-cyan-500">{job?.date}</p>
+                        <p className="mt-2 font-semibold text-blue-400">
+                          {job?.position}
+                        </p>
+                        <p className="mt-1">{job?.project}</p>
+                        <p className="mt-2">
+                          <strong>{t('about.work.technologies')}: </strong>
+                          {job?.technologies}
+                        </p>
+                        <p className="mt-2">
+                          <strong>{t('about.work.clients')}: </strong>
+                          {job?.client}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

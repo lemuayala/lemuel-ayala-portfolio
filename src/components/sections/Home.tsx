@@ -1,9 +1,19 @@
 import { useLanguage } from '../../context/LanguageContext';
 import { RevealOnScroll } from '../RevealOnScroll';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Download } from 'lucide-react';
 
 export const Home = () => {
   const { t } = useLanguage();
+
+  const handleDownloadCV = () => {
+    const cvUrl = './Ayala Jara Lemuel - CV.pdf';
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = 'Ayala Jara Lemuel - CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section
@@ -18,7 +28,7 @@ export const Home = () => {
           <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 max-w-lg mx-auto">
             {t('home.description')}
           </p>
-          <div className="flex justify-center space-x-4 ">
+          <div className="flex flex-wrap justify-center gap-4">
             <a
               href="#projects"
               className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
@@ -27,11 +37,17 @@ export const Home = () => {
             </a>
             <a
               href="#contact"
-              className="border border-blue-500/50 text-blue-500 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5
-             hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-500/50"
+              className="border border-blue-500/50 text-blue-500 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-500/50"
             >
               {t('home.contact')}
             </a>
+            <button
+              onClick={handleDownloadCV}
+              className="flex items-center gap-2 border border-cyan-600/50 text-cyan-600 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:bg-cyan-600/50"
+            >
+              <Download size={18} />
+              {t('home.downloadCV')}
+            </button>
           </div>
           <div className="flex justify-center space-x-2 mt-8">
             <a
@@ -40,9 +56,7 @@ export const Home = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <span>
-                <Github />
-              </span>
+              <Github />
             </a>
             <a
               href="https://www.linkedin.com/in/lemuayala/"
@@ -50,9 +64,7 @@ export const Home = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <span>
-                <Linkedin />
-              </span>
+              <Linkedin />
             </a>
           </div>
         </div>

@@ -2,8 +2,11 @@ import { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { RevealOnScroll } from '../RevealOnScroll';
 import emailjs from 'emailjs-com';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Contact = () => {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -64,7 +67,7 @@ export const Contact = () => {
       <RevealOnScroll>
         <div className="px-4 w-auto md:w-150">
           <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            Get in Touch
+            {t('contact.title')}
           </h2>
           <form action="" className="space-y-6" onSubmit={handleSubmit}>
             <div className="relative">
@@ -74,7 +77,7 @@ export const Contact = () => {
                 name="name"
                 required
                 value={formData.name}
-                placeholder="Name..."
+                placeholder={t('contact.form.name')}
                 className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -88,7 +91,7 @@ export const Contact = () => {
                 name="email"
                 required
                 value={formData.email}
-                placeholder="example@gmail.com"
+                placeholder={t('contact.form.email')}
                 className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -102,7 +105,7 @@ export const Contact = () => {
                 required
                 value={formData.message}
                 rows={5}
-                placeholder="Your Message..."
+                placeholder={t('contact.form.message')}
                 className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded px-4 py-3 text-black dark:text-white transition focus:outline-none  focus:border-gray-400 black:focus:border-blue-500 focus:bg-blue-500/5"
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
@@ -127,7 +130,7 @@ export const Contact = () => {
                   : 'opacity-70 cursor-not-allowed'
               }`}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : t('contact.submit')}
             </button>
           </form>
         </div>
