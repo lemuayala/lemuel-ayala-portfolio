@@ -29,7 +29,7 @@ function App() {
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         }
-        "bg-gray-50  dark:bg-black text-gray-800 dark:text-white`}
+        "bg-gray-50 dark:bg-gradient-to-r from-black to-slate-900 text-gray-800 dark:text-white`}
       >
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
