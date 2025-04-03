@@ -84,6 +84,10 @@ export const About = () => {
                 </h3>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-x-2">
                   <li className="mb-2">
+                    <strong> {t('about.education.licenciatura')} </strong> -{' '}
+                    {t('about.education.universidad')} 2024
+                  </li>
+                  <li className="mb-2">
                     <strong> {t('about.education.apu')} </strong> -{' '}
                     {t('about.education.universidad')} 2021
                   </li>
@@ -91,7 +95,8 @@ export const About = () => {
                     <strong> {t('about.education.tecnico')} </strong> -{' '}
                     {t('about.education.edm')}
                   </li>
-                  <li>
+
+                  <div>
                     <h2 className="font-bold">
                       {t('about.certifications.title')}
                     </h2>
@@ -99,13 +104,13 @@ export const About = () => {
                       {certifications.map((cert, index) => (
                         <li key={index} className="mb-2">
                           <strong className="text-blue-400">
-                            {cert.institution}:
-                          </strong>{' '}
+                            {cert.institution}:{' '}
+                          </strong>
                           {cert.courses ? (
                             <ul>
                               {cert.courses.map(
                                 (course: string, idx: number) => (
-                                  <li key={idx}>{course}</li>
+                                  <li key={idx}> {course}</li>
                                 )
                               )}
                             </ul>
@@ -115,7 +120,7 @@ export const About = () => {
                         </li>
                       ))}
                     </ul>
-                  </li>
+                  </div>
                 </ul>
               </div>
 

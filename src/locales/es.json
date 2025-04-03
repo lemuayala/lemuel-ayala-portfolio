@@ -7,7 +7,7 @@
     },
     "home": {
         "hi": "Hola, soy Lemuel Ayala",
-        "description": "Soy un desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
+        "description": "Desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
         "projects": "Proyectos",
         "contact": "Contacto",
         "downloadCV": "Descargar CV"
@@ -77,7 +77,8 @@
             "apu": "Analista Progrsmador Universitario",
             "universidad": "Universidad Nacional de Jujuy (Argentina)",
             "tecnico": "Técnico en Informática",
-            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' (2015)"
+            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
+            "licenciatura": "Licenciatura en Informática Educativa"
         },
         "certifications": {
             "title": "Cursos y Certificaciones",
