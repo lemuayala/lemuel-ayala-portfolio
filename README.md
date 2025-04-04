@@ -1,54 +1,99 @@
-# React + TypeScript + Vite
+# Portfolio Profesional - Lemuel Ayala  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **Desarrollador Full Stack** | **React** · **TypeScript** · **.NET**  
 
-Currently, two official plugins are available:
+Bienvenido/a a mi portfolio personal, donde muestro mis proyectos, habilidades y experiencia como desarrollador. Este sitio está construido con tecnologías modernas y un diseño elegante y responsive.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Preview del Portfolio](https://github.com/user-attachments/assets/1ac5682f-2916-4503-9d56-2927c8e4f281)  
 
-## Expanding the ESLint configuration
+## ✨ Características  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ **Diseño Moderno** - Interfaz limpia con modo claro/oscuro  
+✅ **Tecnologías Avanzadas** - React, TypeScript, Tailwind CSS, Vite  
+✅ **Formulario de Contacto Funcional** - Integrado con EmailJS  
+✅ **Animaciones Fluidas** - Efectos de scroll y transiciones  
+✅ **Responsive** - Optimizado para móviles, tablets y desktop  
+✅ **Multi-idioma** - Soporte para español/inglés  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tecnologías Usadas  
+
+### Frontend  
+- ⚛️ React + TypeScript  
+- 🎨 Tailwind CSS (Diseño responsive)  
+- 🚀 Vite (Build tool ultra-rápido)  
+- ✨ Framer Motion (Animaciones)  
+- 📧 EmailJS (Formulario de contacto)  
+
+### Backend (Proyectos demo)  
+- 🌐 .NET Core / Node.js  
+- 🗄️ SQL Server / MongoDB  
+
+## 📂 Estructura del Proyecto  
+
+```bash
+src/
+├── components/           # Componentes reutilizables
+├── components/sections/  # Secciones del portfolio (Home, About, etc.)
+├── context/              # Contextos de React (idioma, tema)
+├── assets/               # Imágenes, íconos, fuentes
+├── locales/              # Archivos .json de traduccion de textos
+├── App.tsx               # Componente principal
+└── main.tsx              # Punto de entrada
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Cómo Ejecutarlo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/lemuayala/portfolio.git
+cd portfolio
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 2. Instalar dependencias
+```bash
+pnpm install
+```
+
+### 3. Configurar variables de entorno
+```bash
+touch .env
+```
+
+```env
+VITE_SERVICE_ID=tu_service_id_emailjs
+VITE_TEMPLATE_ID=tu_template_id
+VITE_PUBLIC_KEY=tu_public_key
+VITE_RECAPTCHA_SITE_KEY=tu_key_recaptcha
+```
+### 4. Iniciar servidor de desarrollo
+```bash
+pnpm run dev
+```
+
+### 5. Generar build de producción
+```bash
+pnpm run build
+```
+
+## 📬 Contacto
+
+📧 **Email:** [lemuayala@gmail.com](mailto:lemuayala@gmail.com)  
+💼 **LinkedIn:** [linkedin.com/in/lemuayala](https://linkedin.com/in/lemuayala)  
+🐙 **GitHub:** [github.com/lemuayala](https://github.com/lemuayala)
+
+## ⭐ Apoya el proyecto
+
+Si te gusta este portfolio, ¡déjame una estrella en GitHub!
+
+```bash
+# También puedes clonar y personalizarlo:
+git clone https://github.com/lemuayala/portfolio.git
+```
+
+## 📜 Licencia
+
+```text
+MIT License - Copyright (c) 2025 Lemuel Ayala
+Se permite uso, modificación y distribución
+bajo los términos de la licencia MIT.
 ```
