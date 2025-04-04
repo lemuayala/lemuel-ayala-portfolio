@@ -82,6 +82,16 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
       </a>
 
       <a
+        href="#about"
+        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+            ${
+              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+            }`}
+      >
+        About
+      </a>
+
+      <a
         href="#projects"
         className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
             ${
@@ -99,16 +109,6 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
             }`}
       >
         Contact
-      </a>
-
-      <a
-        href="#home"
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${
-              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-      >
-        Home
       </a>
     </div>
   );
