@@ -12,6 +12,7 @@ import { Contact } from './components/sections/Contact';
 import { useTranslation } from 'react-i18next';
 import { LanguageContext } from './context/LanguageContext';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Footer } from './components/sections/Footer';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,6 +39,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <Footer />
         <ScrollToTop />
       </div>
     </LanguageContext.Provider>
