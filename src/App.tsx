@@ -28,10 +28,10 @@ function App() {
     <LanguageContext.Provider value={{ t, changeLanguage, i18n }}>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
       <div
-        className={`min-h-screen transition-opacity duration-700 ${
+        className={`min-h-screen transition-opacity duration-700 bg-gradient-to-tl from-blue-100/90 via-white to-gray-300 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         }
-        "bg-gray-50 dark:bg-gradient-to-r from-black to-slate-900 text-gray-800 dark:text-white`}
+        "dark:bg-gradient-to-tl dark:from-[#0d0110] dark:via-[black] dark:to-slate-950 text-gray-800 dark:text-white`}
       >
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
