@@ -34,11 +34,8 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-xl border-b border-white/10 shadow-lg">
       <div className="max-w-5xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <a
-            href=""
-            className="font-mono text-2xl font-bold text-gray-800 dark:text-white "
-          >
+        <div className="flex justify-between items-center h-16 text-gray-800 dark:text-white">
+          <a href="" className="font-mono text-2xl font-bold  ">
             lemuayala<span className="text-blue-500 ">.tech</span>
           </a>
 
@@ -58,7 +55,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
                   e.preventDefault();
                   handleScroll(link.id);
                 }}
-                className="text-gray-300 hover:text-white transition-colors"
+                className="hover:text-white transition-colors"
               >
                 {link.label}
               </a>
