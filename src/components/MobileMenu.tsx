@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useEffect, useState } from 'react';
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
-  const { changeLanguage } = useLanguage();
+  const { t, changeLanguage } = useLanguage();
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
@@ -15,6 +15,17 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
+
+  const handleScroll = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const links = [
+    { id: '#home', label: t('navbar.home') },
+    { id: '#about', label: t('navbar.about') },
+    { id: '#projects', label: t('navbar.projects') },
+    { id: '#contact', label: t('navbar.contact') },
+  ];
 
   return (
     <div
@@ -71,45 +82,24 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
         )}
       </button>
 
-      <a
-        href="#home"
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${
-              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-      >
-        Home
-      </a>
-
-      <a
-        href="#about"
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${
-              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-      >
-        About
-      </a>
-
-      <a
-        href="#projects"
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${
-              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-      >
-        Projects
-      </a>
-
-      <a
-        href="#contact"
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-            ${
-              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-            }`}
-      >
-        Contact
-      </a>
+      {links.map((link) => (
+        <a
+          key={link.id}
+          href={link.id}
+          onClick={(e) => {
+            e.preventDefault();
+            handleScroll(link.id);
+          }}
+          className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+                  ${
+                    menuOpen
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-5'
+                  }`}
+        >
+          {link.label}
+        </a>
+      ))}
     </div>
   );
 };
