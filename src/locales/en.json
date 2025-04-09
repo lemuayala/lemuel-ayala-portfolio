@@ -126,7 +126,7 @@
                 "title": "DevBlog Next.js",
                 "description": "Modern technical blog with futuristic design and scalable architecture",
                 "status": "in-progress",
-                "preview": "/previews/devblog.png",
+                "preview": "previews/devblog.png",
                 "technologies": [
                     "Next.js 15",
                     "TypeScript",
