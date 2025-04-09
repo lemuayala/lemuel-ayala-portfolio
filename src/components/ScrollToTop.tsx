@@ -29,7 +29,7 @@ export const ScrollToTop = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="p-3 rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="p-3 rounded-full bg-gradient-to-tr from-blue-600/90 to-purple-700/90 text-white shadow-lg hover:bg-blue-800 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
           aria-label="Volver al inicio"
         >
           <ArrowUp size={24} />
