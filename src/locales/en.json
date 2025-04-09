@@ -115,6 +115,63 @@
             ]
         }
     },
+    "projects": {
+        "title": "My Projects",
+        "subtitle": "Featured works demonstrating my skills",
+        "inProgress": "in-progress",
+        "viewCode": "View Code",
+        "liveDemo": "View Demo",
+        "items": [
+            {
+                "title": "DevBlog Next.js",
+                "description": "Modern technical blog with futuristic design and scalable architecture",
+                "status": "in-progress",
+                "preview": "/previews/devblog.png",
+                "technologies": [
+                    "Next.js 15",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Framer Motion",
+                    "Vercel"
+                ],
+                "links": {
+                    "repo": "https://github.com/lemuayala/devblog-nextjs",
+                    "demo": "https://devblog-liart-two.vercel.app/"
+                },
+                "features": [
+                    "Static rendering (SSG/ISR) for maximum performance",
+                    "Dynamic tag system and filtering",
+                    "Neon gradient dark mode design",
+                    "Fluid animations with Framer Motion",
+                    "100% responsive (Mobile First)",
+                    "Image optimization with next/image"
+                ]
+            },
+            {
+                "title": "E-Commerce React",
+                "description": "Modern online store with cart and authentication",
+                "status": "in-progress",
+                "technologies": [
+                    "React",
+                    "TypeScript",
+                    "Vite",
+                    "Tailwind CSS",
+                    "React Router"
+                ],
+                "links": {
+                    "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
+                    "demo": "#"
+                },
+                "features": [
+                    "Modular Vite architecture",
+                    "State management with Context API",
+                    "Full responsive design",
+                    "Shopping cart system",
+                    "REST API integration"
+                ]
+            }
+        ]
+    },
     "contact": {
         "title": "Get in Touch",
         "form": {

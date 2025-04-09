@@ -20,9 +20,18 @@ export const ProjectCard = ({
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -3 }}
-      className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+      className="rounded-xl overflow-hidden shadow-md border border-gray-300/80 dark:border-gray-200/10 hover:shadow-lg transition-all duration-300"
     >
-      <div className="h-48 bg-gradient-to-r from-blue-400 to-purple-500 relative">
+      <div className="h-48 relative">
+        {project.preview ? (
+          <img
+            src={project.preview}
+            alt="Project Preview"
+            className="object-cover w-full h-full"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500" />
+        )}
         <div
           className={`absolute top-4 right-4 flex items-center px-3 py-1 rounded-full text-sm ${
             isInProgress

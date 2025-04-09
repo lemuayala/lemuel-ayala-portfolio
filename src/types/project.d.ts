@@ -8,4 +8,5 @@ export type Project = {
     repo: string;
     demo: string;
   };
+  preview?: string;
 };
