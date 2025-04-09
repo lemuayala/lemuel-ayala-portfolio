@@ -20,6 +20,17 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleScroll = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const links = [
+    { id: '#home', label: t('navbar.home') },
+    { id: '#about', label: t('navbar.about') },
+    { id: '#projects', label: t('navbar.projects') },
+    { id: '#contact', label: t('navbar.contact') },
+  ];
+
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-xl border-b border-white/10 shadow-lg">
       <div className="max-w-5xl mx-auto px-4">
@@ -39,33 +50,19 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#home"
-              className="text-gary-300 hove:text-white transition-colors"
-            >
-              {t('navbar.home')}
-            </a>
-
-            <a
-              href="#about"
-              className="text-gary-300 hove:text-white transition-colors"
-            >
-              {t('navbar.about')}
-            </a>
-
-            <a
-              href="#projects"
-              className="text-gary-300 hove:text-white transition-colors"
-            >
-              {t('navbar.projects')}
-            </a>
-
-            <a
-              href="#contact"
-              className="text-gary-300 hove:text-white transition-colors"
-            >
-              {t('navbar.contact')}
-            </a>
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={link.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScroll(link.id);
+                }}
+                className="text-gray-300 hover:text-white transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
 
             <div className="flex items-center space-x-4">
               <button
