@@ -9,7 +9,7 @@ export const Home = () => {
   const { t } = useLanguage();
 
   const handleDownloadCV = () => {
-    const cvUrl = './Ayala Jara Lemuel - CV.pdf';
+    const cvUrl = './documents/Ayala Jara Lemuel - CV.pdf';
     const link = document.createElement('a');
     link.href = cvUrl;
     link.download = 'Ayala Jara Lemuel - CV.pdf';
