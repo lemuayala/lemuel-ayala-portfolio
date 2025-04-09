@@ -66,6 +66,34 @@
                     "Sistema de carrito de compras",
                     "Integración con APIs REST"
                 ]
+            },
+            {
+                "title": "Portfolio Profesional",
+                "description": "Portfolio personal moderno que muestra proyectos y habilidades con diseño elegante y soporte multilingüe",
+                "status": "completado",
+                "preview": "previews/portfolio.png",
+                "technologies": [
+                    "React",
+                    "TypeScript",
+                    "Vite",
+                    "Tailwind CSS",
+                    "Framer Motion",
+                    "EmailJS",
+                    "i18next"
+                ],
+                "links": {
+                    "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
+                    "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
+                },
+                "features": [
+                    "Interfaz moderna con toggle de modo claro/oscuro",
+                    "Soporte multilingüe (inglés/español)",
+                    "Formulario de contacto funcional con integración de EmailJS",
+                    "Animaciones y transiciones fluidas",
+                    "Completamente responsive (enfoque Mobile First)",
+                    "Exhibición de proyectos con etiquetas de tecnologías",
+                    "Sistema de construcción ultra-rápido con Vite"
+                ]
             }
         ]
     },

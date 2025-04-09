@@ -169,6 +169,34 @@
                     "Shopping cart system",
                     "REST API integration"
                 ]
+            },
+            {
+                "title": "Professional Portfolio",
+                "description": "Modern personal portfolio showcasing projects and skills with elegant design and multilingual support",
+                "status": "completed",
+                "preview": "previews/portfolio.png",
+                "technologies": [
+                    "React",
+                    "TypeScript",
+                    "Vite",
+                    "Tailwind CSS",
+                    "Framer Motion",
+                    "EmailJS",
+                    "i18next"
+                ],
+                "links": {
+                    "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
+                    "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
+                },
+                "features": [
+                    "Modern UI with light/dark mode toggle",
+                    "Multilingual support (English/Spanish)",
+                    "Functional contact form with EmailJS integration",
+                    "Smooth scroll animations and transitions",
+                    "Fully responsive (Mobile First approach)",
+                    "Project showcase with technology tags",
+                    "Vite-powered ultra-fast build system"
+                ]
             }
         ]
     },
