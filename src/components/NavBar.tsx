@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
+import { links } from '../utils/navigation';
+import { ScrollLink } from './ScrollLink';
+
 export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
-  const { t, changeLanguage } = useLanguage();
+  const { changeLanguage } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -19,17 +22,6 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
-
-  const handleScroll = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const links = [
-    { id: '#home', label: t('navbar.home') },
-    { id: '#about', label: t('navbar.about') },
-    { id: '#projects', label: t('navbar.projects') },
-    { id: '#contact', label: t('navbar.contact') },
-  ];
 
   return (
     <nav className="fixed top-0 w-full z-40 bg-[rgba(10, 10, 10, 0.8)] backdrop-blur-xl border-b border-white/10 shadow-lg">
@@ -48,17 +40,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
 
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link) => (
-              <a
-                key={link.id}
-                href={link.id}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleScroll(link.id);
-                }}
-                className="hover:text-white transition-colors"
-              >
-                {link.label}
-              </a>
+              <ScrollLink key={link.id} id={link.id} labelKey={link.label} />
             ))}
 
             <div className="flex items-center space-x-4">

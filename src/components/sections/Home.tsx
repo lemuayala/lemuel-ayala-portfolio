@@ -4,6 +4,7 @@ import { RevealOnScroll } from '../RevealOnScroll';
 import { Github, Linkedin, Download } from 'lucide-react';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { BsFiletypeSql } from 'react-icons/bs';
+import { ScrollLink } from '../ScrollLink';
 
 export const Home = () => {
   const { t } = useLanguage();
@@ -60,18 +61,17 @@ export const Home = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <a
-              href="#projects"
-              className="bg-blue-500 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]"
-            >
-              {t('home.projects')}
-            </a>
-            <a
-              href="#contact"
-              className="border border-blue-500/50 text-blue-500 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:bg-blue-500/50"
-            >
-              {t('home.contact')}
-            </a>
+            <ScrollLink
+              id="#projects"
+              labelKey="home.projects"
+              variant="primary"
+            />
+            <ScrollLink
+              id="#contact"
+              labelKey="home.contact"
+              variant="secondary"
+            />
+
             <button
               onClick={handleDownloadCV}
               className="flex items-center gap-2 border border-cyan-600/50 text-cyan-600 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:bg-cyan-600/50"
