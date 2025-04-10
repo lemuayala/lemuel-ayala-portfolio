@@ -5,7 +5,7 @@ import { ScrollLink } from './ScrollLink';
 import { links } from '../utils/navigation';
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
-  const { t, changeLanguage } = useLanguage();
+  const { changeLanguage } = useLanguage();
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
