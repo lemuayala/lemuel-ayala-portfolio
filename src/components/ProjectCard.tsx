@@ -30,7 +30,7 @@ export const ProjectCard = ({
             className="object-cover w-full h-full"
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-blue-400 via-purple-500 to-cyan-400 animate-gradient-shift" />
         )}
         <div
           className={`absolute top-4 right-4 flex items-center px-3 py-1 rounded-full text-sm ${

@@ -38,6 +38,23 @@ body {
   }
 }
 
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 250% 250%;
+  animation: gradient-shift 12s ease infinite;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);
