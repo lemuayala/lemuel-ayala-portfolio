@@ -45,7 +45,7 @@ src/
 
 1. **Clonar el repositorio**
 ```bash
-git clone https://github.com/lemuayala/portfolio.git
+git clone https://github.com/lemuayala/lemuel-ayala-portfolio.git
 cd portfolio
 ```
 
@@ -87,13 +87,12 @@ Si te gusta este portfolio, ¡déjame una estrella en GitHub!
 
 ```bash
 # También puedes clonar y personalizarlo:
-git clone https://github.com/lemuayala/portfolio.git
+git clone https://github.com/lemuayala/lemuel-ayala-portfolio.git
 ```
 
 ## 📜 Licencia
 
-```text
 MIT License - Copyright (c) 2025 Lemuel Ayala
+
 Se permite uso, modificación y distribución
 bajo los términos de la licencia MIT.
-```
