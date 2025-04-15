@@ -1,212 +1,212 @@
 {
-    "navbar": {
-        "home": "Inicio",
-        "about": "Sobre mí",
-        "projects": "Proyectos",
-        "contact": "Contacto"
-    },
-    "home": {
-        "hi": "Hola, soy Lemuel Ayala",
-        "description": "Desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
-        "projects": "Proyectos",
-        "contact": "Contacto",
-        "downloadCV": "Descargar CV"
-    },
-    "projects": {
-        "title": "Mis Proyectos",
-        "subtitle": "Trabajos destacados que demuestran mis habilidades",
-        "inProgress": "en-progreso",
-        "viewCode": "Ver Código",
-        "liveDemo": "Ver Demo",
-        "items": [
-            {
-                "title": "DevBlog Next.js",
-                "description": "Blog técnico moderno con diseño futurista y arquitectura escalable",
-                "status": "en-progreso",
-                "preview": "previews/devblog.png",
-                "technologies": [
-                    "Next.js 15",
-                    "TypeScript",
-                    "Tailwind CSS",
-                    "Framer Motion",
-                    "Vercel"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/devblog-nextjs",
-                    "demo": "https://devblog-liart-two.vercel.app/"
-                },
-                "features": [
-                    "Renderizado estático (SSG/ISR) para máximo rendimiento",
-                    "Sistema de tags y filtrado dinámico",
-                    "Diseño dark mode con gradientes neón",
-                    "Animaciones fluidas con Framer Motion",
-                    "100% responsive (Mobile First)",
-                    "Optimización de imágenes con next/image"
-                ]
-            },
-            {
-                "title": "E-Commerce React",
-                "description": "Tienda online moderna con carrito y autenticación",
-                "status": "en-progreso",
-                "technologies": [
-                    "React",
-                    "TypeScript",
-                    "Vite",
-                    "Tailwind CSS",
-                    "React Router"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
-                    "demo": "#"
-                },
-                "features": [
-                    "Arquitectura modular con Vite",
-                    "Gestión de estado con Context API",
-                    "Diseño responsive",
-                    "Sistema de carrito de compras",
-                    "Integración con APIs REST"
-                ]
-            },
-            {
-                "title": "Portfolio Profesional",
-                "description": "Portfolio personal moderno que muestra proyectos y habilidades con diseño elegante y soporte multilingüe",
-                "status": "completado",
-                "preview": "previews/portfolio.png",
-                "technologies": [
-                    "React",
-                    "TypeScript",
-                    "Vite",
-                    "Tailwind CSS",
-                    "Framer Motion",
-                    "EmailJS",
-                    "i18next"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
-                    "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
-                },
-                "features": [
-                    "Interfaz moderna con toggle de modo claro/oscuro",
-                    "Soporte multilingüe (inglés/español)",
-                    "Formulario de contacto funcional con integración de EmailJS",
-                    "Animaciones y transiciones fluidas",
-                    "Completamente responsive (enfoque Mobile First)",
-                    "Exhibición de proyectos con etiquetas de tecnologías",
-                    "Sistema de construcción ultra-rápido con Vite"
-                ]
-            }
+  "navbar": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "home": {
+    "hi": "Hola, soy Lemuel Ayala",
+    "description": "Desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "downloadCV": "Descargar CV"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "subtitle": "Trabajos destacados que demuestran mis habilidades",
+    "inProgress": "en-progreso",
+    "viewCode": "Ver Código",
+    "liveDemo": "Ver Demo",
+    "items": [
+      {
+        "title": "DevBlog Next.js",
+        "description": "Blog técnico moderno con diseño futurista y arquitectura escalable",
+        "status": "en-progreso",
+        "preview": "previews/devblog.png",
+        "technologies": [
+          "Next.js 15",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Vercel"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/devblog-nextjs",
+          "demo": "https://devblog-liart-two.vercel.app/"
+        },
+        "features": [
+          "Renderizado estático (SSG/ISR) para máximo rendimiento",
+          "Sistema de tags y filtrado dinámico",
+          "Diseño dark mode con gradientes neón",
+          "Animaciones fluidas con Framer Motion",
+          "100% responsive (Mobile First)",
+          "Optimización de imágenes con next/image"
         ]
-    },
-    "about": {
-        "about": "Sobre mí",
-        "description": "Soy un <strong>Analista Programador Fullstack </strong> con más de 5 años de experiencia en el sector bancario, web/móvil y en empresas multinacionales especializadas en soluciones backoffice. Me destaco en el desarrollo de nuevas funcionalidades, integración de APIs y gestión de bases de datos, asegurando soluciones eficientes y escalables. Mi enfoque combina desarrollo frontend con <strong>Angular y React </strong>, y backend con .NET Framework, .NET Core y ASP.NET MVC. Me desenvuelvo en entornos dinámicos, aplicando metodologías ágiles como Scrum para garantizar entregas de calidad. Siempre en constante aprendizaje, me especializo en la implementación de tecnologías modernas y optimización de código, asegurando el cumplimiento de objetivos en cada proyecto en el que participo.",
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "work": {
-            "title": "Experiencia laboral",
-            "technologies": "Tecnologías",
-            "clients": "Clientes",
-            "jobs": [
-                {
-                    "company": "CETAP SA (Argentina)",
-                    "position": "Desarrollador Sr",
-                    "date": "Junio 2024 - Actualidad",
-                    "description": "Desarrollo de herramientas de reportes de incidentes para YPF.",
-                    "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
-                    "client": "YPF"
-                },
-                {
-                    "company": "ATIO Group (México - remoto desde Argentina)",
-                    "position": "Software Engineer",
-                    "date": "Marzo 2024 - Junio 2024",
-                    "description": "Desarrollo y mantenimiento de una herramienta para el control de servicios y datos de gasolineras.",
-                    "technologies": ".NET Framework, ASP.NET MVC, .NET Core, JavaScript, JQuery, Kendo UI",
-                    "client": "ATIO Group"
-                },
-                {
-                    "company": "Freelance (Remoto)",
-                    "position": "Fullstack Developer",
-                    "date": "Enero 2024 - Marzo 2024",
-                    "description": "Desarrollo de una plataforma de control de pagos inmobiliarios.",
-                    "technologies": "Angular, .NET Core, Material UI",
-                    "client": "Novit - Nordelta"
-                },
-                {
-                    "company": "13:e Protein Import (Estocolmo, Suecia - Remoto)",
-                    "position": "Frontend Developer",
-                    "date": "Mayo 2023 - Diciembre 2023",
-                    "description": "Implementación de una plataforma de ventas y exportaciones.",
-                    "technologies": "Angular, JavaScript, TypeScript, Material UI",
-                    "client": "13:e Protein Import"
-                },
-                {
-                    "company": "Teleperformance MAR (Bogotá, Colombia)",
-                    "position": "Semi Senior Fullstack Developer",
-                    "date": "Agosto 2021 - Mayo 2023",
-                    "description": "Desarrollo de herramientas back-office y extensiones web.",
-                    "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
-                    "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
-                },
-                {
-                    "company": "Openix IT Solutions (Jujuy, Argentina)",
-                    "position": "Desarrollador Mobile/Web Fullstack",
-                    "date": "Octubre 2018 - Agosto 2021",
-                    "description": "Desarrollo del sistema de Home Banking para Ficohsa.",
-                    "technologies": "AngularJS, ASP.NET, WCF Services, SQL, Android (Java), iOS (Swift)",
-                    "client": "Infocorp Group (Uruguay)"
-                }
-            ]
+      },
+      {
+        "title": "E-Commerce React",
+        "description": "Tienda online moderna con carrito y autenticación",
+        "status": "en-progreso",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
+          "demo": "#"
         },
-        "education": {
-            "education": "Educación",
-            "apu": "Analista Progrsmador Universitario",
-            "universidad": "Universidad Nacional de Jujuy (Argentina)",
-            "tecnico": "Técnico en Informática",
-            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
-            "licenciatura": "Licenciatura en Informática Educativa"
+        "features": [
+          "Arquitectura modular con Vite",
+          "Gestión de estado con Context API",
+          "Diseño responsive",
+          "Sistema de carrito de compras",
+          "Integración con APIs REST"
+        ]
+      },
+      {
+        "title": "Portfolio Profesional",
+        "description": "Portfolio personal moderno que muestra proyectos y habilidades con diseño elegante y soporte multilingüe",
+        "status": "completado",
+        "preview": "previews/portfolio.png",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "Framer Motion",
+          "EmailJS",
+          "i18next"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
+          "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
         },
-        "certifications": {
-            "title": "Cursos y Certificaciones",
-            "list": [
-                {
-                    "institution": "CERTIPROF",
-                    "course": "Scrum Foundation Professional Certificate, Lifelong Learning"
-                },
-                {
-                    "institution": "UDEMY",
-                    "course": "Fundamentos de Angular"
-                },
-                {
-                    "institution": "GOOGLE ACTÍVATE",
-                    "course": "Desarrollo de Apps Móviles"
-                },
-                {
-                    "institution": "LINKEDIN LEARNING",
-                    "course": "Fundamentos del desarrollo web: Fullstack o Frontend"
-                },
-                {
-                    "institution": "PLATZI",
-                    "courses": [
-                        "Principios SOLID en C# y .NET",
-                        "Buenas Prácticas y Código Limpio en C#",
-                        "Unit Testing con C# y .NET",
-                        "Manejo de Datos en C# con LINQ",
-                        "SwiftUI desde Cero",
-                        "Aplicaciones iOS con SwiftUI",
-                        "SwiftUI: Porteo y Ciclo de Vida de Aplicaciones",
-                        "Introducción a React Native"
-                    ]
-                }
-            ]
+        "features": [
+          "Interfaz moderna con toggle de modo claro/oscuro",
+          "Soporte multilingüe (inglés/español)",
+          "Formulario de contacto funcional con integración de EmailJS",
+          "Animaciones y transiciones fluidas",
+          "Completamente responsive (enfoque Mobile First)",
+          "Exhibición de proyectos con etiquetas de tecnologías",
+          "Sistema de construcción ultra-rápido con Vite"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "about": "Sobre mí",
+    "description": "Soy un <strong>Analista Programador Fullstack </strong> con más de 5 años de experiencia en el sector bancario, web/móvil y en empresas multinacionales especializadas en soluciones backoffice. Me destaco en el desarrollo de nuevas funcionalidades, integración de APIs y gestión de bases de datos, asegurando soluciones eficientes y escalables. Mi enfoque combina desarrollo frontend con <strong>Angular y React </strong>, y backend con .NET Framework, .NET Core y ASP.NET MVC. Me desenvuelvo en entornos dinámicos, aplicando metodologías ágiles como Scrum para garantizar entregas de calidad. Siempre en constante aprendizaje, me especializo en la implementación de tecnologías modernas y optimización de código, asegurando el cumplimiento de objetivos en cada proyecto en el que participo.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "work": {
+      "title": "Experiencia laboral",
+      "technologies": "Tecnologías",
+      "clients": "Clientes",
+      "jobs": [
+        {
+          "company": "CETAP SA (Argentina)",
+          "position": "Desarrollador Sr",
+          "date": "Junio 2024 - Actualidad",
+          "description": "Desarrollo de herramientas de reportes de incidentes para YPF.",
+          "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
+          "client": "YPF"
+        },
+        {
+          "company": "ATIO Group (México - remoto desde Argentina)",
+          "position": "Software Engineer",
+          "date": "Marzo 2024 - Junio 2024",
+          "description": "Desarrollo y mantenimiento de una herramienta para el control de servicios y datos de gasolineras.",
+          "technologies": ".NET Framework, ASP.NET MVC, .NET Core, JavaScript, JQuery, Kendo UI",
+          "client": "ATIO Group"
+        },
+        {
+          "company": "Freelance (Remoto)",
+          "position": "Fullstack Developer",
+          "date": "Enero 2024 - Marzo 2024",
+          "description": "Desarrollo de una plataforma de control de pagos inmobiliarios.",
+          "technologies": "Angular, .NET Core, Material UI",
+          "client": "Novit - Nordelta"
+        },
+        {
+          "company": "13:e Protein Import (Estocolmo, Suecia - Remoto)",
+          "position": "Frontend Developer",
+          "date": "Mayo 2023 - Diciembre 2023",
+          "description": "Implementación de una plataforma de ventas y exportaciones.",
+          "technologies": "Angular, JavaScript, TypeScript, Material UI",
+          "client": "13:e Protein Import"
+        },
+        {
+          "company": "Teleperformance MAR (Bogotá, Colombia)",
+          "position": "Semi Senior Fullstack Developer",
+          "date": "Agosto 2021 - Mayo 2023",
+          "description": "Desarrollo de herramientas back-office y extensiones web.",
+          "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
+          "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
+        },
+        {
+          "company": "Openix IT Solutions (Jujuy, Argentina)",
+          "position": "Desarrollador Mobile/Web Fullstack",
+          "date": "Octubre 2018 - Agosto 2021",
+          "description": "Desarrollo del sistema de Home Banking para Ficohsa.",
+          "technologies": "AngularJS, ASP.NET, WCF Services, SQL, Android (Java), iOS (Swift)",
+          "client": "Infocorp Group (Uruguay)"
         }
+      ]
     },
-    "contact": {
-        "title": "Mantenete en Contacto",
-        "form": {
-            "name": "Nombre...",
-            "email": "ejemplo@email.com",
-            "message": "Tu Mensaje..."
+    "education": {
+      "education": "Educación",
+      "apu": "Analista Programador Universitario",
+      "universidad": "Universidad Nacional de Jujuy (Argentina)",
+      "tecnico": "Técnico en Informática",
+      "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
+      "licenciatura": "Licenciatura en Informática Educativa"
+    },
+    "certifications": {
+      "title": "Cursos y Certificaciones",
+      "list": [
+        {
+          "institution": "CERTIPROF",
+          "course": "Scrum Foundation Professional Certificate, Lifelong Learning"
         },
-        "submit": "Enviar Mensaje"
+        {
+          "institution": "UDEMY",
+          "course": "Fundamentos de Angular"
+        },
+        {
+          "institution": "GOOGLE ACTÍVATE",
+          "course": "Desarrollo de Apps Móviles"
+        },
+        {
+          "institution": "LINKEDIN LEARNING",
+          "course": "Fundamentos del desarrollo web: Fullstack o Frontend"
+        },
+        {
+          "institution": "PLATZI",
+          "courses": [
+            "Principios SOLID en C# y .NET",
+            "Buenas Prácticas y Código Limpio en C#",
+            "Unit Testing con C# y .NET",
+            "Manejo de Datos en C# con LINQ",
+            "SwiftUI desde Cero",
+            "Aplicaciones iOS con SwiftUI",
+            "SwiftUI: Porteo y Ciclo de Vida de Aplicaciones",
+            "Introducción a React Native"
+          ]
+        }
+      ]
     }
+  },
+  "contact": {
+    "title": "Mantenete en Contacto",
+    "form": {
+      "name": "Nombre...",
+      "email": "ejemplo@email.com",
+      "message": "Tu Mensaje..."
+    },
+    "submit": "Enviar Mensaje"
+  }
 }
