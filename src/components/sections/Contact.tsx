@@ -33,20 +33,16 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  // --- Variables de entorno y tema (sin cambios) ---
   const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
   const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
   const currentTheme =
     localStorage.getItem("theme") === "dark" ? "dark" : "light";
-
-  // --- Handlers (handleRecaptchaChange sin cambios) ---
   const handleRecaptchaChange = (value: string | null) => {
     setRecaptchaValue(value);
   };
 
-  // --- handleSubmit MODIFICADO ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 

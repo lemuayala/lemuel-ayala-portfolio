@@ -1,212 +1,275 @@
 {
-    "navbar": {
-        "home": "Home",
-        "about": "About",
-        "projects": "Projects",
-        "contact": "Contact"
-    },
-    "home": {
-        "hi": "Hi, I'm Lemuel Ayala",
-        "description": "I'm a full stack developer with over 5 years of experience, passionate about technology and innovation.",
-        "projects": "View Projects",
-        "contact": "Contact Me",
-        "downloadCV": "Download Resume"
-    },
-    "about": {
-        "about": "About Me",
-        "description": "I am a <strong>Fullstack Programmer Analyst</strong> with over 5 years of experience in the banking, web/mobile sector, and multinational companies specializing in back-office solutions. I excel in developing new features, API integration, and database management, ensuring efficient and scalable solutions.My expertise includes frontend development with <strong>Angular and React</strong>, and backend with .NET Framework, .NET Core, and ASP.NET MVC. I thrive in dynamic environments, applying agile methodologies like Scrum to ensure high-quality deliverables. Committed to continuous learning, I specialize in implementing modern technologies and optimizing code, ensuring the successful achievement of project goals.",
-        "frontend": "Frontend",
-        "backend": "Backend",
-        "work": {
-            "title": "Work Experience",
-            "technologies": "Technologies",
-            "clients": "Clients",
-            "jobs": [
-                {
-                    "company": "CETAP SA (Argentina)",
-                    "position": "Senior Developer",
-                    "date": "June 2024 - Present",
-                    "description": "Development of incident reporting tools for YPF.",
-                    "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
-                    "client": "YPF"
-                },
-                {
-                    "company": "ATIO Group (Mexico - remote from Argentina)",
-                    "position": "Software Engineer",
-                    "date": "March 2024 - June 2024",
-                    "description": "Development and maintenance of a service and gas station data control tool.",
-                    "technologies": ".NET Framework, ASP.NET MVC, .NET Core, JavaScript, JQuery, Kendo UI",
-                    "client": "ATIO Group"
-                },
-                {
-                    "company": "Freelance (Remote)",
-                    "position": "Fullstack Developer",
-                    "date": "January 2024 - March 2024",
-                    "description": "Development of a real estate payment control platform.",
-                    "technologies": "Angular, .NET Core, Material UI",
-                    "client": "Novit - Nordelta"
-                },
-                {
-                    "company": "13:e Protein Import (Stockholm, Sweden - Remote)",
-                    "position": "Frontend Developer",
-                    "date": "May 2023 - December 2023",
-                    "description": "Implementation of a sales and export platform.",
-                    "technologies": "Angular, JavaScript, TypeScript, Material UI",
-                    "client": "13:e Protein Import"
-                },
-                {
-                    "company": "Teleperformance MAR (Bogotá, Colombia)",
-                    "position": "Semi Senior Fullstack Developer",
-                    "date": "August 2021 - May 2023",
-                    "description": "Development of back-office tools and web extensions.",
-                    "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
-                    "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
-                },
-                {
-                    "company": "Openix IT Solutions (Jujuy, Argentina)",
-                    "position": "Mobile/Web Fullstack Developer",
-                    "date": "October 2018 - August 2021",
-                    "description": "Development of the Home Banking system for Ficohsa.",
-                    "technologies": "AngularJS, ASP.NET, WCF Services, SQL, Android (Java), iOS (Swift)",
-                    "client": "Infocorp Group (Uruguay)"
-                }
-            ]
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "hi": "Hi, I'm Lemuel Ayala",
+    "description": "I'm a full stack developer with over 6 years of experience, passionate about technology and innovation.",
+    "projects": "View Projects",
+    "contact": "Contact Me",
+    "downloadCV": "Download Resume"
+  },
+  "about": {
+    "about": "About Me",
+    "description": "I am a <strong>Fullstack Programmer Analyst</strong> with over 5 years of experience in the banking, web/mobile sector, and multinational companies specializing in back-office solutions. I excel in developing new features, API integration, and database management, ensuring efficient and scalable solutions.My expertise includes frontend development with <strong>Angular and React</strong>, and backend with .NET Framework, .NET Core, and ASP.NET MVC. I thrive in dynamic environments, applying agile methodologies like Scrum to ensure high-quality deliverables. Committed to continuous learning, I specialize in implementing modern technologies and optimizing code, ensuring the successful achievement of project goals.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "work": {
+      "title": "Work Experience",
+      "technologies": "Technologies",
+      "clients": "Clients",
+      "jobs": [
+        {
+          "company": "CETAP SA (Argentina)",
+          "position": "Senior Developer",
+          "date": "June 2024 - Present",
+          "description": "Development of incident reporting tools for YPF.",
+          "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
+          "client": "YPF"
         },
-        "education": {
-            "education": "Education",
-            "apu": "Programmer Analyst",
-            "universidad": "Jujuy National University (Argentina)",
-            "tecnico": "Information Technology Technician",
-            "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
-            "licenciatura": "Bachelor of Education in Computer Science"
+        {
+          "company": "ATIO Group (Mexico - remote from Argentina)",
+          "position": "Software Engineer",
+          "date": "March 2024 - June 2024",
+          "description": "Development and maintenance of a service and gas station data control tool.",
+          "technologies": ".NET Framework, ASP.NET MVC, .NET Core, JavaScript, JQuery, Kendo UI",
+          "client": "ATIO Group"
         },
-        "certifications": {
-            "title": "Courses and Certifications",
-            "list": [
-                {
-                    "institution": "CERTIPROF",
-                    "course": "Scrum Foundation Professional Certificate, Lifelong Learning"
-                },
-                {
-                    "institution": "UDEMY",
-                    "course": "Angular Fundamentals"
-                },
-                {
-                    "institution": "GOOGLE ACTÍVATE",
-                    "course": "Mobile Apps Development"
-                },
-                {
-                    "institution": "LINKEDIN LEARNING",
-                    "course": "Web Development Fundamentals: Fullstack or Frontend"
-                },
-                {
-                    "institution": "PLATZI",
-                    "courses": [
-                        "SOLID Principles in C# and .NET",
-                        "Best Practices and Clean Code in C#",
-                        "Unit Testing with C# and .NET",
-                        "Data Management in C# with LINQ",
-                        "SwiftUI from Scratch",
-                        "iOS Applications with SwiftUI",
-                        "SwiftUI: Porting and Lifecycle of Applications",
-                        "Introduction to React Native"
-                    ]
-                }
-            ]
+        {
+          "company": "Freelance (Remote)",
+          "position": "Fullstack Developer",
+          "date": "January 2024 - March 2024",
+          "description": "Development of a real estate payment control platform.",
+          "technologies": "Angular, .NET Core, Material UI",
+          "client": "Novit - Nordelta"
+        },
+        {
+          "company": "13:e Protein Import (Stockholm, Sweden - Remote)",
+          "position": "Frontend Developer",
+          "date": "May 2023 - December 2023",
+          "description": "Implementation of a sales and export platform.",
+          "technologies": "Angular, JavaScript, TypeScript, Material UI",
+          "client": "13:e Protein Import"
+        },
+        {
+          "company": "Teleperformance MAR (Bogotá, Colombia)",
+          "position": "Semi Senior Fullstack Developer",
+          "date": "August 2021 - May 2023",
+          "description": "Development of back-office tools and web extensions.",
+          "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
+          "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
+        },
+        {
+          "company": "Openix IT Solutions (Jujuy, Argentina)",
+          "position": "Mobile/Web Fullstack Developer",
+          "date": "October 2018 - August 2021",
+          "description": "Development of the Home Banking system for Ficohsa.",
+          "technologies": "AngularJS, ASP.NET, WCF Services, SQL, Android (Java), iOS (Swift)",
+          "client": "Infocorp Group (Uruguay)"
         }
+      ]
     },
-    "projects": {
-        "title": "My Projects",
-        "subtitle": "Featured works demonstrating my skills",
-        "inProgress": "in-progress",
-        "viewCode": "View Code",
-        "liveDemo": "View Demo",
-        "items": [
-            {
-                "title": "DevBlog Next.js",
-                "description": "Modern technical blog with futuristic design and scalable architecture",
-                "status": "in-progress",
-                "preview": "previews/devblog.png",
-                "technologies": [
-                    "Next.js 15",
-                    "TypeScript",
-                    "Tailwind CSS",
-                    "Framer Motion",
-                    "Vercel"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/devblog-nextjs",
-                    "demo": "https://devblog-liart-two.vercel.app/"
-                },
-                "features": [
-                    "Static rendering (SSG/ISR) for maximum performance",
-                    "Dynamic tag system and filtering",
-                    "Neon gradient dark mode design",
-                    "Fluid animations with Framer Motion",
-                    "100% responsive (Mobile First)",
-                    "Image optimization with next/image"
-                ]
-            },
-            {
-                "title": "E-Commerce React",
-                "description": "Modern online store with cart and authentication",
-                "status": "in-progress",
-                "technologies": [
-                    "React",
-                    "TypeScript",
-                    "Vite",
-                    "Tailwind CSS",
-                    "React Router"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
-                    "demo": "#"
-                },
-                "features": [
-                    "Modular Vite architecture",
-                    "State management with Context API",
-                    "Full responsive design",
-                    "Shopping cart system",
-                    "REST API integration"
-                ]
-            },
-            {
-                "title": "Professional Portfolio",
-                "description": "Modern personal portfolio showcasing projects and skills with elegant design and multilingual support",
-                "status": "completed",
-                "preview": "previews/portfolio.png",
-                "technologies": [
-                    "React",
-                    "TypeScript",
-                    "Vite",
-                    "Tailwind CSS",
-                    "Framer Motion",
-                    "EmailJS",
-                    "i18next"
-                ],
-                "links": {
-                    "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
-                    "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
-                },
-                "features": [
-                    "Modern UI with light/dark mode toggle",
-                    "Multilingual support (English/Spanish)",
-                    "Functional contact form with EmailJS integration",
-                    "Smooth scroll animations and transitions",
-                    "Fully responsive (Mobile First approach)",
-                    "Project showcase with technology tags",
-                    "Vite-powered ultra-fast build system"
-                ]
-            }
-        ]
+    "education": {
+      "education": "Education",
+      "apu": "Programmer Analyst",
+      "universidad": "Jujuy National University (Argentina)",
+      "tecnico": "Information Technology Technician",
+      "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
+      "licenciatura": "Bachelor of Education in Computer Science"
     },
-    "contact": {
-        "title": "Get in Touch",
-        "form": {
-            "name": "Name...",
-            "email": "example@email.com",
-            "message": "Your Message..."
+    "certifications": {
+      "title": "Courses and Certifications",
+      "list": [
+        {
+          "institution": "CERTIPROF",
+          "course": "Scrum Foundation Professional Certificate, Lifelong Learning"
         },
-        "submit": "Send Message"
+        {
+          "institution": "UDEMY",
+          "course": "Angular Fundamentals"
+        },
+        {
+          "institution": "GOOGLE ACTÍVATE",
+          "course": "Mobile Apps Development"
+        },
+        {
+          "institution": "LINKEDIN LEARNING",
+          "course": "Web Development Fundamentals: Fullstack or Frontend"
+        },
+        {
+          "institution": "PLATZI",
+          "courses": [
+            "SOLID Principles in C# and .NET",
+            "Best Practices and Clean Code in C#",
+            "Unit Testing with C# and .NET",
+            "Data Management in C# with LINQ",
+            "SwiftUI from Scratch",
+            "iOS Applications with SwiftUI",
+            "SwiftUI: Porting and Lifecycle of Applications",
+            "Introduction to React Native"
+          ]
+        }
+      ]
     }
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "Featured works demonstrating my skills",
+    "inProgress": "in-progress",
+    "viewCode": "View Code",
+    "liveDemo": "View Demo",
+    "items": [
+      {
+        "id": "devblog-nextjs",
+        "title": "DevBlog Next.js",
+        "description": "Modern technical blog with futuristic design and scalable architecture",
+        "status": "in-progress",
+        "preview": "previews/devblog.png",
+        "technologies": [
+          "Next.js 15",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+          "Vercel"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/devblog-nextjs",
+          "demo": "https://devblog-liart-two.vercel.app/"
+        },
+        "features": [
+          "Static rendering (SSG/ISR) for maximum performance",
+          "Dynamic tag system and filtering",
+          "Neon gradient dark mode design",
+          "Fluid animations with Framer Motion",
+          "100% responsive (Mobile First)",
+          "Image optimization with next/image"
+        ]
+      },
+      {
+        "id": "ecommerce-ai-assistant-api",
+        "title": "E-Commerce AI Assistant API",
+        "description": "API moderna para e-commerce con integración de IA y arquitectura escalable",
+        "status": "in-progress",
+        "technologies": [
+          ".NET 9.0",
+          "ASP.NET Core",
+          "Microsoft Semantic Kernel",
+          "Azure OpenAI",
+          "Dapper",
+          "MediatR (CQRS)",
+          "Azure Blob Storage",
+          "SQL Server",
+          "Health Checks",
+          "AutoMapper"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/ecomerce-api-iabot",
+          "demo": "https://devblog-liart-two.vercel.app/"
+        },
+        "features": [
+          "Integración con Azure OpenAI para capacidades de IA",
+          "Patrón CQRS con MediatR",
+          "Gestión de productos con almacenamiento en Azure Blob Storage",
+          "Health Checks para monitoreo de servicios",
+          "Mapeo avanzado con AutoMapper",
+          "Manejo de conexiones SQL con Dapper",
+          "Sistema de recomendaciones basado en IA",
+          "Configuración segura con dotenv",
+          "Serialización JSON optimizada",
+          "Patrón Repository para acceso a datos"
+        ],
+        "dependencies": [
+          "Microsoft.SemanticKernel 1.46.0",
+          "Azure.Storage.Blobs 12.24.0",
+          "Dapper 2.1.66",
+          "MediatR 12.5.0",
+          "AutoMapper 14.0.0",
+          "Microsoft.Data.SqlClient 6.0.1",
+          "AspNetCore.HealthChecks.SqlServer 9.0.0"
+        ],
+        "architecture": [
+          "Clean Architecture",
+          "CQRS Pattern",
+          "Repository Pattern",
+          "Dependency Injection",
+          "Modular Endpoints"
+        ],
+        "infrastructure": [
+          "Azure OpenAI Service",
+          "Azure Blob Storage",
+          "SQL Server Database",
+          "Vercel/Azure App Service (implícito)"
+        ]
+      },
+      {
+        "id": "ecomerce-react-tailwind",
+        "title": "E-Commerce React",
+        "description": "Modern online store with cart and authentication",
+        "status": "in-progress",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "React Router"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
+          "demo": "#"
+        },
+        "features": [
+          "Modular Vite architecture",
+          "State management with Context API",
+          "Full responsive design",
+          "Shopping cart system",
+          "REST API integration"
+        ]
+      },
+      {
+        "id": "portfolio-lemuel-ayala",
+        "title": "Professional Portfolio",
+        "description": "Modern personal portfolio showcasing projects and skills with elegant design and multilingual support",
+        "status": "completed",
+        "preview": "previews/portfolio.png",
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS",
+          "Framer Motion",
+          "EmailJS",
+          "i18next"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
+          "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
+        },
+        "features": [
+          "Modern UI with light/dark mode toggle",
+          "Multilingual support (English/Spanish)",
+          "Functional contact form with EmailJS integration",
+          "Smooth scroll animations and transitions",
+          "Fully responsive (Mobile First approach)",
+          "Project showcase with technology tags",
+          "Vite-powered ultra-fast build system"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "form": {
+      "name": "Name...",
+      "email": "example@email.com",
+      "message": "Your Message..."
+    },
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again.",
+    "recaptchaError": "Please verify that you are not a robot."
+  }
 }

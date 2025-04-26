@@ -7,7 +7,7 @@
   },
   "home": {
     "hi": "Hola, soy Lemuel Ayala",
-    "description": "Desarrollador full stack con mas de 5 años de experiencia, apasionado por la tecnología y la innovación.",
+    "description": "Desarrollador full stack con mas de 6 años de experiencia, apasionado por la tecnología y la innovación.",
     "projects": "Proyectos",
     "contact": "Contacto",
     "downloadCV": "Descargar CV"
@@ -20,6 +20,7 @@
     "liveDemo": "Ver Demo",
     "items": [
       {
+        "id": "devblog-nextjs",
         "title": "DevBlog Next.js",
         "description": "Blog técnico moderno con diseño futurista y arquitectura escalable",
         "status": "en-progreso",
@@ -45,6 +46,63 @@
         ]
       },
       {
+        "id": "e-commerce-ai-assistant-api",
+        "title": "E-Commerce AI Assistant API",
+        "description": "API moderna para e-commerce con integración de IA y arquitectura escalable",
+        "status": "en-progreso",
+        "technologies": [
+          ".NET 9.0",
+          "ASP.NET Core",
+          "Microsoft Semantic Kernel",
+          "Azure OpenAI",
+          "Dapper",
+          "MediatR (CQRS)",
+          "Azure Blob Storage",
+          "SQL Server",
+          "Health Checks",
+          "AutoMapper"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala/ecomerce-api-iabot",
+          "demo": "https://devblog-liart-two.vercel.app/"
+        },
+        "features": [
+          "Integración con Azure OpenAI para capacidades de IA",
+          "Patrón CQRS con MediatR",
+          "Gestión de productos con almacenamiento en Azure Blob Storage",
+          "Health Checks para monitoreo de servicios",
+          "Mapeo avanzado con AutoMapper",
+          "Manejo de conexiones SQL con Dapper",
+          "Sistema de recomendaciones basado en IA",
+          "Configuración segura con dotenv",
+          "Serialización JSON optimizada",
+          "Patrón Repository para acceso a datos"
+        ],
+        "dependencies": [
+          "Microsoft.SemanticKernel 1.46.0",
+          "Azure.Storage.Blobs 12.24.0",
+          "Dapper 2.1.66",
+          "MediatR 12.5.0",
+          "AutoMapper 14.0.0",
+          "Microsoft.Data.SqlClient 6.0.1",
+          "AspNetCore.HealthChecks.SqlServer 9.0.0"
+        ],
+        "architecture": [
+          "Clean Architecture",
+          "CQRS Pattern",
+          "Repository Pattern",
+          "Dependency Injection",
+          "Modular Endpoints"
+        ],
+        "infrastructure": [
+          "Azure OpenAI Service",
+          "Azure Blob Storage",
+          "SQL Server Database",
+          "Vercel/Azure App Service (implícito)"
+        ]
+      },
+      {
+        "id": "ecomerce-react-tailwind",
         "title": "E-Commerce React",
         "description": "Tienda online moderna con carrito y autenticación",
         "status": "en-progreso",
@@ -68,6 +126,7 @@
         ]
       },
       {
+        "id": "portfolio-lemuel-ayala",
         "title": "Portfolio Profesional",
         "description": "Portfolio personal moderno que muestra proyectos y habilidades con diseño elegante y soporte multilingüe",
         "status": "completado",
@@ -207,6 +266,10 @@
       "email": "ejemplo@email.com",
       "message": "Tu Mensaje..."
     },
-    "submit": "Enviar Mensaje"
+    "submit": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
+    "recaptchaError": "Por favor, verifica que no eres un robot."
   }
 }

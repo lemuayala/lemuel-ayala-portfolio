@@ -1,5 +1,5 @@
-import { createContext, useContext } from 'react';
-import { i18n } from 'i18next';
+import { createContext, useContext } from "react";
+import { i18n } from "i18next";
 
 interface LanguageContextType {
   t: (key: string) => string;
@@ -14,7 +14,7 @@ export const LanguageContext = createContext<LanguageContextType | undefined>(
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };
