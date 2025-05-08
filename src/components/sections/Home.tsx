@@ -1,19 +1,34 @@
-import { SiAngular, SiDotnet, SiReact, SiTypescript } from 'react-icons/si';
-import { useLanguage } from '../../context/LanguageContext';
-import { RevealOnScroll } from '../RevealOnScroll';
-import { Github, Linkedin, Download } from 'lucide-react';
-import { TbBrandCSharp } from 'react-icons/tb';
-import { BsFiletypeSql } from 'react-icons/bs';
-import { ScrollLink } from '../ScrollLink';
+import { SiAngular, SiDotnet, SiReact, SiTypescript } from "react-icons/si";
+import { useLanguage } from "../../context/LanguageContext";
+import { RevealOnScroll } from "../RevealOnScroll";
+import { Github, Linkedin, Download, ArrowDown } from "lucide-react";
+import { TbBrandCSharp } from "react-icons/tb";
+import { BsFiletypeSql } from "react-icons/bs";
+import { ScrollLink } from "../ScrollLink";
+import { useState, useEffect } from "react";
 
 export const Home = () => {
   const { t } = useLanguage();
+  const [showScrollArrow, setShowScrollArrow] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowScrollArrow(false);
+      } else {
+        setShowScrollArrow(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleDownloadCV = () => {
-    const cvUrl = './documents/Ayala Jara Lemuel - CV.pdf';
-    const link = document.createElement('a');
+    const cvUrl = "./documents/Ayala Jara Lemuel - CV.pdf";
+    const link = document.createElement("a");
     link.href = cvUrl;
-    link.download = 'Ayala Jara Lemuel - CV.pdf';
+    link.download = "Ayala Jara Lemuel - CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -24,13 +39,21 @@ export const Home = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative"
     >
+      {showScrollArrow && (
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+          <ArrowDown
+            size={32}
+            className="animate-bounce text-blue-600 dark:text-blue-400"
+          />
+        </div>
+      )}
       <RevealOnScroll>
         <div className="text-center z-10 px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight">
-            {t('home.hi')}
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-tr from-blue-600 to-purple-700 bg-clip-text text-transparent leading-tight">
+            {t("home.hi")}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-lg mb-8 max-w-lg mx-auto">
-            {t('home.description')}
+          <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-lg mx-auto">
+            {t("home.description")}
           </p>
 
           <div className="flex justify-center gap-5 mb-8 flex-wrap">
@@ -77,7 +100,7 @@ export const Home = () => {
               className="flex items-center gap-2 border border-cyan-600/50 text-cyan-600 py-3 px-6 font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:bg-cyan-600/50"
             >
               <Download size={18} />
-              {t('home.downloadCV')}
+              {t("home.downloadCV")}
             </button>
           </div>
 
