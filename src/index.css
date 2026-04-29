@@ -242,11 +242,38 @@ html.dark {
     opacity: 0;
     transition: opacity 600ms ease;
     pointer-events: none;
-    z-index: 3;
+    /* Por encima del chrome del BrowserMockup (header suele usar z-20) para que el borde Siri rodee toda la tarjeta */
+    z-index: 40;
   }
   .siri-glow:hover::after {
     opacity: 1;
     animation: liquid-rotate 4s linear infinite;
+  }
+
+  /* Mockup sin imagen: sin zoom; hover más luminoso estilo Siri en el borde */
+  .siri-glow-skeleton::after {
+    padding: 2px;
+    background: conic-gradient(
+      from var(--liquid-angle),
+      rgba(255, 255, 255, 0.15) 0deg,
+      #38bdf8 55deg,
+      #a78bfa 115deg,
+      #f472b6 185deg,
+      #fbbf24 255deg,
+      #22d3ee 320deg,
+      rgba(255, 255, 255, 0.12) 360deg
+    );
+    opacity: 0;
+    transition:
+      opacity 500ms ease,
+      filter 500ms ease;
+  }
+  .siri-glow-skeleton:hover::after {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.55))
+      drop-shadow(0 0 22px rgba(167, 139, 250, 0.4))
+      drop-shadow(0 0 36px rgba(244, 114, 182, 0.22));
+    animation: liquid-rotate 3.5s linear infinite;
   }
 
   @keyframes liquid-rotate {

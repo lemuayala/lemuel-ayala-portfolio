@@ -104,6 +104,7 @@ const FeatureProject = ({
   const reverse = index % 2 === 1;
   const isInProgress =
     project.status === 'in-progress' || project.status === 'en-progreso';
+  const hasPreview = Boolean(project.preview);
 
   return (
     <motion.article
@@ -117,24 +118,42 @@ const FeatureProject = ({
       <div
         className={`lg:col-span-7 ${
           reverse ? 'lg:order-last' : ''
-        } relative overflow-hidden rounded-3xl glass-panel siri-glow aspect-video md:aspect-[16/10]`}
+        } relative aspect-video overflow-hidden rounded-3xl glass-panel siri-glow ${
+          hasPreview ? '' : 'siri-glow-skeleton'
+        } md:aspect-[16/10]`}
       >
+        {/* Borde interior continuo; por encima del mockup (header z-20) pero debajo del Siri z-40 */}
         <div
-          className={`absolute inset-0 bg-gradient-to-tr ${accent.glow} opacity-60 z-10 pointer-events-none`}
+          className="pointer-events-none absolute inset-0 z-[36] rounded-3xl ring-1 ring-inset ring-zinc-400/55 dark:ring-white/12"
+          aria-hidden
         />
 
-        {project.preview ? (
-          <img
-            src={project.preview}
-            alt={`${project.title} preview`}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-          />
-        ) : (
-          <BrowserMockup index={index} title={project.title} />
-        )}
+        <div
+          className={`pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr ${accent.glow} opacity-60`}
+        />
 
-        {/* Status badge */}
-        <div className="absolute top-4 right-4 z-20 inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-wider font-mono">
+        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+          <div
+            className={`absolute inset-0 ${
+              hasPreview
+                ? 'transition-transform duration-700 ease-out group-hover:scale-[1.04]'
+                : ''
+            }`}
+          >
+            {project.preview ? (
+              <img
+                src={project.preview}
+                alt={`${project.title} preview`}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <BrowserMockup index={index} title={project.title} />
+            )}
+          </div>
+        </div>
+
+        {/* Status badge — por encima del anillo Siri (z-40) */}
+        <div className="absolute top-4 right-4 z-50 inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-wider font-mono">
           <span
             className={`w-1.5 h-1.5 rounded-full ${
               isInProgress
@@ -148,7 +167,7 @@ const FeatureProject = ({
         </div>
 
         {/* Subtle gradient overlay */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950/40 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-200/50 dark:from-zinc-950/40 to-transparent z-10 pointer-events-none" />
       </div>
 
       {/* Content */}
@@ -227,53 +246,45 @@ const BrowserMockup = ({
   title: string;
 }) => {
   const variants = [
-    {
-      bg: 'from-purple-900/40 via-zinc-900 to-zinc-900',
-    },
-    {
-      bg: 'from-blue-900/40 via-zinc-900 to-zinc-900',
-    },
-    {
-      bg: 'from-cyan-900/40 via-zinc-900 to-zinc-900',
-    },
-    {
-      bg: 'from-emerald-900/40 via-zinc-900 to-zinc-900',
-    },
+    'from-purple-200/70 via-zinc-100 to-zinc-50 dark:from-purple-900/40 dark:via-zinc-900 dark:to-zinc-900',
+    'from-blue-200/70 via-zinc-100 to-zinc-50 dark:from-blue-900/40 dark:via-zinc-900 dark:to-zinc-900',
+    'from-cyan-200/70 via-zinc-100 to-zinc-50 dark:from-cyan-900/40 dark:via-zinc-900 dark:to-zinc-900',
+    'from-emerald-200/70 via-zinc-100 to-zinc-50 dark:from-emerald-900/40 dark:via-zinc-900 dark:to-zinc-900',
   ];
-  const v = variants[index % variants.length];
+  const bgGradient = variants[index % variants.length];
 
   return (
-    <div className="absolute inset-0 bg-zinc-900">
+    <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-900">
       {/* Top bar */}
-      <div className="absolute top-0 inset-x-0 h-10 bg-zinc-950/80 border-b border-white/5 flex items-center px-4 gap-2 backdrop-blur-md z-20">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-        <span className="ml-3 text-[10px] font-mono text-zinc-500 truncate">
+      <div className="absolute top-0 inset-x-0 z-10 flex h-10 items-center gap-2 border-b border-zinc-200/90 bg-white/95 px-4 backdrop-blur-md dark:border-white/5 dark:bg-zinc-950/80">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 dark:bg-red-500/70" />
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80 dark:bg-yellow-500/70" />
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70 dark:bg-green-500/70" />
+        <span className="ml-3 text-[10px] font-mono text-zinc-500 dark:text-zinc-500 truncate">
           {title.toLowerCase().replace(/\s+/g, '-')}
           .vercel.app
         </span>
       </div>
 
       {/* Sidebar */}
-      <div className="absolute top-10 left-0 w-44 bottom-0 border-r border-white/5 bg-zinc-950/40 p-3.5 hidden md:flex flex-col gap-2.5">
-        <div className="w-full h-7 bg-white/5 rounded-md" />
-        <div className="w-3/4 h-3 bg-white/5 rounded" />
-        <div className="w-1/2 h-3 bg-white/5 rounded" />
-        <div className="mt-3 w-full h-3 bg-white/5 rounded" />
-        <div className="w-2/3 h-3 bg-white/5 rounded" />
+      <div className="absolute top-10 left-0 w-44 bottom-0 border-r border-zinc-200/80 dark:border-white/5 bg-zinc-50/95 dark:bg-zinc-950/40 p-3.5 hidden md:flex flex-col gap-2.5">
+        <div className="w-full h-7 rounded-md bg-zinc-200/90 dark:bg-white/5" />
+        <div className="w-3/4 h-3 rounded bg-zinc-200/80 dark:bg-white/5" />
+        <div className="w-1/2 h-3 rounded bg-zinc-200/70 dark:bg-white/5" />
+        <div className="mt-3 w-full h-3 rounded bg-zinc-200/80 dark:bg-white/5" />
+        <div className="w-2/3 h-3 rounded bg-zinc-200/70 dark:bg-white/5" />
       </div>
 
       {/* Body */}
       <div
-        className={`absolute top-10 right-0 bottom-0 left-0 md:left-44 bg-gradient-to-br ${v.bg} p-6`}
+        className={`absolute top-10 right-0 bottom-0 left-0 md:left-44 bg-gradient-to-br ${bgGradient} p-6`}
       >
-        <div className="w-1/3 h-7 bg-white/10 rounded-lg border border-white/10 mb-4" />
-        <div className="grid grid-cols-3 gap-3 h-[calc(100%-3rem)]">
-          <div className="col-span-2 row-span-2 bg-white/5 rounded-xl border border-white/10" />
-          <div className="bg-white/5 rounded-xl border border-white/10" />
-          <div className="bg-white/5 rounded-xl border border-white/10" />
-          <div className="col-span-3 h-12 bg-white/5 rounded-xl border border-white/10 mt-auto" />
+        <div className="mb-4 h-7 w-1/3 rounded-lg border border-zinc-300/70 bg-white/70 dark:border-white/10 dark:bg-white/10" />
+        <div className="grid h-[calc(100%-3rem)] grid-cols-3 gap-3">
+          <div className="col-span-2 row-span-2 rounded-xl border border-zinc-300/60 bg-white/60 dark:border-white/10 dark:bg-white/5" />
+          <div className="rounded-xl border border-zinc-300/60 bg-white/60 dark:border-white/10 dark:bg-white/5" />
+          <div className="rounded-xl border border-zinc-300/60 bg-white/60 dark:border-white/10 dark:bg-white/5" />
+          <div className="col-span-3 mt-auto h-12 rounded-xl border border-zinc-300/60 bg-white/60 dark:border-white/10 dark:bg-white/5" />
         </div>
       </div>
     </div>
