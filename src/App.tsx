@@ -29,11 +29,7 @@ function App() {
   return (
     <LanguageContext.Provider value={{ t, changeLanguage, i18n }}>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-      <div
-        className={`relative min-h-screen overflow-x-clip bg-zinc-50 text-zinc-900 transition-opacity duration-700 dark:bg-[#09090b] dark:text-zinc-100 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
+      <div className="relative min-h-screen overflow-x-clip bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
         {/* Background ambient layers */}
         <div
           aria-hidden

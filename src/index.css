@@ -19,6 +19,11 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* Coincide con bg-zinc-50 antes del primer paint del tema claro (evita flash negro) */
+  background: #fafafa;
+}
+
+html.dark {
   background: #09090b;
 }
 

@@ -1,8 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [text, setText] = useState('');
+  const [fadeOut, setFadeOut] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+  const finishedRef = useRef(false);
+  onCompleteRef.current = onComplete;
+
   const fullText = '<HelloWorld />';
+
+  const finish = () => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
+    onCompleteRef.current();
+  };
 
   useEffect(() => {
     let index = 0;
@@ -12,31 +23,42 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       if (index > fullText.length) {
         clearInterval(interval);
-        setTimeout(() => {
-          onComplete();
-        }, 700);
+        setTimeout(() => setFadeOut(true), 700);
       }
     }, 70);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []);
+
+  useEffect(() => {
+    if (!fadeOut) return;
+    const backup = window.setTimeout(finish, 650);
+    return () => clearTimeout(backup);
+  }, [fadeOut]);
+
+  const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
+    if (!fadeOut || e.propertyName !== 'opacity') return;
+    finish();
+  };
 
   return (
-    <div className="fixed inset-0 z-[100] bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 flex flex-col items-center justify-center">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-blue-500/15 blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full bg-purple-500/10 blur-[100px]" />
+    <div
+      onTransitionEnd={handleTransitionEnd}
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-zinc-50 text-zinc-900 transition-opacity duration-500 ease-out dark:bg-[#09090b] dark:text-zinc-100 ${
+        fadeOut ? 'pointer-events-none opacity-0' : 'opacity-100'
+      }`}
+    >
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/15 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[30rem] w-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/10 blur-[100px]" />
 
       <div className="relative flex flex-col items-center gap-8">
-        <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight">
-          <span className="text-gradient">{text}</span>
-          <span className="animate-blink ml-1 text-blue-500 dark:text-blue-400">
-            |
-          </span>
+        <div className="font-mono text-2xl font-bold tracking-tight text-black dark:text-white sm:text-3xl">
+          <span>{text}</span>
+          <span className="animate-blink ml-1">|</span>
         </div>
 
-        <div className="w-[220px] h-[2px] bg-zinc-200 dark:bg-white/5 rounded-full overflow-hidden">
-          <div className="w-[40%] h-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-[0_0_15px_rgba(96,165,250,0.6)] animate-loading-bar" />
+        <div className="h-[2px] w-[220px] overflow-hidden rounded-full bg-zinc-200 dark:bg-white/5">
+          <div className="animate-loading-bar h-full w-[40%] bg-gradient-to-r from-blue-500 to-purple-500 shadow-[0_0_15px_rgba(96,165,250,0.6)]" />
         </div>
       </div>
     </div>

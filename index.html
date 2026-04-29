@@ -17,11 +17,11 @@
     />
     <title>Lemuel Ayala — Software Engineer</title>
     <script>
-      // Apply theme before paint to avoid flash of light theme
+      // Tema antes del primer paint (evita parpadeo claro/oscuro con los colores del html)
       (function () {
         try {
           var t = localStorage.getItem('theme') || 'dark';
-          if (t === 'dark') document.documentElement.classList.add('dark');
+          document.documentElement.classList.toggle('dark', t === 'dark');
         } catch (e) {
           document.documentElement.classList.add('dark');
         }
