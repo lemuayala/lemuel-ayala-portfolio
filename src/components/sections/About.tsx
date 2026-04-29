@@ -8,13 +8,8 @@ import {
   Sparkles,
   Wrench,
 } from 'lucide-react';
-import {
-  SiGit,
-  SiDocker,
-  SiPostman,
-  SiAzuredevops,
-  SiJira,
-} from 'react-icons/si';
+import { SiGit, SiDocker, SiPostman, SiJira } from 'react-icons/si';
+import { VscAzureDevops } from 'react-icons/vsc';
 import { useLanguage } from '../../context/LanguageContext';
 import { CodeEditor } from '../CodeEditor';
 
@@ -161,7 +156,7 @@ export const About = () => {
             <div className="hidden sm:flex items-center gap-5 opacity-70 group-hover:opacity-100 transition-opacity duration-500 shrink-0 text-zinc-700 dark:text-zinc-300">
               <SiGit className="w-6 h-6" title="Git" />
               <SiDocker className="w-6 h-6" title="Docker" />
-              <SiAzuredevops className="w-6 h-6" title="Azure DevOps" />
+              <VscAzureDevops className="w-6 h-6" title="Azure DevOps" />
               <SiPostman className="w-6 h-6" title="Postman" />
               <SiJira className="w-6 h-6" title="Jira" />
             </div>
