@@ -104,7 +104,7 @@ html {
     animation: liquid-rotate 12s linear infinite;
     z-index: 1;
   }
-  /* Inner top sheen */
+  /* Inner top sheen — sits BEHIND content; no z-index injected on children */
   .glass-panel::after {
     content: '';
     position: absolute;
@@ -118,33 +118,52 @@ html {
     pointer-events: none;
     z-index: 0;
   }
-  .glass-panel > * {
-    position: relative;
-    z-index: 2;
-  }
 
-  /* === GLASS NAV — top floating bar === */
+  /* === GLASS NAV — top floating bar (iOS 26 Liquid Glass) === */
   /* DEFAULT = LIGHT */
   .glass-nav {
     position: relative;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(32px) saturate(220%);
+    -webkit-backdrop-filter: blur(32px) saturate(220%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      0 12px 40px -12px rgba(0, 0, 0, 0.1);
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+      0 14px 40px -12px rgba(0, 0, 0, 0.18);
     isolation: isolate;
   }
-  /* DARK override */
+  /* DARK override — deep iOS glass */
   :where(.dark) .glass-nav {
-    background: rgba(15, 15, 20, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(20, 20, 28, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-      0 12px 40px -12px rgba(0, 0, 0, 0.6);
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+      0 14px 50px -12px rgba(0, 0, 0, 0.7);
   }
+  /* Top sheen — adds the iOS curved highlight */
+  .glass-nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  :where(.dark) .glass-nav::after {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 50%
+    );
+  }
+  /* Prismatic edge */
   .glass-nav::before {
     content: '';
     position: absolute;
@@ -153,18 +172,23 @@ html {
     padding: 1px;
     background: conic-gradient(
       from var(--liquid-angle),
-      rgba(96, 165, 250, 0.4),
-      rgba(167, 139, 250, 0.4),
-      rgba(244, 114, 182, 0.4),
-      rgba(96, 165, 250, 0.4)
+      rgba(96, 165, 250, 0.5),
+      rgba(167, 139, 250, 0.5),
+      rgba(244, 114, 182, 0.5),
+      rgba(96, 165, 250, 0.5)
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0.15;
+    opacity: 0.22;
     pointer-events: none;
     animation: liquid-rotate 14s linear infinite;
+    z-index: 1;
+  }
+  /* Ensure content sits above ::after sheen but no forced relative on children */
+  .glass-nav > * {
+    z-index: 2;
   }
 
   /* === GLASS PILL — chips, buttons, small surfaces === */
@@ -193,7 +217,7 @@ html {
   .siri-glow::after {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: 0;
     border-radius: inherit;
     padding: 1.5px;
     background: conic-gradient(

@@ -98,7 +98,7 @@ export const Contact = () => {
           {/* Soft inner glow */}
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[20rem] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none" />
 
-          <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+          <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
             {/* Left: copy + direct links */}
             <div className="lg:col-span-2">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-[0.2em] font-mono text-zinc-600 dark:text-zinc-400 mb-5">

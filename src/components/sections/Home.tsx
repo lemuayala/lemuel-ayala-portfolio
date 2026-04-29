@@ -39,10 +39,10 @@ export const Home = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
     >
-      {/* Animated background orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob" />
-      <div className="absolute top-1/3 right-1/4 w-[28rem] h-[28rem] bg-purple-600/20 dark:bg-purple-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[60rem] h-[24rem] bg-indigo-600/10 dark:bg-indigo-500/15 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-4000" />
+      {/* Animated background orbs — visible in both themes */}
+      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-blue-400/35 dark:bg-blue-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob" />
+      <div className="absolute top-1/3 right-1/4 w-[28rem] h-[28rem] bg-purple-400/35 dark:bg-purple-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[60rem] h-[24rem] bg-indigo-400/20 dark:bg-indigo-500/15 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] animate-blob animation-delay-4000" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center">
         {/* Status pill */}
