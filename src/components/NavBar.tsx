@@ -71,17 +71,12 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
           <a
             href="#home"
             onClick={(e) => handleNav(e, '#home')}
-            className="flex items-center gap-2.5 group shrink-0"
+            className="flex items-center shrink-0 group"
             aria-label="lemuayala.tech home"
           >
-            <span className="relative flex h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.45)] group-hover:shadow-[0_0_25px_rgba(139,92,246,0.55)] transition-shadow duration-300">
-              <span className="text-white text-sm font-black tracking-tighter">
-                LA
-              </span>
-              <span className="absolute inset-0 rounded-lg bg-white/20 opacity-0 group-hover:opacity-100 blur-md transition-opacity" />
-            </span>
-            <span className="hidden sm:inline text-base font-semibold tracking-tight text-zinc-900 dark:text-white">
-              lemuayala<span className="text-blue-500 dark:text-blue-400">.tech</span>
+            <span className="text-base font-semibold tracking-tight text-zinc-900 dark:text-white">
+              lemuayala
+              <span className="text-blue-500 dark:text-blue-400">.tech</span>
             </span>
           </a>
 
