@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [text, setText] = useState('');
-  const fullText = '<Hello World/>';
+  const fullText = '<HelloWorld />';
 
   useEffect(() => {
     let index = 0;
@@ -12,23 +12,43 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
 
       if (index > fullText.length) {
         clearInterval(interval);
-
         setTimeout(() => {
           onComplete();
-        }, 1000);
+        }, 700);
       }
-    }, 100);
+    }, 70);
 
     return () => clearInterval(interval);
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-white dark:bg-black text-gray-600 dark:text-gray-100 flex flex-col items-center justify-center">
-      <div className="mb-4 text-4xl font-mono font-bold">
-        {text} <span className="animate-blink ml-1">|</span>
-      </div>
-      <div className="w-[200px] h-[2px] bg-amber-50 dark:bg-gray-800 rounded realative overflow-hidden">
-        <div className="w-[40%] h-full bg-purple-500/80 dark:bg-blue-500 shadow-[0_0_15px_#3b8] animate-loading-bar"></div>
+    <div className="fixed inset-0 z-[100] bg-zinc-50 dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 flex flex-col items-center justify-center">
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-blue-500/15 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full bg-purple-500/10 blur-[100px]" />
+
+      <div className="relative flex flex-col items-center gap-8">
+        <div className="flex items-center gap-3">
+          <span className="flex h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 items-center justify-center shadow-[0_0_25px_rgba(96,165,250,0.5)]">
+            <span className="text-white text-sm font-black tracking-tighter">
+              LA
+            </span>
+          </span>
+          <span className="text-base font-semibold tracking-tight">
+            lemuayala<span className="text-blue-500 dark:text-blue-400">.tech</span>
+          </span>
+        </div>
+
+        <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight">
+          <span className="text-gradient">{text}</span>
+          <span className="animate-blink ml-1 text-blue-500 dark:text-blue-400">
+            |
+          </span>
+        </div>
+
+        <div className="w-[220px] h-[2px] bg-zinc-200 dark:bg-white/5 rounded-full overflow-hidden">
+          <div className="w-[40%] h-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-[0_0_15px_rgba(96,165,250,0.6)] animate-loading-bar" />
+        </div>
       </div>
     </div>
   );

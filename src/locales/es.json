@@ -1,20 +1,49 @@
 {
   "navbar": {
     "home": "Inicio",
-    "about": "Sobre mí",
+    "about": "Experiencia",
     "projects": "Proyectos",
     "contact": "Contacto"
   },
   "home": {
+    "available": "Disponible para nuevos proyectos",
+    "titleLine1": "Ingeniero de",
+    "titleLine2": "Software Full Stack.",
     "hi": "Hola, soy Lemuel Ayala",
-    "description": "Desarrollador full stack con mas de 6 años de experiencia, apasionado por la tecnología y la innovación.",
-    "projects": "Proyectos",
-    "contact": "Contacto",
-    "downloadCV": "Descargar CV"
+    "description": "Más de <strong>6 años de experiencia</strong> construyendo arquitecturas escalables e interfaces fluidas. Apasionado por transformar problemas complejos en soluciones tecnológicas elegantes.",
+    "projects": "Ver Proyectos",
+    "contact": "Contactar",
+    "downloadCV": "Descargar CV",
+    "scrollHint": "Desliza para explorar"
+  },
+  "codeEditor": {
+    "title": "Conóceme en código",
+    "subtitle": "Una vista interactiva de mi perfil, stack y trayectoria.",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "ready": "Listo",
+    "lines": "líneas"
+  },
+  "experience": {
+    "title": "El núcleo de mi trabajo.",
+    "subtitle": "Dominio completo del ciclo de desarrollo, desde bases de datos robustas hasta experiencias de usuario de nivel de producción.",
+    "backendTitle": "Arquitectura Backend & APIs",
+    "backendDesc": "Especialista en el ecosistema <strong>.NET y C#</strong>. Diseño y construcción de microservicios, APIs RESTful de alto rendimiento y arquitecturas orientadas a eventos. Experiencia profunda en optimización de consultas SQL y modelado de datos complejos.",
+    "frontendTitle": "Frontend Dinámico",
+    "frontendDesc": "Creación de SPAs complejas con <strong>Angular y React</strong>, gestionando estados globales e integraciones en tiempo real.",
+    "yearsLabel": "Años de Experiencia Profesional",
+    "toolsTitle": "Metodologías & Ecosistema",
+    "toolsDesc": "CI/CD, Git Avanzado, Scrum, Testing.",
+    "educationTitle": "Educación",
+    "certificationsTitle": "Cursos y Certificaciones",
+    "workTitle": "Trayectoria",
+    "present": "Actualidad"
   },
   "projects": {
-    "title": "Mis Proyectos",
-    "subtitle": "Trabajos destacados que demuestran mis habilidades",
+    "title": "Trabajo Destacado.",
+    "subtitle": "Una selección de aplicaciones donde he liderado el desarrollo full stack.",
+    "viewAll": "Ver todo en GitHub",
+    "caseStudy": "Ver Caso de Estudio",
     "inProgress": "en-progreso",
     "viewCode": "Ver Código",
     "liveDemo": "Ver Demo",
@@ -260,7 +289,9 @@
     }
   },
   "contact": {
-    "title": "Mantenete en Contacto",
+    "title": "¿Construimos algo juntos?",
+    "subtitle": "Actualmente estoy abierto a nuevas oportunidades full-time y proyectos freelance desafiantes. Hablemos de tecnología.",
+    "directEmail": "Escribime directo",
     "form": {
       "name": "Nombre...",
       "email": "ejemplo@email.com",

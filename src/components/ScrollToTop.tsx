@@ -5,35 +5,31 @@ import { ArrowUp } from 'lucide-react';
 export const ScrollToTop = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const handleScroll = () => {
-    setScrollPosition(window.pageYOffset);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrollPosition(window.pageYOffset);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const visible = scrollPosition > 240;
+
   return (
-    <div className="fixed bottom-8 right-8 z-50">
+    <div className="fixed bottom-6 right-6 z-50">
       <motion.button
-        initial={{ x: 50, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         animate={
-          scrollPosition > 200 ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }
+          visible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }
         }
-        transition={{ type: 'spring', stiffness: 1000, damping: 50 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
         onClick={scrollToTop}
-        className="p-3 rounded-full bg-gradient-to-tr from-blue-600/90 to-purple-700/90 text-white shadow-lg hover:bg-blue-800 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-50"
-        aria-label="Volver al inicio"
+        aria-label="Scroll to top"
+        className="w-11 h-11 rounded-full glass-panel flex items-center justify-center shadow-lg shadow-black/20 hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors"
       >
-        <ArrowUp size={24} />
+        <ArrowUp className="w-4 h-4" />
       </motion.button>
     </div>
   );

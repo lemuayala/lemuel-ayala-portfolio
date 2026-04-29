@@ -1,12 +1,10 @@
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useEffect, useState } from 'react';
-import { ScrollLink } from './ScrollLink';
 import { links } from '../utils/navigation';
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
-  const { changeLanguage } = useLanguage();
-
+  const { changeLanguage, t, i18n } = useLanguage();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
@@ -14,68 +12,112 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const currentLang = i18n.language?.startsWith('en') ? 'en' : 'es';
+
+  const handleNav = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    setTimeout(() => {
+      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, 250);
   };
 
   return (
     <div
-      className={`fixed top-0 w-full bg-[rgba(10,10,10,0.8)] z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
+      className={`fixed inset-0 z-50 md:hidden transition-all duration-500 ${
         menuOpen
-          ? 'h-screen opacity-100 pointer-events-auto'
-          : 'h-0 opacity-0 pointer-events-none'
+          ? 'opacity-100 pointer-events-auto'
+          : 'opacity-0 pointer-events-none'
       }`}
+      aria-hidden={!menuOpen}
     >
-      <button
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-zinc-950/40 backdrop-blur-2xl transition-opacity duration-500 ${
+          menuOpen ? 'opacity-100' : 'opacity-0'
+        }`}
         onClick={() => setMenuOpen(false)}
-        className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer"
-        aria-label="Close menu"
-      >
-        &times;
-      </button>
+      />
 
-      <div className="flex items-center space-x-4 mb-4">
-        <button
-          onClick={() => changeLanguage('es')}
-          className="mr-2 w-7 h-5 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(116,186,57,0.4)] active:scale-95"
-          aria-label="Cambiar a español"
-        >
-          <img
-            src="https://purecatamphetamine.github.io/country-flag-icons/3x2/AR.svg"
-            alt="Español"
-            className="w-full h-full object-cover rounded transform transition-transform duration-300 hover:scale-105"
-          />
-        </button>
-        <button
-          onClick={() => changeLanguage('en')}
-          className="w-7 h-5 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_8px_rgba(1,33,105,0.4)] active:scale-95"
-          aria-label="Change to English"
-        >
-          <img
-            src="https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"
-            alt="English"
-            className="w-full h-full object-cover rounded transform transition-transform duration-300 hover:scale-105"
-          />
-        </button>
+      {/* Sheet */}
+      <div
+        className={`absolute top-4 inset-x-4 glass-panel rounded-3xl p-6 shadow-2xl transition-all duration-500 ${
+          menuOpen
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-4 opacity-0'
+        }`}
+      >
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-sm font-semibold tracking-tight">
+            lemuayala<span className="text-blue-400">.tech</span>
+          </span>
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+            className="w-9 h-9 flex items-center justify-center rounded-full glass-pill hover:bg-white/5 transition-colors"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <nav className="flex flex-col gap-1.5 mb-8">
+          {links.map((link, idx) => (
+            <a
+              key={link.id}
+              href={link.id}
+              onClick={(e) => handleNav(e, link.id)}
+              className="group flex items-center justify-between px-4 py-3.5 rounded-xl glass-pill hover:bg-white/5 transition-colors"
+            >
+              <span className="flex items-center gap-3">
+                <span className="font-mono text-xs text-zinc-500">
+                  0{idx + 1}
+                </span>
+                <span className="text-base font-medium">{t(link.label)}</span>
+              </span>
+              <span className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 transition-all">
+                →
+              </span>
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-1 glass-pill rounded-full p-1">
+            <button
+              onClick={() => changeLanguage('es')}
+              className={`px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider transition-all ${
+                currentLang === 'es'
+                  ? 'bg-white/10 text-white'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => changeLanguage('en')}
+              className={`px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wider transition-all ${
+                currentLang === 'en'
+                  ? 'bg-white/10 text-white'
+                  : 'text-zinc-400 hover:text-white'
+              }`}
+            >
+              EN
+            </button>
+          </div>
+          <button
+            onClick={toggleTheme}
+            className="flex items-center justify-center w-9 h-9 rounded-full glass-pill hover:bg-white/5 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-zinc-300" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </button>
+        </div>
       </div>
-
-      <button
-        onClick={toggleTheme}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-900 transition-colors duration-200 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
-        aria-label={
-          theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-        }
-      >
-        {theme !== 'dark' ? (
-          <Moon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
-        ) : (
-          <Sun className="w-5 h-5 text-gray-800 dark:text-gray-200" />
-        )}
-      </button>
-
-      {links.map((link) => (
-        <ScrollLink key={link.id} id={link.id} labelKey={link.label} />
-      ))}
     </div>
   );
 };

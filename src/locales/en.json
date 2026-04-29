@@ -1,16 +1,43 @@
 {
   "navbar": {
     "home": "Home",
-    "about": "About",
+    "about": "Experience",
     "projects": "Projects",
     "contact": "Contact"
   },
   "home": {
+    "available": "Available for new projects",
+    "titleLine1": "Full Stack",
+    "titleLine2": "Software Engineer.",
     "hi": "Hi, I'm Lemuel Ayala",
-    "description": "I'm a full stack developer with over 6 years of experience, passionate about technology and innovation.",
+    "description": "Over <strong>6 years of experience</strong> building scalable architectures and fluid interfaces. Passionate about turning complex problems into elegant tech solutions.",
     "projects": "View Projects",
-    "contact": "Contact Me",
-    "downloadCV": "Download Resume"
+    "contact": "Get in touch",
+    "downloadCV": "Download Resume",
+    "scrollHint": "Scroll to explore"
+  },
+  "codeEditor": {
+    "title": "Get to know me in code",
+    "subtitle": "An interactive view of my profile, stack and journey.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "ready": "Ready",
+    "lines": "lines"
+  },
+  "experience": {
+    "title": "The core of my work.",
+    "subtitle": "Full mastery of the development cycle, from robust databases to production-grade user experiences.",
+    "backendTitle": "Backend Architecture & APIs",
+    "backendDesc": "Specialist in the <strong>.NET and C#</strong> ecosystem. Designing and building microservices, high-performance RESTful APIs and event-driven architectures. Deep expertise in SQL query optimization and complex data modeling.",
+    "frontendTitle": "Dynamic Frontend",
+    "frontendDesc": "Building complex SPAs with <strong>Angular and React</strong>, managing global state and real-time integrations.",
+    "yearsLabel": "Years of Professional Experience",
+    "toolsTitle": "Methodologies & Ecosystem",
+    "toolsDesc": "CI/CD, Advanced Git, Scrum, Testing.",
+    "educationTitle": "Education",
+    "certificationsTitle": "Courses & Certifications",
+    "workTitle": "Career",
+    "present": "Present"
   },
   "about": {
     "about": "About Me",
@@ -116,8 +143,10 @@
     }
   },
   "projects": {
-    "title": "My Projects",
-    "subtitle": "Featured works demonstrating my skills",
+    "title": "Featured Work.",
+    "subtitle": "A selection of applications where I led full stack development.",
+    "viewAll": "View all on GitHub",
+    "caseStudy": "View Case Study",
     "inProgress": "in-progress",
     "viewCode": "View Code",
     "liveDemo": "View Demo",
@@ -260,7 +289,9 @@
     ]
   },
   "contact": {
-    "title": "Get in Touch",
+    "title": "Let's build something together.",
+    "subtitle": "Currently open to full-time roles and challenging freelance projects. Let's talk tech.",
+    "directEmail": "Email me directly",
     "form": {
       "name": "Name...",
       "email": "example@email.com",
