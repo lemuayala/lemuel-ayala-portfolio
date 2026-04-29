@@ -1,9 +1,14 @@
 import { Moon, Sun, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { links } from '../utils/navigation';
 
-export const MobileMenu = ({ menuOpen, setMenuOpen }: any) => {
+type MobileMenuProps = {
+  menuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 

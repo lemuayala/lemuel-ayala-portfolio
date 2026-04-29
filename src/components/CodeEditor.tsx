@@ -117,7 +117,8 @@ function tokenize(line: string): Token[] {
     }
 
     // Puntuación
-    if (/[{}()\[\];,.<>+\-*/=:?!|&]/.test(ch)) {
+    const punctChars = '{}()[];,.<>+-*/=:?!|&';
+    if (punctChars.includes(ch)) {
       tokens.push({ type: 'punct', value: ch });
       i++;
       continue;

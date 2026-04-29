@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 import { links } from '../utils/navigation';
 
-export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
+type NavBarProps = {
+  menuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
   const [scrolled, setScrolled] = useState(false);
