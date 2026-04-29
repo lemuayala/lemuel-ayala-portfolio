@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
-import { i18n } from "i18next";
+import { i18n, TFunction } from "i18next";
 
 interface LanguageContextType {
-  t: (key: string) => string;
+  t: TFunction;
   changeLanguage: (lang: string) => void;
   i18n: i18n;
 }
