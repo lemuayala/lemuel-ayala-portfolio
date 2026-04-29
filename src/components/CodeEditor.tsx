@@ -131,15 +131,15 @@ function tokenize(line: string): Token[] {
 }
 
 const TOKEN_CLASS: Record<TokenType, string> = {
-  keyword: 'text-fuchsia-400',
-  string: 'text-emerald-300',
-  number: 'text-amber-300',
+  keyword: 'text-fuchsia-700 dark:text-fuchsia-400',
+  string: 'text-emerald-700 dark:text-emerald-300',
+  number: 'text-amber-700 dark:text-amber-300',
   comment: 'text-zinc-500 italic',
-  property: 'text-sky-300',
-  function: 'text-yellow-300',
-  punct: 'text-zinc-400',
-  plain: 'text-zinc-200',
-  tag: 'text-cyan-300',
+  property: 'text-sky-700 dark:text-sky-300',
+  function: 'text-yellow-700 dark:text-yellow-300',
+  punct: 'text-zinc-500 dark:text-zinc-400',
+  plain: 'text-zinc-800 dark:text-zinc-200',
+  tag: 'text-cyan-700 dark:text-cyan-300',
 };
 
 interface Tab {
@@ -273,13 +273,13 @@ const lemuel: Engineer = {
   return (
     <div
       ref={containerRef}
-      className="glass-panel rounded-3xl overflow-hidden shadow-2xl shadow-black/40 border-white/10 dark:border-white/10 relative"
+      className="glass-panel relative overflow-hidden rounded-3xl shadow-xl shadow-zinc-900/10 dark:shadow-2xl dark:shadow-black/40"
     >
       {/* Reflejo superior */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-400/25 to-transparent dark:via-white/30" />
 
       {/* Header */}
-      <div className="flex items-center gap-4 px-4 sm:px-5 py-3 border-b border-white/5 dark:border-white/5 bg-black/20 backdrop-blur-md">
+      <div className="relative z-10 flex items-center gap-4 border-b border-zinc-200/80 bg-white/85 px-4 py-3 backdrop-blur-md dark:border-white/5 dark:bg-black/20 sm:px-5">
         {/* Mac dots */}
         <div className="flex items-center gap-2 shrink-0">
           <span className="w-3 h-3 rounded-full bg-red-400/80 border border-red-500/30" />
@@ -295,10 +295,10 @@ const lemuel: Engineer = {
               <button
                 key={tab.id}
                 onClick={() => setActive(idx)}
-                className={`relative shrink-0 px-3 py-1.5 rounded-lg text-xs font-mono transition-colors duration-200 ${
+                className={`relative shrink-0 rounded-lg px-3 py-1.5 font-mono text-xs transition-colors duration-200 ${
                   isActive
-                    ? 'text-white bg-white/10'
-                    : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/5'
+                    ? 'bg-zinc-200/90 text-zinc-900 dark:bg-white/10 dark:text-white'
+                    : 'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 dark:hover:bg-white/5 dark:hover:text-zinc-300'
                 }`}
               >
                 <span className="flex items-center gap-2">
@@ -317,18 +317,18 @@ const lemuel: Engineer = {
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
-          <span className="hidden sm:inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-zinc-500 font-mono">
-            <Terminal className="w-3 h-3" /> {tabs[active].language}
+          <span className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 sm:inline-flex">
+            <Terminal className="h-3 w-3" /> {tabs[active].language}
           </span>
           <button
             onClick={handleCopy}
             aria-label="Copy code"
-            className="flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 font-mono text-[11px] text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"
           >
             {copied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400">
+                <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-600 dark:text-emerald-400">
                   {t('codeEditor.copied')}
                 </span>
               </>
@@ -345,11 +345,11 @@ const lemuel: Engineer = {
       </div>
 
       {/* Code body */}
-      <div className="relative bg-zinc-950/60 dark:bg-zinc-950/60 backdrop-blur-md">
+      <div className="relative z-10 bg-zinc-50/95 backdrop-blur-md dark:bg-zinc-950/60">
         {/* Background grid pattern */}
         <div
           aria-hidden
-          className="absolute inset-0 grid-pattern opacity-50 pointer-events-none"
+          className="pointer-events-none absolute inset-0 grid-pattern opacity-50"
         />
 
         <AnimatePresence mode="wait">
@@ -359,7 +359,7 @@ const lemuel: Engineer = {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="relative font-mono text-[13px] leading-7 px-2 sm:px-4 py-5 overflow-x-auto"
+            className="relative overflow-x-auto px-2 py-5 font-mono text-[13px] leading-7 sm:px-4"
           >
             <code className="block min-w-max">
               {lines.map((line, idx) => {
@@ -367,9 +367,9 @@ const lemuel: Engineer = {
                 return (
                   <div
                     key={idx}
-                    className="flex items-start gap-4 group rounded-md px-2 hover:bg-white/[0.02] transition-colors"
+                    className="group flex items-start gap-4 rounded-md px-2 transition-colors hover:bg-zinc-200/60 dark:hover:bg-white/[0.02]"
                   >
-                    <span className="select-none text-zinc-600 text-right w-6 shrink-0 tabular-nums">
+                    <span className="w-6 shrink-0 select-none text-right font-mono tabular-nums text-zinc-400 dark:text-zinc-600">
                       {idx + 1}
                     </span>
                     <span className="flex-1">
@@ -389,10 +389,10 @@ const lemuel: Engineer = {
 
               {/* Cursor */}
               <div className="flex items-start gap-4 px-2">
-                <span className="select-none text-zinc-700 text-right w-6 shrink-0 tabular-nums">
+                <span className="w-6 shrink-0 select-none text-right font-mono tabular-nums text-zinc-400 dark:text-zinc-700">
                   {lines.length + 1}
                 </span>
-                <span className="inline-block w-2 h-[18px] -mb-1 bg-blue-400 animate-blink translate-y-1" />
+                <span className="-mb-1 inline-block h-[18px] w-2 translate-y-1 animate-blink bg-blue-600 dark:bg-blue-400" />
               </div>
             </code>
           </motion.pre>
@@ -400,7 +400,7 @@ const lemuel: Engineer = {
       </div>
 
       {/* Status bar */}
-      <div className="flex items-center justify-between px-4 sm:px-5 py-2 border-t border-white/5 bg-black/30 text-[10px] font-mono uppercase tracking-wider text-zinc-500">
+      <div className="relative z-10 flex items-center justify-between border-t border-zinc-200/80 bg-zinc-100/90 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-zinc-500 dark:border-white/5 dark:bg-black/30 sm:px-5">
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
