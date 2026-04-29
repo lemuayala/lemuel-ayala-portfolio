@@ -176,19 +176,20 @@
       },
       {
         "id": "glass-playground-rn",
-        "title": "Glassmorphism Playground",
+        "title": "Glass UI",
         "description": "Interactive playground that generates React and React Native code for premium glass components.",
         "status": "in-progress",
+        "preview": "previews/glass-ui.png",
         "technologies": [
+          "Next.js 15",
           "React",
           "React Native",
           "TypeScript",
-          "Tailwind CSS",
-          "Vite"
+          "Tailwind CSS"
         ],
         "links": {
-          "repo": "https://github.com/lemuayala",
-          "demo": "#"
+          "repo": "https://github.com/lemuayala/glass-ui",
+          "demo": "https://v0-glass-ui-flax.vercel.app/"
         },
         "features": [
           "Live generator for glass components",
@@ -348,5 +349,8 @@
     "success": "Message sent successfully!",
     "error": "Error sending message. Please try again.",
     "recaptchaError": "Please verify that you are not a robot."
+  },
+  "footer": {
+    "tagline": "Built with ♥ by lemuayala using React & Tailwind CSS. Thanks for visiting!"
   }
 }
