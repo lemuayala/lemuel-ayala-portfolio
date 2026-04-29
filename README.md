@@ -1,98 +1,123 @@
-# Portfolio Profesional - Lemuel Ayala  
+# Portfolio profesional — Lemuel Ayala
 
-🚀 **Desarrollador Full Stack** | **React** · **TypeScript** · **.NET**  
+Desarrollador full stack · **React** · **TypeScript** · **.NET**
 
-Bienvenido/a a mi portfolio personal, donde muestro mis proyectos, habilidades y experiencia como desarrollador. Este sitio está construido con tecnologías modernas y un diseño elegante y responsive.  
+Portfolio personal con diseño tipo liquid glass (iOS), modo claro/oscuro, animaciones y formulario de contacto.
 
-![Preview del Portfolio](https://github.com/user-attachments/assets/1ac5682f-2916-4503-9d56-2927c8e4f281)  
+![Preview del Portfolio](https://github.com/user-attachments/assets/1ac5682f-2916-4503-9d56-2927c8e4f281)
 
-## ✨ Características  
+## Características
 
-✅ **Diseño Moderno** - Interfaz limpia con modo claro/oscuro  
-✅ **Tecnologías Avanzadas** - React, TypeScript, Tailwind CSS, Vite  
-✅ **Formulario de Contacto Funcional** - Integrado con EmailJS  
-✅ **Animaciones Fluidas** - Efectos de scroll y transiciones  
-✅ **Responsive** - Optimizado para móviles, tablets y desktop  
-✅ **Multi-idioma** - Soporte para español/inglés  
+- **Modo claro/oscuro** — toggle persistente; tema aplicado antes del primer paint para reducir parpadeos.
+- **Cursor lumos** — halo que sigue el puntero en escritorio (desactivado en táctil).
+- **Sección «Conóceme en código»** — editor simulado con pestañas, resaltado básico y modo claro/oscuro alineado al tema.
+- **Proyectos** — tarjetas con preview o mockup navegador; hover tipo Siri; soporte light/dark en mockups.
+- **Multi-idioma** — español / inglés (`react-i18next`, JSON en `src/locales/`).
+- **Contacto** — EmailJS + reCAPTCHA v2 (variables de entorno).
+- **Footer** — tagline i18n (React y Tailwind CSS).
 
-## 🛠️ Tecnologías Usadas  
+## Tecnologías
 
-### Frontend  
-- ⚛️ React + TypeScript  
-- 🎨 Tailwind CSS (Diseño responsive)  
-- 🚀 Vite (Build tool ultra-rápido)  
-- ✨ Framer Motion (Animaciones)  
-- 📧 EmailJS (Formulario de contacto)  
+### Frontend
 
-### Backend (Proyectos demo)  
-- 🌐 .NET Core / Node.js  
-- 🗄️ SQL Server / MongoDB  
+- React 19 + TypeScript
+- Vite 6
+- Tailwind CSS v4 (`@tailwindcss/vite`)
+- Framer Motion
+- EmailJS · react-google-recaptcha · react-hot-toast · Lucide
 
-## 📂 Estructura del Proyecto  
+### Otros (experiencia / proyectos)
 
-```bash
+- .NET · SQL Server · Azure (según CV y proyectos listados)
+
+## Estructura del proyecto
+
+```text
 src/
-├── components/           # Componentes reutilizables
-├── components/sections/  # Secciones del portfolio (Home, About, etc.)
-├── context/              # Contextos de React (idioma, tema)
-├── assets/               # Imágenes, íconos, fuentes
-├── locales/              # Archivos .json de traduccion de textos
-├── App.tsx               # Componente principal
-└── main.tsx              # Punto de entrada
+├── components/           # Piezas reutilizables (NavBar, CodeEditor, CursorGlow, …)
+├── components/sections/  # Home, About, Projects, Contact, Footer
+├── context/              # LanguageContext (i18n)
+├── locales/              # es.json · en.json
+├── App.tsx
+└── main.tsx
+
+public/
+├── previews/             # Capturas para tarjetas de proyecto
+└── image.png             # Favicon (y recurso para OG si lo referencias en index)
 ```
 
-## 🚀 Cómo Ejecutarlo
+`robots.txt` y `sitemap.xml` no viven en `public/`; el build los escribe en `dist/` (ver `vite.config.ts`).
 
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/lemuayala/lemuel-ayala-portfolio.git
-cd portfolio
-```
+No hay carpeta `src/assets`; las imágenes públicas van en `public/`.
 
-### 2. Instalar dependencias
-```bash
-pnpm install
-```
+## Variables de entorno
 
-### 3. Configurar variables de entorno
-```bash
-touch .env
-```
+Crea un archivo `.env` en la raíz:
 
 ```env
 VITE_SERVICE_ID=tu_service_id_emailjs
 VITE_TEMPLATE_ID=tu_template_id
 VITE_PUBLIC_KEY=tu_public_key
-VITE_RECAPTCHA_SITE_KEY=tu_key_recaptcha
-```
-### 4. Iniciar servidor de desarrollo
-```bash
-pnpm run dev
-```
+VITE_RECAPTCHA_SITE_KEY=tu_site_key_recaptcha
 
-### 5. Generar build de producción
-```bash
-pnpm run build
+# Opcional: URL canónica del sitio (Open Graph, canonical, JSON-LD).
+# Ejemplo GitHub Pages: https://tuusuario.github.io/lemuel-ayala-portfolio
+# Ejemplo Vercel: https://tu-app.vercel.app
+VITE_PUBLIC_SITE_URL=https://lemuayala.github.io/lemuel-ayala-portfolio
 ```
 
-## 📬 Contacto
+Si no defines `VITE_PUBLIC_SITE_URL`, el build usa una URL por defecto pensada para GitHub Pages (ver `vite.config.ts`).
 
-📧 **Email:** [lemuayala@gmail.com](mailto:lemuayala@gmail.com)  
-💼 **LinkedIn:** [linkedin.com/in/lemuayala](https://linkedin.com/in/lemuayala)  
-🐙 **GitHub:** [github.com/lemuayala](https://github.com/lemuayala)
+## Cómo ejecutarlo
 
-## ⭐ Apoya el proyecto
-
-Si te gusta este portfolio, ¡déjame una estrella en GitHub!
+1. **Clonar**
 
 ```bash
-# También puedes clonar y personalizarlo:
 git clone https://github.com/lemuayala/lemuel-ayala-portfolio.git
+cd lemuel-ayala-portfolio
 ```
 
-## 📜 Licencia
+2. **Instalar dependencias**
 
-MIT License - Copyright (c) 2025 Lemuel Ayala
+```bash
+pnpm install
+```
 
-Se permite uso, modificación y distribución
-bajo los términos de la licencia MIT.
+3. **Configurar** `.env` como arriba.
+
+4. **Desarrollo**
+
+```bash
+pnpm dev
+```
+
+5. **Build de producción**
+
+```bash
+pnpm build
+```
+
+6. **Preview del build**
+
+```bash
+pnpm preview
+```
+
+## Despliegue
+
+- **`vite.config.ts`**: si existe la variable de entorno `VERCEL`, `base` es `'/'`. En otros entornos (p. ej. GitHub Pages en subruta) `base` es `'/lemuel-ayala-portfolio/'`.
+- Script **`pnpm deploy`**: ejecuta build y publica `dist` en la rama `github-pages` con `gh-pages` (ajusta según tu flujo).
+
+Tras cambiar de dominio o de proveedor, define `VITE_PUBLIC_SITE_URL` en `.env` antes del build: **`pnpm build`** genera `dist/robots.txt` y `dist/sitemap.xml` con esa URL (plugin en [`vite.config.ts`](vite.config.ts)).
+
+## Contacto
+
+- **Email:** [lemuayala@gmail.com](mailto:lemuayala@gmail.com)
+- **LinkedIn:** [linkedin.com/in/lemuayala](https://linkedin.com/in/lemuayala)
+- **GitHub:** [github.com/lemuayala](https://github.com/lemuayala)
+
+Proyecto destacado: [Glass UI](https://github.com/lemuayala/glass-ui) · [Demo](https://v0-glass-ui-flax.vercel.app/)
+
+## Licencia
+
+MIT License — Copyright (c) 2026 Lemuel Ayala
