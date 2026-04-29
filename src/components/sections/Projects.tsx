@@ -117,7 +117,7 @@ const FeatureProject = ({
       <div
         className={`lg:col-span-7 ${
           reverse ? 'lg:order-last' : ''
-        } relative overflow-hidden rounded-3xl glass-panel aspect-video md:aspect-[16/10]`}
+        } relative overflow-hidden rounded-3xl glass-panel siri-glow aspect-video md:aspect-[16/10]`}
       >
         <div
           className={`absolute inset-0 bg-gradient-to-tr ${accent.glow} opacity-60 z-10 pointer-events-none`}

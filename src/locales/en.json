@@ -7,10 +7,10 @@
   },
   "home": {
     "available": "Available for new projects",
-    "titleLine1": "Full Stack",
-    "titleLine2": "Software Engineer.",
+    "titleLine1": "Lemuel Ayala",
+    "titleLine2": "Software Developer.",
     "hi": "Hi, I'm Lemuel Ayala",
-    "description": "Over <strong>6 years of experience</strong> building scalable architectures and fluid interfaces. Passionate about turning complex problems into elegant tech solutions.",
+    "description": "Over <strong>7 years of experience</strong> building scalable architectures and fluid interfaces. Passionate about turning complex problems into elegant tech solutions.",
     "projects": "View Projects",
     "contact": "Get in touch",
     "downloadCV": "Download Resume",
@@ -151,6 +151,52 @@
     "viewCode": "View Code",
     "liveDemo": "View Demo",
     "items": [
+      {
+        "id": "finance-rn",
+        "title": "Finance App (React Native)",
+        "description": "Mobile app for personal finance management: income, expenses, budgets and visual reports.",
+        "status": "in-progress",
+        "technologies": [
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Zustand",
+          "Reanimated"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala",
+          "demo": "#"
+        },
+        "features": [
+          "Modular architecture with Expo Router",
+          "Native animations with Reanimated 3",
+          "Interactive expense charts",
+          "Offline-first mode"
+        ]
+      },
+      {
+        "id": "glass-playground-rn",
+        "title": "Glassmorphism Playground",
+        "description": "Interactive playground that generates React and React Native code for premium glass components.",
+        "status": "in-progress",
+        "technologies": [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vite"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala",
+          "demo": "#"
+        },
+        "features": [
+          "Live generator for glass components",
+          "Exports React and React Native code",
+          "Blur, opacity and border configuration",
+          "Real-time preview"
+        ]
+      },
       {
         "id": "devblog-nextjs",
         "title": "DevBlog Next.js",

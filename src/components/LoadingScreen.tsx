@@ -28,17 +28,6 @@ export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] rounded-full bg-purple-500/10 blur-[100px]" />
 
       <div className="relative flex flex-col items-center gap-8">
-        <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 items-center justify-center shadow-[0_0_25px_rgba(96,165,250,0.5)]">
-            <span className="text-white text-sm font-black tracking-tighter">
-              LA
-            </span>
-          </span>
-          <span className="text-base font-semibold tracking-tight">
-            lemuayala<span className="text-blue-500 dark:text-blue-400">.tech</span>
-          </span>
-        </div>
-
         <div className="font-mono text-2xl sm:text-3xl font-bold tracking-tight">
           <span className="text-gradient">{text}</span>
           <span className="animate-blink ml-1 text-blue-500 dark:text-blue-400">

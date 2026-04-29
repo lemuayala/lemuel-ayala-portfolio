@@ -7,10 +7,10 @@
   },
   "home": {
     "available": "Disponible para nuevos proyectos",
-    "titleLine1": "Ingeniero de",
-    "titleLine2": "Software Full Stack.",
+    "titleLine1": "Lemuel Ayala",
+    "titleLine2": "Software Developer.",
     "hi": "Hola, soy Lemuel Ayala",
-    "description": "Más de <strong>6 años de experiencia</strong> construyendo arquitecturas escalables e interfaces fluidas. Apasionado por transformar problemas complejos en soluciones tecnológicas elegantes.",
+    "description": "Más de <strong>7 años de experiencia</strong> construyendo arquitecturas escalables e interfaces fluidas. Apasionado por transformar problemas complejos en soluciones tecnológicas elegantes.",
     "projects": "Ver Proyectos",
     "contact": "Contactar",
     "downloadCV": "Descargar CV",
@@ -48,6 +48,52 @@
     "viewCode": "Ver Código",
     "liveDemo": "Ver Demo",
     "items": [
+      {
+        "id": "finance-rn",
+        "title": "Finance App (React Native)",
+        "description": "App móvil para gestión de finanzas personales: ingresos, gastos, presupuestos y reportes visuales.",
+        "status": "en-progreso",
+        "technologies": [
+          "React Native",
+          "TypeScript",
+          "Expo",
+          "Zustand",
+          "Reanimated"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala",
+          "demo": "#"
+        },
+        "features": [
+          "Arquitectura modular con Expo Router",
+          "Animaciones nativas con Reanimated 3",
+          "Gráficos interactivos de gastos",
+          "Modo offline-first"
+        ]
+      },
+      {
+        "id": "glass-playground-rn",
+        "title": "Glassmorphism Playground",
+        "description": "Playground interactivo que genera código React y React Native de componentes con estilo glass premium.",
+        "status": "en-progreso",
+        "technologies": [
+          "React",
+          "React Native",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vite"
+        ],
+        "links": {
+          "repo": "https://github.com/lemuayala",
+          "demo": "#"
+        },
+        "features": [
+          "Generador en vivo de componentes glass",
+          "Exporta código React y React Native",
+          "Configuración de blur, opacidad y bordes",
+          "Vista previa en tiempo real"
+        ]
+      },
       {
         "id": "devblog-nextjs",
         "title": "DevBlog Next.js",

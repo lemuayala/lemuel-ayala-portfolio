@@ -1,7 +1,7 @@
 import { Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { SiAngular, SiDotnet, SiReact, SiTypescript } from 'react-icons/si';
-import { TbBrandCSharp } from 'react-icons/tb';
+import { TbBrandCSharp, TbBrandReactNative } from 'react-icons/tb';
 import { BsFiletypeSql } from 'react-icons/bs';
 import { ArrowRight, ChevronDown, Download } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
@@ -9,6 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 const stack = [
   { Icon: SiAngular, label: 'Angular', color: 'text-[#DD0031]' },
   { Icon: SiReact, label: 'React', color: 'text-[#61DAFB]' },
+  { Icon: TbBrandReactNative, label: 'React Native', color: 'text-[#61DAFB]' },
   { Icon: SiTypescript, label: 'TypeScript', color: 'text-[#3178C6]' },
   { Icon: SiDotnet, label: '.NET Core', color: 'text-[#7B4DD6]' },
   { Icon: TbBrandCSharp, label: 'C#', color: 'text-[#239120]' },
@@ -36,7 +37,7 @@ export const Home = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
     >
       {/* Animated background orbs */}
       <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob" />
@@ -55,7 +56,7 @@ export const Home = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-[11px] font-medium tracking-wide text-zinc-700 dark:text-zinc-300">
+          <span className="text-[11px] font-medium tracking-wide text-zinc-700 dark:text-zinc-200">
             {t('home.available')}
           </span>
         </motion.div>
@@ -84,13 +85,13 @@ export const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed font-light text-pretty"
+          className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed font-light text-pretty"
         >
           <Trans
             i18nKey="home.description"
             components={{
               strong: (
-                <strong className="text-zinc-900 dark:text-zinc-200 font-medium" />
+                <strong className="text-zinc-900 dark:text-white font-medium" />
               ),
             }}
           />
@@ -106,7 +107,7 @@ export const Home = () => {
           {stack.map(({ Icon, label, color }) => (
             <div
               key={label}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:scale-[1.04] hover:border-white/20 transition-all duration-300 cursor-default"
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white hover:scale-[1.04] transition-all duration-300 cursor-default"
             >
               <Icon className={`w-4 h-4 ${color}`} />
               {label}
@@ -131,25 +132,27 @@ export const Home = () => {
           </a>
           <button
             onClick={handleDownloadCV}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full glass-pill font-medium hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full glass-pill font-medium text-zinc-800 dark:text-zinc-100 hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group"
           >
             <Download className="w-4 h-4 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
             {t('home.downloadCV')}
           </button>
         </motion.div>
 
-        {/* Scroll hint */}
-        <motion.div
+        {/* Scroll hint (inline, no longer absolute) */}
+        <motion.button
+          type="button"
+          onClick={(e) => handleNav(e, '#about')}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-zinc-500 dark:text-zinc-500"
+          transition={{ duration: 1, delay: 0.7 }}
+          className="mt-10 inline-flex flex-col items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
         >
+          <ChevronDown className="w-4 h-4 animate-bounce" />
           <span className="text-[10px] uppercase tracking-[0.2em] font-mono">
             {t('home.scrollHint')}
           </span>
-          <ChevronDown className="w-4 h-4 animate-bounce" />
-        </motion.div>
+        </motion.button>
       </div>
     </section>
   );

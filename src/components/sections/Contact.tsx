@@ -198,7 +198,20 @@ export const Contact = () => {
                       onChange={handleRecaptchaChange}
                       theme={currentTheme}
                     />
-                  ) : null}
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setRecaptchaValue('preview')}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl glass-pill text-xs text-zinc-500 dark:text-zinc-400 border-dashed"
+                    >
+                      <span className="w-4 h-4 rounded-sm border border-zinc-400/40 flex items-center justify-center">
+                        {recaptchaValue ? (
+                          <span className="w-2 h-2 bg-emerald-400 rounded-sm" />
+                        ) : null}
+                      </span>
+                      <span>reCAPTCHA preview · click to verify</span>
+                    </button>
+                  )}
                 </div>
 
                 <button
