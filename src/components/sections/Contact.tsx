@@ -101,7 +101,7 @@ export const Contact = () => {
           <div className="relative grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
             {/* Left: copy + direct links */}
             <div className="lg:col-span-2">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-[0.2em] font-mono text-zinc-600 dark:text-zinc-400 mb-5">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-[0.2em] font-mono text-zinc-500 dark:text-zinc-500 mb-5">
                 <Sparkles className="w-3 h-3" />
                 03 — {t('navbar.contact')}
               </span>
@@ -114,9 +114,9 @@ export const Contact = () => {
 
               <a
                 href="mailto:lemuayala@gmail.com"
-                className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass-pill hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors text-sm font-medium mb-8 group"
+                className="inline-flex items-center gap-3 px-5 py-3 rounded-full glass-pill hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors text-sm font-medium mb-8 group text-zinc-700 dark:text-zinc-300"
               >
-                <Mail className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                <Mail className="w-4 h-4 shrink-0 text-blue-800/45 dark:text-blue-400/40" />
                 <span>lemuayala@gmail.com</span>
                 <span className="text-zinc-400 group-hover:translate-x-0.5 transition-transform">
                   →
@@ -128,7 +128,7 @@ export const Contact = () => {
                   href="https://github.com/lemuayala"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-11 h-11 rounded-full glass-pill flex items-center justify-center hover:bg-zinc-900/5 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-zinc-600 hover:bg-zinc-900/5 dark:text-zinc-400 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
                   aria-label="GitHub"
                 >
                   <Github className="w-4 h-4" />
@@ -137,10 +137,10 @@ export const Contact = () => {
                   href="https://www.linkedin.com/in/lemuayala/"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-11 h-11 rounded-full glass-pill flex items-center justify-center hover:bg-zinc-900/5 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-sky-800/55 hover:bg-zinc-900/5 dark:text-sky-400/45 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin className="w-4 h-4 text-[#0A66C2]" />
+                  <Linkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>
