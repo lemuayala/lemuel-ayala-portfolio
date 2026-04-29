@@ -1,0 +1,47 @@
+/* Project-wide overrides */
+
+/* Hide horizontal scrollbar inside tabs / inline scroll containers */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Smooth focus ring */
+:focus-visible {
+  outline: 2px solid rgb(96 165 250 / 0.6);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* React-hot-toast enter/leave (used by CustomToast) */
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes toast-leave {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+.animate-enter {
+  animation: toast-enter 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-leave {
+  animation: toast-leave 0.22s ease-in both;
+}

@@ -1,0 +1,13 @@
+---
+description: Patrones UI en componentes React del portfolio
+globs: src/components/**/*.{tsx,ts}
+alwaysApply: false
+---
+
+# Componentes — UI
+
+- Reutilizar utilidades globales en [`src/index.css`](src/index.css): `glass-panel`, `glass-pill`, `glass-nav`, `siri-glow`, `hover-glow`, `grid-pattern`.
+- **Reveal:** [`RevealOnScroll`](src/components/RevealOnScroll.tsx) anima con clase `.reveal` / `.visible` y **opacity** en el contenedor; evitar montar widgets que fallen dentro de capas con opacity 0 (p. ej. reCAPTCHA se montó fuera del reveal).
+- **Proyectos:** previews desde `project.preview` en i18n → rutas bajo `public/` (p. ej. `previews/foo.png`). Hover zoom solo si hay imagen; mockup sin preview usa estilos light/dark y borde Siri.
+- **Cursor:** [`CursorGlow`](src/components/CursorGlow.tsx) solo escritorio fino; no romper `cursor-lumos` en body.
+- Mantener coherencia dark/light en nuevos bloques (texto `text-zinc-*`, fondos semitransparentes).

@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 
-export const RevealOnScroll = ({ children }: any) => {
-  const ref = useRef(null) as any;
+export const RevealOnScroll = ({ children }: { children: ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -14,7 +14,7 @@ export const RevealOnScroll = ({ children }: any) => {
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  });
+  }, []);
   return (
     <div ref={ref} className="reveal">
       {children}

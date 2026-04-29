@@ -1,0 +1,13 @@
+---
+description: Stack y convenciones generales del portfolio lemuel-ayala
+alwaysApply: true
+---
+
+# Portfolio — stack
+
+- **Runtime:** React 19, TypeScript, Vite 6, Tailwind CSS v4 con `@tailwindcss/vite` (no `tailwind.config` clásico salvo que el proyecto ya lo use).
+- **Tema:** clase `dark` en `document.documentElement` / `body`; lectura de `localStorage` para `theme`. No asumir solo modo oscuro en estilos nuevos.
+- **i18n:** `react-i18next`; textos en [`src/locales/es.json`](src/locales/es.json) y [`src/locales/en.json`](src/locales/en.json); idioma por defecto español en [`src/i18n.ts`](src/i18n.ts).
+- **Base de Vite:** [`vite.config.ts`](vite.config.ts) usa `base: '/'` si existe `VERCEL`, si no `'/lemuel-ayala-portfolio/'`. Rutas públicas y meta canonical deben respetar el despliegue.
+- **Variables:** prefijo `VITE_` para env expuesto al cliente; documentar en README nuevas claves.
+- **Commits:** mensajes en español cuando el equipo lo use; formato tipo Conventional Commits (`feat`, `fix`, `style`, `chore`) sin texto entre paréntesis para el ámbito si así se acordó.
