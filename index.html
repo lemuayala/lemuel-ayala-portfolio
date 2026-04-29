@@ -1,21 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/image.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#09090b" />
+    <meta name="color-scheme" content="dark light" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#fafafa"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#09090b"
+    />
     <meta
       name="description"
       content="Lemuel Ayala — Ingeniero de Software Full Stack con +6 años de experiencia construyendo arquitecturas escalables e interfaces fluidas."
     />
+    <title>Lemuel Ayala — Software Engineer</title>
+
+    <link rel="canonical" href="%PUBLIC_SITE_URL%/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lemuel Ayala — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Lemuel Ayala — Ingeniero de Software Full Stack con +6 años de experiencia construyendo arquitecturas escalables e interfaces fluidas."
+    />
+    <meta property="og:url" content="%PUBLIC_SITE_URL%/" />
+    <meta property="og:image" content="%PUBLIC_SITE_URL%/image.png" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lemuel Ayala — Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Lemuel Ayala — Ingeniero de Software Full Stack con +6 años de experiencia construyendo arquitecturas escalables e interfaces fluidas."
+    />
+    <meta name="twitter:image" content="%PUBLIC_SITE_URL%/image.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Lemuel Ayala — Software Engineer</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lemuel Ayala",
+        "url": "%PUBLIC_SITE_URL%/",
+        "jobTitle": "Software Engineer",
+        "sameAs": [
+          "https://github.com/lemuayala",
+          "https://www.linkedin.com/in/lemuayala/"
+        ]
+      }
+    </script>
+
     <script>
       // Tema antes del primer paint (evita parpadeo claro/oscuro con los colores del html)
       (function () {
