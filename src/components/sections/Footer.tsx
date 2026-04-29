@@ -1,17 +1,14 @@
-import { Coffee, Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const Footer = () => {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
     <footer className="relative border-t border-zinc-900/5 dark:border-white/5 py-10 mt-10">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-5">
-        <div className="flex items-center gap-3">
-          <span className="flex h-7 w-7 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 items-center justify-center shadow-[0_0_12px_rgba(59,130,246,0.4)]">
-            <span className="text-white text-[11px] font-black tracking-tighter">
-              LA
-            </span>
-          </span>
+        <div className="flex items-center">
           <p className="text-xs text-zinc-500 dark:text-zinc-500">
             © {year} Lemuel Ayala. lemuayala<span className="text-blue-500">.tech</span>
           </p>
@@ -45,8 +42,8 @@ export const Footer = () => {
           </a>
         </div>
 
-        <p className="text-[11px] text-zinc-500 dark:text-zinc-500 inline-flex items-center gap-1.5 font-mono">
-          Crafted with <Coffee className="w-3 h-3" /> & clean code.
+        <p className="text-[11px] text-zinc-500 dark:text-zinc-500 text-center max-w-md leading-relaxed">
+          {t('footer.tagline')}
         </p>
       </div>
     </footer>
