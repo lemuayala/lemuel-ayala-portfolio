@@ -15,6 +15,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: any) => {
   });
 
   useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
     document.body.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
   }, [theme]);

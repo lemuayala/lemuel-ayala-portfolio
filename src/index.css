@@ -19,6 +19,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  background: #09090b;
 }
 
 ::selection {
@@ -26,7 +27,6 @@ html {
   color: white;
 }
 
-/* Scrollbar premium */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -35,111 +35,198 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
-:where(.dark, .dark *)::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
-  background-clip: padding-box;
-  border: 2px solid transparent;
-}
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.16);
   background-clip: padding-box;
   border: 2px solid transparent;
 }
 
-/* ============================
-   GLASS / PREMIUM iOS UTILITIES
-   Real glassmorphism: highlight,
-   inner shadows, layered translucency.
-   ============================ */
+/* ============================================================
+   iOS 26 LIQUID GLASS SYSTEM
+   Highly translucent surfaces with prismatic edge highlights,
+   inner sheen, and saturated backdrop blur.
+   ============================================================ */
+@property --liquid-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 @layer utilities {
-  /* === GLASS PANEL (iOS card) === */
+  /* === GLASS PANEL — large cards (iOS card surface) === */
+  /* DEFAULT = LIGHT */
   .glass-panel {
     position: relative;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0.02) 50%,
-      rgba(255, 255, 255, 0.04) 100%
-    );
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.02),
-      0 10px 30px -15px rgba(0, 0, 0, 0.5);
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+      0 18px 50px -25px rgba(0, 0, 0, 0.18);
+    isolation: isolate;
   }
-  /* Top highlight reflection */
+  /* DARK override */
+  :where(.dark) .glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+      0 20px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+  /* iOS Liquid Glass — prismatic edge highlight */
   .glass-panel::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.18),
-      rgba(255, 255, 255, 0) 30%
+    background: conic-gradient(
+      from var(--liquid-angle),
+      rgba(96, 165, 250, 0.5),
+      rgba(167, 139, 250, 0.5),
+      rgba(244, 114, 182, 0.5),
+      rgba(96, 165, 250, 0.5)
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+    opacity: 0.18;
     pointer-events: none;
+    animation: liquid-rotate 12s linear infinite;
+    z-index: 1;
   }
-
-  :where(:not(.dark)) .glass-panel {
+  /* Inner top sheen */
+  .glass-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
     background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.85) 0%,
-      rgba(255, 255, 255, 0.6) 50%,
-      rgba(255, 255, 255, 0.7) 100%
+      180deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0) 30%
     );
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      0 10px 30px -15px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glass-panel > * {
+    position: relative;
+    z-index: 2;
   }
 
-  /* === GLASS NAV (iOS top bar) === */
+  /* === GLASS NAV — top floating bar === */
+  /* DEFAULT = LIGHT */
   .glass-nav {
-    background: rgba(9, 9, 11, 0.5);
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 12px 40px -12px rgba(0, 0, 0, 0.1);
+    isolation: isolate;
+  }
+  /* DARK override */
+  :where(.dark) .glass-nav {
+    background: rgba(15, 15, 20, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 8px 32px -8px rgba(0, 0, 0, 0.4);
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+      0 12px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+  .glass-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--liquid-angle),
+      rgba(96, 165, 250, 0.4),
+      rgba(167, 139, 250, 0.4),
+      rgba(244, 114, 182, 0.4),
+      rgba(96, 165, 250, 0.4)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.15;
+    pointer-events: none;
+    animation: liquid-rotate 14s linear infinite;
   }
 
-  :where(:not(.dark)) .glass-nav {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.95),
-      0 8px 32px -8px rgba(0, 0, 0, 0.08);
-  }
-
-  /* === GLASS PILL (iOS chip) === */
+  /* === GLASS PILL — chips, buttons, small surfaces === */
+  /* DEFAULT = LIGHT */
   .glass-pill {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
-
-  :where(:not(.dark)) .glass-pill {
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
+  /* DARK override */
+  :where(.dark) .glass-pill {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
 
+  /* === SIRI HOVER GLOW — for project cards === */
+  .siri-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .siri-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--liquid-angle),
+      transparent 0deg,
+      #60a5fa 60deg,
+      #a78bfa 120deg,
+      #f472b6 180deg,
+      #fbbf24 240deg,
+      #60a5fa 300deg,
+      transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 600ms ease;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .siri-glow:hover::after {
+    opacity: 1;
+    animation: liquid-rotate 4s linear infinite;
+  }
+
+  @keyframes liquid-rotate {
+    to {
+      --liquid-angle: 360deg;
+    }
+  }
+
+  /* === Gradient text === */
   .text-gradient {
     background: linear-gradient(110deg, #60a5fa 0%, #a78bfa 45%, #c084fc 100%);
     -webkit-background-clip: text;
@@ -160,58 +247,15 @@ html {
       0 0 80px -10px rgba(139, 92, 246, 0.22);
   }
 
-  /* === SIRI GLOW (animated conic border on hover) === */
-  .siri-glow {
-    position: relative;
-    isolation: isolate;
-  }
-  .siri-glow::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1.5px;
-    background: conic-gradient(
-      from var(--siri-angle, 0deg),
-      transparent 0deg,
-      #60a5fa 60deg,
-      #a78bfa 120deg,
-      #f472b6 180deg,
-      #60a5fa 240deg,
-      transparent 300deg
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 500ms ease;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .siri-glow:hover::before {
-    opacity: 1;
-    animation: siri-rotate 4s linear infinite;
-  }
-
-  @property --siri-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-  @keyframes siri-rotate {
-    to {
-      --siri-angle: 360deg;
-    }
-  }
-
+  /* === Background patterns === */
+  /* DEFAULT = LIGHT */
   .grid-pattern {
     background-image: linear-gradient(
         to right,
-        rgba(255, 255, 255, 0.04) 1px,
+        rgba(0, 0, 0, 0.05) 1px,
         transparent 1px
       ),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
     -webkit-mask-image: radial-gradient(
@@ -220,14 +264,18 @@ html {
       transparent 75%
     );
   }
-
-  :where(:not(.dark)) .grid-pattern {
+  :where(.dark) .grid-pattern {
     background-image: linear-gradient(
         to right,
-        rgba(0, 0, 0, 0.05) 1px,
+        rgba(255, 255, 255, 0.04) 1px,
         transparent 1px
       ),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.04;
   }
 
   .no-scrollbar {
@@ -304,7 +352,7 @@ html {
   }
 }
 
-/* Reveal on scroll (preserve API) */
+/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -316,7 +364,7 @@ html {
   transform: translateY(0);
 }
 
-/* Hide native cursor when CursorGlow is active (only on fine pointer devices) */
+/* Hide native cursor when CursorGlow is active */
 @media (hover: hover) and (pointer: fine) {
   .cursor-lumos,
   .cursor-lumos * {
