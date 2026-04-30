@@ -39,7 +39,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
     >
       {/* Backdrop */}
       <div
-        className={`absolute inset-0 bg-zinc-950/40 backdrop-blur-2xl transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-zinc-950/60 transition-opacity duration-500 ${
           menuOpen ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => setMenuOpen(false)}

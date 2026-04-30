@@ -10,7 +10,7 @@
     "titleLine1": "Lemuel Ayala",
     "titleLine2": "Software Developer.",
     "hi": "Hi, I'm Lemuel Ayala",
-    "description": "Over <strong>7 years of experience</strong> building scalable architectures and fluid interfaces. Passionate about turning complex problems into elegant tech solutions.",
+    "description": "Over <strong>7 years of experience</strong> creating high-level technological solutions. Specialized in designing spectacular user experiences, backed by a robust software architecture to ensure every detail works flawlessly.",
     "projects": "View Projects",
     "contact": "Get in touch",
     "downloadCV": "Download Resume",
@@ -27,10 +27,10 @@
   "experience": {
     "title": "The core of my work.",
     "subtitle": "Full mastery of the development cycle, from robust databases to production-grade user experiences.",
-    "backendTitle": "Backend Architecture & APIs",
-    "backendDesc": "Specialist in the <strong>.NET and C#</strong> ecosystem. Designing and building microservices, high-performance RESTful APIs and event-driven architectures. Deep expertise in SQL query optimization and complex data modeling.",
-    "frontendTitle": "Dynamic Frontend",
-    "frontendDesc": "Building complex SPAs with <strong>Angular and React</strong>, managing global state and real-time integrations.",
+    "backendTitle": "Robust Backend Architecture",
+    "backendDesc": "For a UI to work flawlessly, it needs a solid core. I design and build scalable architectures, microservices, and high-performance RESTful APIs in <strong>.NET and Node.js</strong>. Deep expertise in database optimization and complex data modeling.",
+    "frontendTitle": "Frontend Development & Premium UI",
+    "frontendDesc": "Building complex SPAs with <strong>Angular and React</strong>. Obsessive focus on visual details, fluid animations, and delivering professional user experiences that solve real problems.",
     "yearsLabel": "Years of Professional Experience",
     "toolsTitle": "Methodologies & Ecosystem",
     "toolsDesc": "CI/CD, Advanced Git, Scrum, Testing.",
@@ -41,7 +41,7 @@
   },
   "about": {
     "about": "About Me",
-    "description": "I am a <strong>Fullstack Programmer Analyst</strong> with over 5 years of experience in the banking, web/mobile sector, and multinational companies specializing in back-office solutions. I excel in developing new features, API integration, and database management, ensuring efficient and scalable solutions.My expertise includes frontend development with <strong>Angular and React</strong>, and backend with .NET Framework, .NET Core, and ASP.NET MVC. I thrive in dynamic environments, applying agile methodologies like Scrum to ensure high-quality deliverables. Committed to continuous learning, I specialize in implementing modern technologies and optimizing code, ensuring the successful achievement of project goals.",
+    "description": "I am a <strong>Software Developer</strong> with over 7 years of experience designing tech solutions for the banking sector, multinational companies, and startups. My passion is to create interfaces that not only look spectacular and professional but also offer real solutions to the business. I meticulously take care of every visual and functional detail of the user experience, and I use my strong Backend capabilities to build the architecture, APIs, and databases that support these interfaces, delivering a comprehensive, robust, and ready-to-scale product.",
     "frontend": "Frontend",
     "backend": "Backend",
     "work": {
@@ -155,7 +155,7 @@
         "id": "finance-rn",
         "title": "Finance App (React Native)",
         "description": "Mobile app for personal finance management: income, expenses, budgets and visual reports.",
-        "status": "in-progress",
+        "status": "completed",
         "technologies": [
           "React Native",
           "TypeScript",
@@ -178,7 +178,7 @@
         "id": "glass-playground-rn",
         "title": "Glass UI",
         "description": "Interactive playground that generates React and React Native code for premium glass components.",
-        "status": "in-progress",
+        "status": "completed",
         "preview": "previews/glass-ui.png",
         "technologies": [
           "Next.js 15",
@@ -202,7 +202,7 @@
         "id": "devblog-nextjs",
         "title": "DevBlog Next.js",
         "description": "Modern technical blog with futuristic design and scalable architecture",
-        "status": "in-progress",
+        "status": "completed",
         "preview": "previews/devblog.png",
         "technologies": [
           "Next.js 15",
@@ -228,7 +228,7 @@
         "id": "ecommerce-ai-assistant-api",
         "title": "E-Commerce AI Assistant API",
         "description": "API moderna para e-commerce con integración de IA y arquitectura escalable",
-        "status": "in-progress",
+        "status": "completed",
         "technologies": [
           ".NET 9.0",
           "ASP.NET Core",

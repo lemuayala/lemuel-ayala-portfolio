@@ -43,10 +43,25 @@ export const CursorGlow = () => {
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const update = () => setIsCoarsePointer(!mq.matches);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const update = () => {
+      const isLowEnd = document.documentElement.classList.contains('low-end-device');
+      setIsCoarsePointer(!mq.matches || reducedMotion.matches || isLowEnd);
+    };
+
     update();
     mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
+    reducedMotion.addEventListener('change', update);
+
+    const obs = new MutationObserver(update);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => {
+      mq.removeEventListener('change', update);
+      reducedMotion.removeEventListener('change', update);
+      obs.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -56,26 +71,32 @@ export const CursorGlow = () => {
     }
     document.body.classList.add('cursor-lumos');
 
-    const handleMove = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+    let rafId: number;
 
-      const target = e.target as HTMLElement | null;
-      if (!target) return;
-      const interactive = !!target.closest(
-        'a, button, [role="button"], input, textarea, select, label'
-      );
-      setIsPointer(interactive);
+    const handleMove = (e: MouseEvent) => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        x.set(e.clientX);
+        y.set(e.clientY);
+        if (!isVisible) setIsVisible(true);
+
+        const target = e.target as HTMLElement | null;
+        if (!target) return;
+        const interactive = !!target.closest(
+          'a, button, [role="button"], input, textarea, select, label'
+        );
+        setIsPointer((prev) => (prev !== interactive ? interactive : prev));
+      });
     };
 
     const handleLeave = () => setIsVisible(false);
     const handleEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', handleMove);
-    document.addEventListener('mouseleave', handleLeave);
-    document.addEventListener('mouseenter', handleEnter);
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    document.addEventListener('mouseleave', handleLeave, { passive: true });
+    document.addEventListener('mouseenter', handleEnter, { passive: true });
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMove);
       document.removeEventListener('mouseleave', handleLeave);
       document.removeEventListener('mouseenter', handleEnter);

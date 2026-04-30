@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import './index.css';
 
@@ -20,6 +20,17 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    // Detect low-end device to disable heavy animations
+    const isLowEnd =
+      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isLowEnd) {
+      document.documentElement.classList.add('low-end-device');
+    }
+  }, []);
+
   const { t, i18n } = useTranslation();
 
   const changeLanguage = (lang: string) => {
@@ -34,19 +45,19 @@ function App() {
         {/* Background ambient layers */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 grid-pattern opacity-60"
+          className="pointer-events-none fixed inset-0 -z-10 grid-pattern opacity-60 transform-gpu"
         />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 noise-overlay"
+          className="pointer-events-none fixed inset-0 -z-10 noise-overlay transform-gpu"
         />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.10),_transparent_55%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.12),_transparent_55%)]"
+          className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.10),_transparent_55%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.12),_transparent_55%)] transform-gpu"
         />
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-[60vh] bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.10),_transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.12),_transparent_60%)]"
+          className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-[60vh] bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.10),_transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.12),_transparent_60%)] transform-gpu"
         />
 
         <CursorGlow />
