@@ -29,7 +29,8 @@ function App() {
   return (
     <LanguageContext.Provider value={{ t, changeLanguage, i18n }}>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-      <div className="relative min-h-screen overflow-x-clip bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
+      {/* overflow-x-clip bajo el nav: evita que WebKit rompa backdrop-filter en la barra fija */}
+      <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
         {/* Background ambient layers */}
         <div
           aria-hidden
@@ -53,13 +54,15 @@ function App() {
         <Toaster position="bottom-center" reverseOrder={false} />
         <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <main>
-          <Home />
-          <About />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
+        <div className="min-h-screen w-full overflow-x-clip">
+          <main>
+            <Home />
+            <About />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
         <ScrollToTop />
       </div>
     </LanguageContext.Provider>
