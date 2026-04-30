@@ -10,7 +10,7 @@
     "titleLine1": "Lemuel Ayala",
     "titleLine2": "Software Developer.",
     "hi": "Hola, soy Lemuel Ayala",
-    "description": "Más de <strong>7 años de experiencia</strong> construyendo arquitecturas escalables e interfaces fluidas. Apasionado por transformar problemas complejos en soluciones tecnológicas elegantes.",
+    "description": "Más de <strong>7 años de experiencia</strong> creando soluciones tecnológicas de alto nivel. Especializado en diseñar experiencias de usuario espectaculares, respaldadas por una arquitectura de software robusta para garantizar que cada detalle funcione a la perfección.",
     "projects": "Ver Proyectos",
     "contact": "Contactar",
     "downloadCV": "Descargar CV",
@@ -27,10 +27,10 @@
   "experience": {
     "title": "El núcleo de mi trabajo.",
     "subtitle": "Dominio completo del ciclo de desarrollo, desde bases de datos robustas hasta experiencias de usuario de nivel de producción.",
-    "backendTitle": "Arquitectura Backend & APIs",
-    "backendDesc": "Especialista en el ecosistema <strong>.NET y C#</strong>. Diseño y construcción de microservicios, APIs RESTful de alto rendimiento y arquitecturas orientadas a eventos. Experiencia profunda en optimización de consultas SQL y modelado de datos complejos.",
-    "frontendTitle": "Frontend Dinámico",
-    "frontendDesc": "Creación de SPAs complejas con <strong>Angular y React</strong>, gestionando estados globales e integraciones en tiempo real.",
+    "backendTitle": "Arquitectura Backend Robusta",
+    "backendDesc": "Para que una UI funcione impecablemente, necesita un núcleo sólido. Diseño y construyo arquitecturas escalables, microservicios y APIs RESTful de alto rendimiento en <strong>.NET y Node.js</strong>. Experiencia profunda en optimización de bases de datos y modelado complejo.",
+    "frontendTitle": "Desarrollo Frontend & UI Premium",
+    "frontendDesc": "Creación de SPAs complejas con <strong>Angular y React</strong>. Enfoque obsesivo en los detalles visuales, animaciones fluidas y en entregar experiencias de usuario profesionales que resuelvan problemas reales.",
     "yearsLabel": "Años de Experiencia Profesional",
     "toolsTitle": "Metodologías & Ecosistema",
     "toolsDesc": "CI/CD, Git Avanzado, Scrum, Testing.",
@@ -52,7 +52,7 @@
         "id": "finance-rn",
         "title": "Finance App (React Native)",
         "description": "App móvil para gestión de finanzas personales: ingresos, gastos, presupuestos y reportes visuales.",
-        "status": "en-progreso",
+        "status": "completado",
         "technologies": [
           "React Native",
           "TypeScript",
@@ -75,7 +75,7 @@
         "id": "glass-playground-rn",
         "title": "Glass UI",
         "description": "Playground interactivo que genera código React y React Native de componentes con estilo glass premium.",
-        "status": "en-progreso",
+        "status": "completado",
         "preview": "previews/glass-ui.png",
         "technologies": [
           "Next.js 15",
@@ -99,7 +99,7 @@
         "id": "devblog-nextjs",
         "title": "DevBlog Next.js",
         "description": "Blog técnico moderno con diseño futurista y arquitectura escalable",
-        "status": "en-progreso",
+        "status": "completado",
         "preview": "previews/devblog.png",
         "technologies": [
           "Next.js 15",
@@ -125,7 +125,7 @@
         "id": "e-commerce-ai-assistant-api",
         "title": "E-Commerce AI Assistant API",
         "description": "API moderna para e-commerce con integración de IA y arquitectura escalable",
-        "status": "en-progreso",
+        "status": "completado",
         "technologies": [
           ".NET 9.0",
           "ASP.NET Core",
@@ -181,7 +181,7 @@
         "id": "ecomerce-react-tailwind",
         "title": "E-Commerce React",
         "description": "Tienda online moderna con carrito y autenticación",
-        "status": "en-progreso",
+        "status": "completado",
         "technologies": [
           "React",
           "TypeScript",
@@ -234,7 +234,7 @@
   },
   "about": {
     "about": "Sobre mí",
-    "description": "Soy un <strong>Analista Programador Fullstack </strong> con más de 5 años de experiencia en el sector bancario, web/móvil y en empresas multinacionales especializadas en soluciones backoffice. Me destaco en el desarrollo de nuevas funcionalidades, integración de APIs y gestión de bases de datos, asegurando soluciones eficientes y escalables. Mi enfoque combina desarrollo frontend con <strong>Angular y React </strong>, y backend con .NET Framework, .NET Core y ASP.NET MVC. Me desenvuelvo en entornos dinámicos, aplicando metodologías ágiles como Scrum para garantizar entregas de calidad. Siempre en constante aprendizaje, me especializo en la implementación de tecnologías modernas y optimización de código, asegurando el cumplimiento de objetivos en cada proyecto en el que participo.",
+    "description": "Soy un <strong>Software Developer</strong> con más de 7 años de experiencia diseñando soluciones tecnológicas para el sector bancario, empresas multinacionales y startups. Mi pasión es crear interfaces que no solo se vean espectaculares y profesionales, sino que ofrezcan soluciones reales al negocio. Cuido meticulosamente cada detalle visual y funcional de la experiencia del usuario, y utilizo mis fuertes capacidades en Backend para construir la arquitectura, las APIs y las bases de datos que soportan estas interfaces, entregando un producto integral, robusto y listo para escalar.",
     "frontend": "Frontend",
     "backend": "Backend",
     "work": {
