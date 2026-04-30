@@ -78,6 +78,8 @@ html.dark {
       inset 0 -1px 0 rgba(0, 0, 0, 0.04),
       0 18px 50px -25px rgba(0, 0, 0, 0.18);
     isolation: isolate;
+    will-change: transform, backdrop-filter;
+    transform: translateZ(0);
   }
   /* DARK override */
   :where(.dark) .glass-panel {
@@ -139,6 +141,8 @@ html.dark {
       inset 0 1px 0 rgba(255, 255, 255, 1),
       inset 0 -1px 0 rgba(0, 0, 0, 0.04),
       0 14px 40px -12px rgba(0, 0, 0, 0.18);
+    will-change: transform, backdrop-filter;
+    transform: translateZ(0);
     /* No usar transform/isolation aquí: en Chromium/Brave rompen el muestreo de backdrop-filter */
   }
   /* DARK override — deep iOS glass */
@@ -208,6 +212,8 @@ html.dark {
     -webkit-backdrop-filter: var(--glass-pill-bf);
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    will-change: transform, backdrop-filter;
+    transform: translateZ(0);
   }
   /* DARK override */
   :where(.dark) .glass-pill {
@@ -436,5 +442,51 @@ html.dark {
   .cursor-lumos textarea,
   .cursor-lumos [role='button'] {
     cursor: none;
+  }
+}
+
+/* ============================
+   MOBILE & LOW-END PERFORMANCE OPTIMIZATIONS
+   ============================ */
+@media (max-width: 768px) {
+  /* Reduce heavy blur calculations on mobile */
+  .glass-panel {
+    --glass-panel-bf: blur(12px) saturate(150%);
+  }
+  .glass-nav {
+    --glass-nav-bf: blur(16px) saturate(150%);
+  }
+}
+
+/* Low end devices detected via JS or Media Queries */
+html.low-end-device .glass-panel,
+html.low-end-device .glass-nav,
+html.low-end-device .glass-pill {
+  /* Replace expensive blur with simple opaque background */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html.low-end-device:not(.dark) .glass-panel { background: rgba(250, 250, 250, 0.96) !important; }
+html.low-end-device.dark .glass-panel { background: rgba(20, 20, 25, 0.96) !important; }
+
+html.low-end-device:not(.dark) .glass-nav { background: rgba(255, 255, 255, 0.96) !important; }
+html.low-end-device.dark .glass-nav { background: rgba(20, 20, 28, 0.96) !important; }
+
+html.low-end-device .glass-panel::before,
+html.low-end-device .glass-nav::before,
+html.low-end-device .siri-glow::after,
+html.low-end-device .siri-glow-skeleton::after,
+html.low-end-device .animate-blob,
+@media (prefers-reduced-motion: reduce) {
+  .glass-panel::before,
+  .glass-nav::before,
+  .siri-glow::after,
+  .siri-glow-skeleton::after,
+  .animate-blob {
+    animation: none !important;
+  }
+  .glass-panel::before,
+  .glass-nav::before {
+    opacity: 0.1; /* Static subdued border */
   }
 }
