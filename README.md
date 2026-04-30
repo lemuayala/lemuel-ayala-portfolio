@@ -107,6 +107,7 @@ pnpm preview
 
 - **`vite.config.ts`**: si existe la variable de entorno `VERCEL`, `base` es `'/'`. En otros entornos (p. ej. GitHub Pages en subruta) `base` es `'/lemuel-ayala-portfolio/'`.
 - Script **`pnpm deploy`**: ejecuta build y publica `dist` en la rama `github-pages` con `gh-pages` (ajusta según tu flujo).
+- **CI:** cada push a **`main`** ejecuta [`.github/workflows/deploy-github-pages.yml`](.github/workflows/deploy-github-pages.yml) y vuelve a generar `dist/` en la rama `github-pages`. Puedes repetir el despliegue a mano desde **Actions → Deploy GitHub Pages → Run workflow**. Para EmailJS y reCAPTCHA en el sitio publicado, define los mismos `VITE_*` como **Secrets** del repositorio (y opcionalmente `VITE_PUBLIC_SITE_URL` como **Variable**).
 
 Tras cambiar de dominio o de proveedor, define `VITE_PUBLIC_SITE_URL` en `.env` antes del build: **`pnpm build`** genera `dist/robots.txt` y `dist/sitemap.xml` con esa URL (plugin en [`vite.config.ts`](vite.config.ts)).
 
