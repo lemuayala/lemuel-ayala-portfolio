@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lemuayala.github.io/lemuel-ayala-portfolio/sitemap.xml
+Sitemap: https://lemuayala.com.ar/sitemap.xml
