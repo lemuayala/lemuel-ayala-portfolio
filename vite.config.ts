@@ -4,8 +4,7 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-const DEFAULT_SITE_URL =
-  'https://lemuayala.github.io/lemuel-ayala-portfolio';
+const DEFAULT_SITE_URL = 'https://lemuayala.com.ar';
 
 // https://vite.dev/config/
 // On Vercel the app is served from the domain root, so we use '/'.
@@ -57,6 +56,6 @@ export default defineConfig(({ mode }) => {
         },
       },
     ],
-    base: isVercel ? '/' : '/lemuel-ayala-portfolio/',
+    base: '/',
   };
 });
