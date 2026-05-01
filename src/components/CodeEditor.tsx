@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Copy, Check, Terminal } from 'lucide-react';
@@ -251,23 +251,23 @@ const lemuel: Engineer = {
   );
 
   const [active, setActive] = useState(0);
-  const [copied, setCopied] = useState(false);
+  const [copiedTabs, setCopiedTabs] = useState<Set<number>>(new Set());
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Reset copiado al cambiar tab
-  useEffect(() => {
-    setCopied(false);
-  }, [active]);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(tabs[active].code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
+      setCopiedTabs((prev) => new Set(prev).add(active));
+      setTimeout(
+        () => setCopiedTabs((prev) => { const next = new Set(prev); next.delete(active); return next; }),
+        1800
+      );
     } catch {
       // ignore
     }
   };
+
+  const copied = copiedTabs.has(active);
 
   const lines = tabs[active].code.split('\n');
 
