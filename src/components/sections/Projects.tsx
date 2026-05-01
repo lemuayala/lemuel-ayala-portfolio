@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ExternalLink, Github, Sparkles } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
+import { ArrowUpRight, ExternalLink, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Project } from '../../types/project';
 
@@ -216,7 +217,7 @@ const FeatureProject = ({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-pill hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors text-xs font-medium text-zinc-700 dark:text-zinc-200"
             >
-              <Github className="w-3.5 h-3.5" />
+              <FaGithub className="w-3.5 h-3.5" />
               {t('projects.viewCode')}
             </a>
           )}

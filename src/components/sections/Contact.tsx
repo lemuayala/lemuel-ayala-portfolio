@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ReCAPTCHA from 'react-google-recaptcha';
-import emailjs from 'emailjs-com';
-import { Github, Linkedin, Mail, Send, Sparkles } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Mail, Send, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import toast from 'react-hot-toast';
 import { CustomToast } from '../CustomToast';
@@ -131,7 +132,7 @@ export const Contact = () => {
                   className="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-zinc-600 hover:bg-zinc-900/5 dark:text-zinc-400 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
                   aria-label="GitHub"
                 >
-                  <Github className="w-4 h-4" />
+              <FaGithub className="w-4 h-4" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/lemuayala/"
@@ -140,7 +141,7 @@ export const Contact = () => {
                   className="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-sky-800/55 hover:bg-zinc-900/5 dark:text-sky-400/45 dark:hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
                   aria-label="LinkedIn"
                 >
-                  <Linkedin className="w-4 h-4" />
+              <FaLinkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>

@@ -11,7 +11,6 @@ const DEFAULT_SITE_URL = 'https://lemuayala.com.ar';
 // On GitHub Pages it lives at /lemuel-ayala-portfolio/.
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
-  const isVercel = Boolean(process.env.VERCEL || env.VERCEL);
   const siteUrl = (env.VITE_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(
     /\/$/,
     ''

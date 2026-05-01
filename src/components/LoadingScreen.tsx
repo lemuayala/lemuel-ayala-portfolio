@@ -3,9 +3,12 @@ import { useEffect, useRef, useState } from 'react';
 export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [text, setText] = useState('');
   const [fadeOut, setFadeOut] = useState(false);
-  const onCompleteRef = useRef(onComplete);
   const finishedRef = useRef(false);
-  onCompleteRef.current = onComplete;
+  const onCompleteRef = useRef(onComplete);
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   const fullText = '<HelloWorld />';
 

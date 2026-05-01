@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Mail } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export const Footer = () => {
@@ -22,7 +23,7 @@ export const Footer = () => {
             aria-label="GitHub"
             className="w-9 h-9 rounded-full glass-pill flex items-center justify-center hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors"
           >
-            <Github className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+            <FaGithub className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
           </a>
           <a
             href="https://www.linkedin.com/in/lemuayala/"
@@ -31,7 +32,7 @@ export const Footer = () => {
             aria-label="LinkedIn"
             className="w-9 h-9 rounded-full glass-pill flex items-center justify-center hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors"
           >
-            <Linkedin className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+            <FaLinkedin className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
           </a>
           <a
             href="mailto:lemuayala@gmail.com"
