@@ -128,7 +128,7 @@ const FeatureProject = ({
             alt={`${project.title} preview`}
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 z-[1] h-full w-full object-cover"
+            className="absolute inset-0 z-[1] h-full w-full object-cover transition-transform duration-700 ease-[var(--la-motion-ease)] group-hover:scale-[1.025]"
           />
         ) : (
           <div className="absolute inset-0 z-[1]">

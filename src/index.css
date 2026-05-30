@@ -339,12 +339,16 @@ html.dark {
   }
 
   .siri-glow:hover::before,
-  .siri-glow-skeleton:hover::before {
+  .siri-glow-skeleton:hover::before,
+  .group:hover .siri-glow::before,
+  .group:hover .siri-glow-skeleton::before {
     opacity: 0.42;
   }
 
   .siri-glow:hover::after,
-  .siri-glow-skeleton:hover::after {
+  .siri-glow-skeleton:hover::after,
+  .group:hover .siri-glow::after,
+  .group:hover .siri-glow-skeleton::after {
     opacity: 1;
     animation: liquid-rotate 3.5s linear infinite;
     filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5))
@@ -468,15 +472,31 @@ html.dark {
 
   .hover-glow {
     transition:
-      box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 400ms ease,
-      transform 400ms ease;
+      box-shadow 420ms var(--la-motion-ease),
+      border-color 420ms var(--la-motion-ease),
+      transform 420ms var(--la-motion-ease);
   }
+
   .hover-glow:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--la-glass-border-strong) 88%, var(--la-accent-1));
     box-shadow:
       inset 0 1px 0 0 var(--la-glass-inset-light),
       0 1px 0 0 var(--la-glass-inset-dark),
-      0 14px 28px -22px rgba(59, 130, 246, 0.08),
+      0 0 0 1px color-mix(in srgb, var(--la-accent-1) 22%, transparent),
+      0 22px 44px -20px color-mix(in srgb, var(--la-accent-1) 28%, transparent),
+      0 0 56px -12px color-mix(in srgb, var(--la-accent-2) 22%, transparent),
+      var(--la-glass-shadow);
+  }
+
+  :where(.dark) .hover-glow:hover {
+    border-color: color-mix(in srgb, var(--la-glass-border-strong) 90%, var(--la-accent-1));
+    box-shadow:
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark),
+      0 0 0 1px color-mix(in srgb, var(--la-accent-1) 26%, transparent),
+      0 24px 48px -18px color-mix(in srgb, var(--la-accent-1) 32%, transparent),
+      0 0 64px -10px color-mix(in srgb, var(--la-accent-2) 26%, transparent),
       var(--la-glass-shadow);
   }
 
