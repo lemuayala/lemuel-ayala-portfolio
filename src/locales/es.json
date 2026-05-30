@@ -294,23 +294,5 @@
   },
   "footer": {
     "tagline": "Desarrollado con ♥ por lemuayala con React y Tailwind CSS. ¡Gracias por visitar!"
-  },
-  "loading": {
-    "title": "Levantando entorno",
-    "subtitle": "Sesión CLI preparando el portfolio.",
-    "phases": [
-      "• resolviendo dependencias de UI",
-      "• analizando rutas y secciones",
-      "• aplicando tokens glass",
-      "• optimizando interacción y rendimiento",
-      "• build listo, iniciando vista"
-    ],
-    "logs": [
-      "$ claude-code init portfolio-ui",
-      "$ claude-code analyze src/components --focus ux",
-      "$ claude-code apply glass-tokens --preset subtle-premium",
-      "$ claude-code test --smoke --ui",
-      "$ claude-code run dev --open"
-    ]
   }
 }
