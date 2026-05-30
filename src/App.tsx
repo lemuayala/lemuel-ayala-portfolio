@@ -24,14 +24,28 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Detect low-end device to disable heavy animations
-    const isLowEnd =
-      (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lowEndQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileQuery = window.matchMedia(
+      '(max-width: 768px), (hover: none) and (pointer: coarse)'
+    );
 
-    if (isLowEnd) {
-      document.documentElement.classList.add('low-end-device');
-    }
+    const syncDeviceClasses = () => {
+      const isLowEnd =
+        (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) ||
+        lowEndQuery.matches;
+
+      document.documentElement.classList.toggle('low-end-device', Boolean(isLowEnd));
+      document.documentElement.classList.toggle('mobile-device', mobileQuery.matches);
+    };
+
+    syncDeviceClasses();
+    lowEndQuery.addEventListener('change', syncDeviceClasses);
+    mobileQuery.addEventListener('change', syncDeviceClasses);
+
+    return () => {
+      lowEndQuery.removeEventListener('change', syncDeviceClasses);
+      mobileQuery.removeEventListener('change', syncDeviceClasses);
+    };
   }, []);
 
   useEffect(() => {

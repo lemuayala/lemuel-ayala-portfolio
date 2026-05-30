@@ -6,10 +6,26 @@ import { useLanguage } from '../../context/LanguageContext';
 import { TechMarquee } from '../TechMarquee';
 import { MAIN_TECH_STACK, TECH_STACK } from '../../constants/techStack';
 import { handleLinkClick } from '../../utils/navigation';
+import { useIsMobileMotion } from '../../hooks/useIsMobileMotion';
+import { easeOutExpo } from '../../utils/motionPresets';
 
 export const Home = () => {
   const { t } = useLanguage();
   const [isDownloading, setIsDownloading] = useState(false);
+  const isMobileMotion = useIsMobileMotion();
+
+  const revealMotion = (delay = 0) =>
+    isMobileMotion
+      ? {
+          initial: false as const,
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.16, delay: 0, ease: easeOutExpo },
+        }
+      : {
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8, delay, ease: easeOutExpo },
+        };
 
   const handleDownloadCV = () => {
     setIsDownloading(true);
@@ -36,9 +52,17 @@ export const Home = () => {
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center sm:px-6">
         {/* Status pill */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          {...(isMobileMotion
+            ? {
+                initial: false,
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.16, ease: easeOutExpo },
+              }
+            : {
+                initial: { opacity: 0, y: -10 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.6, ease: easeOutExpo },
+              })}
           className="mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1.5 glass-pill sm:mb-8"
         >
           <span className="relative flex h-2 w-2">
@@ -52,13 +76,7 @@ export const Home = () => {
 
         {/* Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+          {...revealMotion(0.1)}
           className="text-[2.35rem] font-extrabold leading-[1.02] tracking-tight text-balance sm:text-5xl sm:leading-[1.06] md:text-7xl lg:text-[5.2rem]"
         >
           <span className="block text-zinc-900 dark:text-zinc-100">
@@ -71,9 +89,7 @@ export const Home = () => {
 
         {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          {...revealMotion(0.2)}
           className="mt-4 max-w-2xl text-[13px] font-light leading-relaxed text-pretty text-zinc-600 dark:text-zinc-300 sm:mt-6 sm:text-base md:text-xl"
         >
           <Trans
@@ -87,9 +103,7 @@ export const Home = () => {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          {...revealMotion(0.3)}
           className="w-full flex justify-center"
         >
           <TechMarquee items={TECH_STACK} mobileItems={MAIN_TECH_STACK} />
@@ -97,9 +111,7 @@ export const Home = () => {
 
         {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          {...revealMotion(0.4)}
           className="mt-7 flex w-full flex-col items-stretch gap-2.5 sm:mt-12 sm:w-auto sm:flex-row sm:items-center sm:gap-3"
         >
           <a
@@ -128,9 +140,17 @@ export const Home = () => {
         <motion.button
           type="button"
           onClick={(e) => handleLinkClick(e, '#about')}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
+          {...(isMobileMotion
+            ? {
+                initial: false,
+                animate: { opacity: 1 },
+                transition: { duration: 0.12, delay: 0 },
+              }
+            : {
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                transition: { duration: 1, delay: 0.7 },
+              })}
           className="mt-7 hidden flex-col items-center gap-1.5 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white sm:inline-flex sm:mt-10"
         >
           <ChevronDown className="w-4 h-4" />
