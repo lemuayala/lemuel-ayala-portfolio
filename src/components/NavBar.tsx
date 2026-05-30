@@ -1,8 +1,9 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../hooks/useTheme';
 
-import { links } from '../utils/navigation';
+import { handleLinkClick, links } from '../utils/navigation';
 
 type NavBarProps = {
   menuOpen: boolean;
@@ -11,19 +12,16 @@ type NavBarProps = {
 
 export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<string>('#home');
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-  });
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    document.body.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -52,13 +50,7 @@ export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
     return () => observer.disconnect();
   }, []);
 
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   const currentLang = i18n.language?.startsWith('en') ? 'en' : 'es';
-
-  const handleNav = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <header
@@ -68,14 +60,14 @@ export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <nav
-          className={`glass-nav rounded-2xl flex items-center justify-between gap-4 px-4 sm:px-5 transition-all duration-500 ${
-            scrolled ? 'h-14 shadow-lg shadow-black/20' : 'h-16'
+          className={`glass-nav glass-nav-minimal rounded-2xl flex items-center justify-between gap-4 px-4 sm:px-5 transition-all duration-500 ${
+            scrolled ? 'h-14 shadow-md shadow-black/10' : 'h-16'
           }`}
         >
           {/* Logo */}
           <a
             href="#home"
-            onClick={(e) => handleNav(e, '#home')}
+            onClick={(e) => handleLinkClick(e, '#home')}
             className="flex items-center shrink-0 group"
             aria-label="lemuayala.tech home"
           >
@@ -86,14 +78,14 @@ export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
           </a>
 
           {/* Desktop nav pill */}
-          <div className="hidden md:flex items-center gap-1 glass-pill rounded-full px-1.5 py-1.5">
+          <div className="hidden md:flex items-center gap-1 glass-pill rounded-full px-1.5 py-1.5 border border-zinc-900/5 dark:border-white/10">
             {links.map((link) => {
               const isActive = activeId === link.id;
               return (
                 <a
                   key={link.id}
                   href={link.id}
-                  onClick={(e) => handleNav(e, link.id)}
+                  onClick={(e) => handleLinkClick(e, link.id)}
                   className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-300 ${
                     isActive
                       ? 'text-zinc-900 dark:text-white'
