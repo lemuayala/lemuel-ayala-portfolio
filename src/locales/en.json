@@ -10,10 +10,25 @@
     "titleLine1": "Lemuel Ayala",
     "titleLine2": "Software Developer.",
     "hi": "Hi, I'm Lemuel Ayala",
-    "description": "Over <strong>7 years of experience</strong> creating high-level technological solutions. Specialized in designing spectacular user experiences, backed by a robust software architecture to ensure every detail works flawlessly.",
+    "description": "Over <strong>7 years of experience</strong> in end-to-end solutions. I currently build <strong>Angular micro frontends</strong> for compliance; I also ship premium interfaces and <strong>.NET</strong> architectures when the product needs it.",
+    "techMarquee": [
+      "Angular 20",
+      "Module Federation",
+      "React 19",
+      "TypeScript",
+      ".NET 9",
+      "CQRS",
+      "Azure OpenAI",
+      "SQL Server",
+      "React Native",
+      "Tailwind CSS v4",
+      "Azure DevOps",
+      "Semantic Kernel"
+    ],
     "projects": "View Projects",
     "contact": "Get in touch",
     "downloadCV": "Download Resume",
+    "downloadingCV": "Downloading resume...",
     "scrollHint": "Scroll to explore"
   },
   "codeEditor": {
@@ -30,7 +45,7 @@
     "backendTitle": "Robust Backend Architecture",
     "backendDesc": "For a UI to work flawlessly, it needs a solid core. I design and build scalable architectures, microservices, and high-performance RESTful APIs in <strong>.NET and Node.js</strong>. Deep expertise in database optimization and complex data modeling.",
     "frontendTitle": "Frontend Development & Premium UI",
-    "frontendDesc": "Building complex SPAs with <strong>Angular and React</strong>. Obsessive focus on visual details, fluid animations, and delivering professional user experiences that solve real problems.",
+    "frontendDesc": "SPAs and micro frontends with <strong>Angular 17+</strong> (Signals, Module Federation) and <strong>React</strong>. Visual craft, fluid motion, and product-focused UX in enterprise environments.",
     "yearsLabel": "Years of Professional Experience",
     "toolsTitle": "Methodologies & Ecosystem",
     "toolsDesc": "CI/CD, Advanced Git, Scrum, Testing.",
@@ -50,11 +65,19 @@
       "clients": "Clients",
       "jobs": [
         {
+          "company": "Plan IT (Argentina) — Worldsys",
+          "position": "Sr Frontend Developer",
+          "date": "May 2025 - Present",
+          "description": "Micro frontends and compliance tool views with Angular 20, Module Federation, gridstack.js, and Bootstrap 5.",
+          "technologies": "Angular 20, Module Federation, TypeScript, Bootstrap 5, gridstack.js",
+          "client": "Worldsys"
+        },
+        {
           "company": "CETAP SA (Argentina)",
-          "position": "Senior Developer",
-          "date": "June 2024 - Present",
-          "description": "Development of incident reporting tools for YPF.",
-          "technologies": ".NET Core 5, EF Core, SQL, Angular 12, Prime NG, Bootstrap, Vue.js, Ionic",
+          "position": "Sr Full-Stack Developer",
+          "date": "June 2024 - April 2025",
+          "description": "End-to-end industrial and legal incident management system for YPF. Repository Pattern with UoW.",
+          "technologies": ".NET Core 5, EF Core, SQL Server, Angular 15+, PrimeNG, Bootstrap, Vue.js, Ionic, Azure DevOps",
           "client": "YPF"
         },
         {
@@ -78,7 +101,7 @@
           "position": "Frontend Developer",
           "date": "May 2023 - December 2023",
           "description": "Implementation of a sales and export platform.",
-          "technologies": "Angular, JavaScript, TypeScript, Material UI",
+          "technologies": "Angular, TypeScript, HTML5, CSS3",
           "client": "13:e Protein Import"
         },
         {
@@ -87,7 +110,7 @@
           "date": "August 2021 - May 2023",
           "description": "Development of back-office tools and web extensions.",
           "technologies": ".NET Framework, .NET Core, Angular, React, SQL Server, Razor, Bootstrap",
-          "client": "Clientes de Colombia e internacionales (Uber, Mercado Libre, etc)"
+          "client": "Colombia and international clients (Uber, Mercado Libre, etc.)"
         },
         {
           "company": "Openix IT Solutions (Jujuy, Argentina)",
@@ -105,7 +128,8 @@
       "universidad": "Jujuy National University (Argentina)",
       "tecnico": "Information Technology Technician",
       "edm": "Escuela de Minas 'Dr. Horacio Carrillo' 2015",
-      "licenciatura": "Bachelor of Education in Computer Science"
+      "licenciatura": "Bachelor of Education in Computer Science",
+      "inProgress": "In progress"
     },
     "certifications": {
       "title": "Courses and Certifications",
@@ -123,8 +147,12 @@
           "course": "Mobile Apps Development"
         },
         {
-          "institution": "LINKEDIN LEARNING",
-          "course": "Web Development Fundamentals: Fullstack or Frontend"
+          "institution": "NEXT U",
+          "course": "Git Certification"
+        },
+        {
+          "institution": "EDUCACIÓN IT",
+          "course": "HTTPS Protocol"
         },
         {
           "institution": "PLATZI",
@@ -146,16 +174,24 @@
     "title": "Featured Work.",
     "subtitle": "A selection of applications where I led full stack development.",
     "viewAll": "View all on GitHub",
-    "caseStudy": "View Case Study",
-    "inProgress": "in-progress",
+    "statusCompleted": "Completed",
+    "statusInProgress": "In progress",
     "viewCode": "View Code",
     "liveDemo": "View Demo",
+    "roleLabel": "Role",
+    "impactLabel": "Impact",
+    "scopeLabel": "Scope",
     "items": [
       {
         "id": "finance-rn",
         "title": "Finance App (React Native)",
-        "description": "Mobile app for personal finance management: income, expenses, budgets and visual reports.",
-        "status": "completed",
+        "description": "Mobile app for personal finance: income, expenses, budgets and visual reports.",
+        "status": "inProgress",
+        "highlights": {
+          "role": "Product + Mobile Frontend",
+          "impact": "Functional MVP for daily tracking",
+          "scope": "Architecture, UI and global state"
+        },
         "technologies": [
           "React Native",
           "TypeScript",
@@ -164,174 +200,80 @@
           "Reanimated"
         ],
         "links": {
-          "repo": "https://github.com/lemuayala",
+          "repo": "https://github.com/lemuayala/finanzas",
           "demo": "#"
-        },
-        "features": [
-          "Modular architecture with Expo Router",
-          "Native animations with Reanimated 3",
-          "Interactive expense charts",
-          "Offline-first mode"
-        ]
+        }
       },
       {
         "id": "glass-playground-rn",
         "title": "Glass UI",
-        "description": "Interactive playground that generates React and React Native code for premium glass components.",
+        "description": "Glassmorphism playground for web and React Native: tune iOS-style components, export TSX, and generate GLASS.md for your stack.",
         "status": "completed",
         "preview": "previews/glass-ui.png",
+        "highlights": {
+          "role": "Design system + DX",
+          "impact": "Faster reusable visual prototyping",
+          "scope": "Web, RN and component exporter"
+        },
         "technologies": [
-          "Next.js 15",
-          "React",
+          "Next.js 16",
+          "React 19",
           "React Native",
           "TypeScript",
-          "Tailwind CSS"
+          "Tailwind CSS v4"
         ],
         "links": {
           "repo": "https://github.com/lemuayala/glass-ui",
-          "demo": "https://v0-glass-ui-flax.vercel.app/"
-        },
-        "features": [
-          "Live generator for glass components",
-          "Exports React and React Native code",
-          "Blur, opacity and border configuration",
-          "Real-time preview"
-        ]
+          "demo": "https://glass-ui-play.vercel.app/"
+        }
       },
       {
-        "id": "devblog-nextjs",
-        "title": "DevBlog Next.js",
-        "description": "Modern technical blog with futuristic design and scalable architecture",
-        "status": "completed",
-        "preview": "previews/devblog.png",
-        "technologies": [
-          "Next.js 15",
-          "TypeScript",
-          "Tailwind CSS",
-          "Framer Motion",
-          "Vercel"
-        ],
-        "links": {
-          "repo": "https://github.com/lemuayala/devblog-nextjs",
-          "demo": "https://devblog-liart-two.vercel.app/"
-        },
-        "features": [
-          "Static rendering (SSG/ISR) for maximum performance",
-          "Dynamic tag system and filtering",
-          "Neon gradient dark mode design",
-          "Fluid animations with Framer Motion",
-          "100% responsive (Mobile First)",
-          "Image optimization with next/image"
-        ]
-      },
-      {
-        "id": "ecommerce-ai-assistant-api",
+        "id": "e-commerce-ai-assistant-api",
         "title": "E-Commerce AI Assistant API",
-        "description": "API moderna para e-commerce con integración de IA y arquitectura escalable",
+        "description": ".NET API with Semantic Kernel, CQRS, and Azure OpenAI for catalog and e-commerce assistant. Archived baseline; evolving.",
         "status": "completed",
+        "highlights": {
+          "role": "Backend Lead",
+          "impact": "Solid baseline for AI features",
+          "scope": "API, CQRS domain and OpenAI integration"
+        },
         "technologies": [
-          ".NET 9.0",
+          ".NET 9",
           "ASP.NET Core",
-          "Microsoft Semantic Kernel",
+          "Semantic Kernel",
           "Azure OpenAI",
           "Dapper",
-          "MediatR (CQRS)",
-          "Azure Blob Storage",
-          "SQL Server",
-          "Health Checks",
-          "AutoMapper"
+          "MediatR",
+          "SQL Server"
         ],
         "links": {
           "repo": "https://github.com/lemuayala/ecomerce-api-iabot",
-          "demo": "https://devblog-liart-two.vercel.app/"
-        },
-        "features": [
-          "Integración con Azure OpenAI para capacidades de IA",
-          "Patrón CQRS con MediatR",
-          "Gestión de productos con almacenamiento en Azure Blob Storage",
-          "Health Checks para monitoreo de servicios",
-          "Mapeo avanzado con AutoMapper",
-          "Manejo de conexiones SQL con Dapper",
-          "Sistema de recomendaciones basado en IA",
-          "Configuración segura con dotenv",
-          "Serialización JSON optimizada",
-          "Patrón Repository para acceso a datos"
-        ],
-        "dependencies": [
-          "Microsoft.SemanticKernel 1.46.0",
-          "Azure.Storage.Blobs 12.24.0",
-          "Dapper 2.1.66",
-          "MediatR 12.5.0",
-          "AutoMapper 14.0.0",
-          "Microsoft.Data.SqlClient 6.0.1",
-          "AspNetCore.HealthChecks.SqlServer 9.0.0"
-        ],
-        "architecture": [
-          "Clean Architecture",
-          "CQRS Pattern",
-          "Repository Pattern",
-          "Dependency Injection",
-          "Modular Endpoints"
-        ],
-        "infrastructure": [
-          "Azure OpenAI Service",
-          "Azure Blob Storage",
-          "SQL Server Database",
-          "Vercel/Azure App Service (implícito)"
-        ]
-      },
-      {
-        "id": "ecomerce-react-tailwind",
-        "title": "E-Commerce React",
-        "description": "Modern online store with cart and authentication",
-        "status": "in-progress",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Vite",
-          "Tailwind CSS",
-          "React Router"
-        ],
-        "links": {
-          "repo": "https://github.com/lemuayala/ecomerce-react-tailwind",
           "demo": "#"
-        },
-        "features": [
-          "Modular Vite architecture",
-          "State management with Context API",
-          "Full responsive design",
-          "Shopping cart system",
-          "REST API integration"
-        ]
+        }
       },
       {
         "id": "portfolio-lemuel-ayala",
         "title": "Professional Portfolio",
-        "description": "Modern personal portfolio showcasing projects and skills with elegant design and multilingual support",
+        "description": "Personal portfolio with liquid glass design, light/dark mode, i18n, and contact form.",
         "status": "completed",
         "preview": "previews/portfolio.png",
+        "highlights": {
+          "role": "End-to-end product owner",
+          "impact": "Personal brand and lead capture",
+          "scope": "UX/UI, content, performance and SEO"
+        },
         "technologies": [
-          "React",
+          "React 19",
           "TypeScript",
-          "Vite",
-          "Tailwind CSS",
+          "Vite 6",
+          "Tailwind CSS v4",
           "Framer Motion",
-          "EmailJS",
           "i18next"
         ],
         "links": {
           "repo": "https://github.com/lemuayala/lemuel-ayala-portfolio",
-          "demo": "https://lemuayala.github.io/lemuel-ayala-portfolio/"
-        },
-        "features": [
-          "Modern UI with light/dark mode toggle",
-          "Multilingual support (English/Spanish)",
-          "Functional contact form with EmailJS integration",
-          "Smooth scroll animations and transitions",
-          "Fully responsive (Mobile First approach)",
-          "Project showcase with technology tags",
-          "Vite-powered ultra-fast build system"
-        ]
+          "demo": "https://lemuayala.com.ar/"
+        }
       }
     ]
   },
@@ -352,5 +294,23 @@
   },
   "footer": {
     "tagline": "Built with ♥ by lemuayala using React & Tailwind CSS. Thanks for visiting!"
+  },
+  "loading": {
+    "title": "Booting workspace",
+    "subtitle": "CLI session preparing the portfolio.",
+    "phases": [
+      "• resolving UI dependencies",
+      "• scanning routes and sections",
+      "• applying glass tokens",
+      "• optimizing interaction and performance",
+      "• build ready, opening view"
+    ],
+    "logs": [
+      "$ claude-code init portfolio-ui",
+      "$ claude-code analyze src/components --focus ux",
+      "$ claude-code apply glass-tokens --preset subtle-premium",
+      "$ claude-code test --smoke --ui",
+      "$ claude-code run dev --open"
+    ]
   }
 }
