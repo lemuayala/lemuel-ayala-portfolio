@@ -15,9 +15,13 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { Footer } from './components/sections/Footer';
 import { Toaster } from 'react-hot-toast';
 import { CursorGlow } from './components/CursorGlow';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return sessionStorage.getItem('la_seen_loader') === '1';
+  });
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -37,45 +41,52 @@ function App() {
     i18n.changeLanguage(lang);
   };
 
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem('la_seen_loader', '1');
+    setIsLoaded(true);
+  };
+
   return (
     <LanguageContext.Provider value={{ t, changeLanguage, i18n }}>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-      {/* overflow-x-clip bajo el nav: evita que WebKit rompa backdrop-filter en la barra fija */}
-      <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
-        {/* Background ambient layers */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 grid-pattern opacity-60 transform-gpu"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 noise-overlay transform-gpu"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.10),_transparent_55%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.12),_transparent_55%)] transform-gpu"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-[60vh] bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.10),_transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.12),_transparent_60%)] transform-gpu"
-        />
+      <ThemeProvider>
+        {!isLoaded && <LoadingScreen onComplete={handleLoadingComplete} />}
+        {/* overflow-x-clip bajo el nav: evita que WebKit rompa backdrop-filter en la barra fija */}
+        <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
+          {/* Background ambient layers */}
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-0 -z-10 grid-pattern opacity-60 transform-gpu"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-0 -z-10 noise-overlay transform-gpu"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.10),_transparent_55%)] dark:bg-[radial-gradient(ellipse_at_top,_rgba(96,165,250,0.12),_transparent_55%)] transform-gpu"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none fixed inset-x-0 bottom-0 -z-10 h-[60vh] bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.10),_transparent_60%)] dark:bg-[radial-gradient(ellipse_at_bottom,_rgba(167,139,250,0.12),_transparent_60%)] transform-gpu"
+          />
 
-        <CursorGlow />
+          <CursorGlow />
 
-        <Toaster position="bottom-center" reverseOrder={false} />
-        <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <div className="min-h-screen w-full overflow-x-clip">
-          <main>
-            <Home />
-            <About />
-            <Projects />
-            <Contact />
-          </main>
-          <Footer />
+          <Toaster position="bottom-center" reverseOrder={false} />
+          <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <div className="min-h-screen w-full overflow-x-clip">
+            <main>
+              <Home />
+              <About />
+              <Projects />
+              <Contact />
+            </main>
+            <Footer />
+          </div>
+          <ScrollToTop />
         </div>
-        <ScrollToTop />
-      </div>
+      </ThemeProvider>
     </LanguageContext.Provider>
   );
 }
