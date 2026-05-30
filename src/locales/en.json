@@ -294,23 +294,5 @@
   },
   "footer": {
     "tagline": "Built with ♥ by lemuayala using React & Tailwind CSS. Thanks for visiting!"
-  },
-  "loading": {
-    "title": "Booting workspace",
-    "subtitle": "CLI session preparing the portfolio.",
-    "phases": [
-      "• resolving UI dependencies",
-      "• scanning routes and sections",
-      "• applying glass tokens",
-      "• optimizing interaction and performance",
-      "• build ready, opening view"
-    ],
-    "logs": [
-      "$ claude-code init portfolio-ui",
-      "$ claude-code analyze src/components --focus ux",
-      "$ claude-code apply glass-tokens --preset subtle-premium",
-      "$ claude-code test --smoke --ui",
-      "$ claude-code run dev --open"
-    ]
   }
 }

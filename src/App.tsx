@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import './index.css';
 
-import { LoadingScreen } from './components/LoadingScreen';
 import { NavBar } from './components/NavBar';
 import { MobileMenu } from './components/MobileMenu';
 import { Home } from './components/sections/Home';
@@ -18,9 +17,9 @@ import { CursorGlow } from './components/CursorGlow';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return sessionStorage.getItem('la_seen_loader') === '1';
+  const [showChrome, setShowChrome] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return sessionStorage.getItem('la_seen_home_intro') === '1';
   });
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,21 +34,25 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (showChrome) return;
+    const timer = window.setTimeout(() => {
+      sessionStorage.setItem('la_seen_home_intro', '1');
+      setShowChrome(true);
+    }, 950);
+
+    return () => window.clearTimeout(timer);
+  }, [showChrome]);
+
   const { t, i18n } = useTranslation();
 
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
-  const handleLoadingComplete = () => {
-    sessionStorage.setItem('la_seen_loader', '1');
-    setIsLoaded(true);
-  };
-
   return (
     <LanguageContext.Provider value={{ t, changeLanguage, i18n }}>
       <ThemeProvider>
-        {!isLoaded && <LoadingScreen onComplete={handleLoadingComplete} />}
         {/* overflow-x-clip bajo el nav: evita que WebKit rompa backdrop-filter en la barra fija */}
         <div className="relative min-h-screen bg-zinc-50 text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100">
           {/* Background ambient layers */}
@@ -73,8 +76,18 @@ function App() {
           <CursorGlow />
 
           <Toaster position="bottom-center" reverseOrder={false} />
-          <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          <div
+            className={`transition-all duration-700 ease-[var(--la-motion-ease)] ${
+              showChrome
+                ? 'translate-y-0 opacity-100'
+                : 'pointer-events-none -translate-y-4 opacity-0'
+            }`}
+          >
+            <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          </div>
+          {showChrome && (
+            <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+          )}
           <div className="min-h-screen w-full overflow-x-clip">
             <main>
               <Home />

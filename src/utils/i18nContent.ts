@@ -14,7 +14,3 @@ export const getCertifications = (t: TFunction) =>
 export const getProjects = (t: TFunction) =>
   getList<Project>(t, 'projects.items');
 
-export const getLoadingPhases = (t: TFunction) =>
-  getList<string>(t, 'loading.phases');
-
-export const getLoadingLogs = (t: TFunction) => getList<string>(t, 'loading.logs');
