@@ -1,3 +1,5 @@
+import type { MouseEvent } from 'react';
+
 export const links = [
   { id: '#home', label: 'navbar.home' },
   { id: '#about', label: 'navbar.about' },
@@ -5,11 +7,11 @@ export const links = [
   { id: '#contact', label: 'navbar.contact' },
 ];
 
-export const handleScroll = (id: string) => {
+export const scrollToSection = (id: string) => {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
 };
 
-export const handleLinkClick = (e: React.MouseEvent, id: string) => {
+export const handleLinkClick = (e: MouseEvent, id: string) => {
   e.preventDefault();
-  handleScroll(id);
+  scrollToSection(id);
 };
