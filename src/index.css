@@ -3,15 +3,42 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans:
+    'SF Pro Text',
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  --font-mono:
+    'SF Mono',
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    ui-monospace,
+    'Roboto Mono',
+    monospace;
+  --la-motion-fast: 180ms;
+  --la-motion-base: 280ms;
+  --la-motion-slow: 420ms;
+  --la-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family:
+    'SF Pro Text',
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -23,12 +50,53 @@ html {
   background: #fafafa;
 }
 
+html,
+body,
+.glass-panel,
+.glass-nav,
+.glass-pill,
+.marquee-chip {
+  transition-property: background-color, border-color, box-shadow, backdrop-filter,
+    -webkit-backdrop-filter, color;
+  transition-duration: var(--la-motion-slow);
+  transition-timing-function: var(--la-motion-ease);
+}
+
 html.dark {
   background: #09090b;
 }
 
+/* Tokens glass — alineados con glass-ui (gg-glass) */
+:root {
+  --la-glass-tint: rgba(255, 255, 255, 0.58);
+  --la-glass-border: rgba(0, 0, 0, 0.08);
+  --la-glass-border-strong: rgba(0, 0, 0, 0.12);
+  --la-glass-inset-light: rgba(255, 255, 255, 0.88);
+  --la-glass-inset-dark: rgba(0, 0, 0, 0.05);
+  --la-glass-blur: blur(20px) saturate(140%);
+  --la-glass-chip-bg: rgba(0, 0, 0, 0.03);
+  --la-glass-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.14);
+  --la-glass-sheen: rgba(255, 255, 255, 0.18);
+  --la-accent-1: #5b7cfa;
+  --la-accent-2: #8b7cff;
+}
+
+:where(.dark) {
+  --la-glass-tint: rgba(22, 22, 30, 0.72);
+  --la-glass-border: rgba(255, 255, 255, 0.08);
+  --la-glass-border-strong: rgba(255, 255, 255, 0.13);
+  --la-glass-inset-light: rgba(255, 255, 255, 0.1);
+  --la-glass-inset-dark: rgba(0, 0, 0, 0.35);
+  --la-glass-blur: blur(20px) saturate(150%);
+  --la-glass-chip-bg: rgba(255, 255, 255, 0.04);
+  --la-glass-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.55);
+  --la-glass-sheen: rgba(255, 255, 255, 0.08);
+  --la-accent-1: #7092ff;
+  --la-accent-2: #9a8bff;
+}
+
 ::selection {
-  background-color: rgba(139, 92, 246, 0.35);
+  background-color: rgba(99, 102, 241, 0.32);
   color: white;
 }
 
@@ -52,9 +120,8 @@ html.dark {
 }
 
 /* ============================================================
-   iOS 26 LIQUID GLASS SYSTEM
-   Highly translucent surfaces with prismatic edge highlights,
-   inner sheen, and saturated backdrop blur.
+   iOS GLASS — tokens compartidos con glass-ui (gg-glass)
+   Superficies translúcidas + inset sheen; Siri solo en highlights.
    ============================================================ */
 @property --liquid-angle {
   syntax: '<angle>';
@@ -63,98 +130,52 @@ html.dark {
 }
 
 @layer utilities {
-  /* Filtro vía var(): el minify de producción cuela blur(X)saturate(Y) sin espacio (inválido) y rompe el cristal. */
-  /* === GLASS PANEL — large cards (iOS card surface) === */
-  /* DEFAULT = LIGHT */
-  .glass-panel {
+  /* Superficie base (panel, nav, pills) */
+  .glass-panel,
+  .glass-nav,
+  .glass-pill {
     position: relative;
-    background: rgba(255, 255, 255, 0.55);
-    --glass-panel-bf: blur(28px) saturate(180%);
-    backdrop-filter: var(--glass-panel-bf);
-    -webkit-backdrop-filter: var(--glass-panel-bf);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: var(--la-glass-tint);
+    backdrop-filter: var(--la-glass-blur);
+    -webkit-backdrop-filter: var(--la-glass-blur);
+    border: 1px solid var(--la-glass-border);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.9),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
-      0 18px 50px -25px rgba(0, 0, 0, 0.18);
-    isolation: isolate;
-    will-change: transform, backdrop-filter;
-    transform: translateZ(0);
-  }
-  /* DARK override */
-  :where(.dark) .glass-panel {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-      0 20px 60px -30px rgba(0, 0, 0, 0.6);
-  }
-  /* iOS Liquid Glass — prismatic edge highlight */
-  .glass-panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(
-      from var(--liquid-angle),
-      rgba(96, 165, 250, 0.5),
-      rgba(167, 139, 250, 0.5),
-      rgba(244, 114, 182, 0.5),
-      rgba(96, 165, 250, 0.5)
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0.18;
-    pointer-events: none;
-    animation: liquid-rotate 12s linear infinite;
-    z-index: 1;
-  }
-  /* Inner top sheen — sits BEHIND content; no z-index injected on children */
-  .glass-panel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.08) 0%,
-      rgba(255, 255, 255, 0) 30%
-    );
-    pointer-events: none;
-    z-index: 0;
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark),
+      var(--la-glass-shadow);
   }
 
-  /* === GLASS NAV — top floating bar (iOS 26 Liquid Glass) === */
-  /* DEFAULT = LIGHT */
-  .glass-nav {
+  .glass-premium {
+    border-color: var(--la-glass-border-strong);
+    box-shadow:
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark),
+      0 22px 42px -34px rgba(59, 130, 246, 0.16),
+      var(--la-glass-shadow);
+  }
+
+  .glass-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      transparent 20%,
+      var(--la-glass-sheen) 45%,
+      transparent 70%
+    );
+    opacity: 0.22;
+    z-index: 1;
+  }
+
+  .glass-premium > :not(.absolute) {
     position: relative;
-    background: rgba(255, 255, 255, 0.42);
-    --glass-nav-bf: blur(32px) saturate(220%);
-    backdrop-filter: var(--glass-nav-bf);
-    -webkit-backdrop-filter: var(--glass-nav-bf);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 1),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
-      0 14px 40px -12px rgba(0, 0, 0, 0.18);
-    will-change: transform, backdrop-filter;
-    transform: translateZ(0);
-    /* No usar transform/isolation aquí: en Chromium/Brave rompen el muestreo de backdrop-filter */
+    z-index: 2;
   }
-  /* DARK override — deep iOS glass */
-  :where(.dark) .glass-nav {
-    background: rgba(20, 20, 28, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.12),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.3),
-      0 14px 50px -12px rgba(0, 0, 0, 0.7);
-  }
-  /* Top sheen — adds the iOS curved highlight */
+
+  .glass-panel::after,
   .glass-nav::after {
     content: '';
     position: absolute;
@@ -162,107 +183,141 @@ html.dark {
     border-radius: inherit;
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0) 50%
+      rgba(255, 255, 255, 0.14) 0%,
+      transparent 42%
     );
     pointer-events: none;
     z-index: 0;
   }
+
+  :where(.dark) .glass-panel::after,
   :where(.dark) .glass-nav::after {
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.06) 0%,
-      rgba(255, 255, 255, 0) 50%
+      transparent 45%
     );
   }
-  /* Prismatic edge */
-  .glass-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(
-      from var(--liquid-angle),
-      rgba(96, 165, 250, 0.5),
-      rgba(167, 139, 250, 0.5),
-      rgba(244, 114, 182, 0.5),
-      rgba(96, 165, 250, 0.5)
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0.22;
-    pointer-events: none;
-    animation: liquid-rotate 14s linear infinite;
-    z-index: 1;
-  }
-  /* Ensure content sits above ::after sheen but no forced relative on children */
-  .glass-nav > * {
+
+  /* Solo contenido real: no pisar `absolute` de brillos decorativos (evita huecos arriba) */
+  .glass-panel > :not(.absolute),
+  .glass-nav > :not(.absolute) {
+    position: relative;
     z-index: 2;
   }
 
-  /* === GLASS PILL — chips, buttons, small surfaces === */
-  /* DEFAULT = LIGHT */
-  .glass-pill {
-    background: rgba(255, 255, 255, 0.6);
-    --glass-pill-bf: blur(16px) saturate(180%);
-    backdrop-filter: var(--glass-pill-bf);
-    -webkit-backdrop-filter: var(--glass-pill-bf);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
-    will-change: transform, backdrop-filter;
-    transform: translateZ(0);
-  }
-  /* DARK override */
-  :where(.dark) .glass-pill {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .glass-input {
+    background: color-mix(in srgb, var(--la-glass-tint) 70%, transparent);
+    border: 1px solid var(--la-glass-border);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark);
+    backdrop-filter: blur(10px) saturate(125%);
+    -webkit-backdrop-filter: blur(10px) saturate(125%);
   }
 
-  /* === SIRI HOVER GLOW — for project cards === */
-  .siri-glow {
+  .glass-input:focus-visible {
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow:
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 0 0 3px rgba(59, 130, 246, 0.18);
+  }
+
+  .btn-premium {
     position: relative;
+    overflow: hidden;
     isolation: isolate;
   }
-  .siri-glow::after {
+
+  .btn-premium::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      115deg,
+      rgba(59, 130, 246, 0.24),
+      rgba(167, 139, 250, 0.22) 45%,
+      rgba(96, 165, 250, 0.12) 100%
+    );
+    opacity: 0;
+    transition: opacity 320ms ease;
+    z-index: -1;
+  }
+
+  .btn-premium:hover::after {
+    opacity: 0.5;
+  }
+
+  /* Nav: sin transform para no romper backdrop-filter en Chromium */
+  .glass-nav {
+    will-change: background-color, backdrop-filter, border-color;
+  }
+
+  /* Variante minimal: más translúcida y limpia para top bar */
+  .glass-nav-minimal {
+    background: color-mix(in srgb, var(--la-glass-tint) 72%, transparent);
+    border-color: color-mix(in srgb, var(--la-glass-border) 80%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--la-glass-inset-light) 60%, transparent),
+      0 8px 24px -20px rgba(0, 0, 0, 0.24);
+  }
+
+  .glass-nav-minimal::after {
+    background: none;
+    opacity: 0;
+  }
+
+  :where(.dark) .glass-nav-minimal {
+    background: color-mix(in srgb, var(--la-glass-tint) 78%, transparent);
+    border-color: color-mix(in srgb, var(--la-glass-border) 92%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 color-mix(in srgb, var(--la-glass-inset-light) 45%, transparent),
+      0 10px 28px -22px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Pills: blur más ligero en móvil vía media query abajo */
+  .glass-pill {
+    box-shadow:
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark);
+  }
+
+  /* === SIRI GLOW — acento en tarjetas de proyecto (glass-ui) === */
+  .siri-glow,
+  .siri-glow-skeleton {
+    position: relative;
+    --liquid-angle: 0deg;
+  }
+
+  .siri-glow::before,
+  .siri-glow-skeleton::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--liquid-angle),
+      rgba(56, 189, 248, 0.3) 0deg,
+      rgba(167, 139, 250, 0.36) 90deg,
+      rgba(244, 114, 182, 0.3) 180deg,
+      rgba(251, 191, 36, 0.22) 270deg,
+      rgba(34, 211, 238, 0.3) 360deg
+    );
+    filter: blur(12px);
+    opacity: 0;
+    transition: opacity 450ms ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .siri-glow::after,
+  .siri-glow-skeleton::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1.5px;
-    background: conic-gradient(
-      from var(--liquid-angle),
-      transparent 0deg,
-      #60a5fa 60deg,
-      #a78bfa 120deg,
-      #f472b6 180deg,
-      #fbbf24 240deg,
-      #60a5fa 300deg,
-      transparent 360deg
-    );
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 600ms ease;
-    pointer-events: none;
-    /* Por encima del chrome del BrowserMockup (header suele usar z-20) para que el borde Siri rodee toda la tarjeta */
-    z-index: 40;
-  }
-  .siri-glow:hover::after {
-    opacity: 1;
-    animation: liquid-rotate 4s linear infinite;
-  }
-
-  /* Mockup sin imagen: sin zoom; hover más luminoso estilo Siri en el borde */
-  .siri-glow-skeleton::after {
-    padding: 2px;
     background: conic-gradient(
       from var(--liquid-angle),
       rgba(255, 255, 255, 0.15) 0deg,
@@ -271,19 +326,30 @@ html.dark {
       #f472b6 185deg,
       #fbbf24 255deg,
       #22d3ee 320deg,
-      rgba(255, 255, 255, 0.12) 360deg
+      rgba(255, 255, 255, 0.1) 360deg
     );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
-    transition:
-      opacity 500ms ease,
-      filter 500ms ease;
+    transition: opacity 380ms ease, filter 380ms ease;
+    pointer-events: none;
+    z-index: 40;
   }
+
+  .siri-glow:hover::before,
+  .siri-glow-skeleton:hover::before {
+    opacity: 0.42;
+  }
+
+  .siri-glow:hover::after,
   .siri-glow-skeleton:hover::after {
     opacity: 1;
-    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.55))
-      drop-shadow(0 0 22px rgba(167, 139, 250, 0.4))
-      drop-shadow(0 0 36px rgba(244, 114, 182, 0.22));
     animation: liquid-rotate 3.5s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5))
+      drop-shadow(0 0 16px rgba(167, 139, 250, 0.38))
+      drop-shadow(0 0 26px rgba(244, 114, 182, 0.2));
   }
 
   @keyframes liquid-rotate {
@@ -292,25 +358,126 @@ html.dark {
     }
   }
 
+  /* Marquee / ticker (glass-ui LandingMarquee) */
+  .marquee-chip {
+    display: inline-flex;
+    shrink: 0;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--la-glass-border);
+    background: var(--la-glass-chip-bg);
+    padding: 0.375rem 0.875rem;
+    color: rgb(63 63 70);
+    box-shadow: inset 0 1px 0 0 var(--la-glass-inset-light);
+  }
+
+  :where(.dark) .marquee-chip {
+    color: rgb(228 228 231);
+  }
+
+  /* Marco visual de proyecto (foto o mockup): fondo sólido, sin blur encima del contenido */
+  .project-preview-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: rgb(244 244 245);
+    border: 1px solid var(--la-glass-border);
+    box-shadow: var(--la-glass-shadow);
+  }
+
+  :where(.dark) .project-preview-frame {
+    background: rgb(9 9 11);
+  }
+
+  .project-preview-frame.siri-glow,
+  .project-preview-frame.siri-glow-skeleton {
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .marquee-chip {
+      backdrop-filter: var(--la-glass-blur);
+      -webkit-backdrop-filter: var(--la-glass-blur);
+    }
+  }
+
   /* === Gradient text === */
   .text-gradient {
-    background: linear-gradient(110deg, #60a5fa 0%, #a78bfa 45%, #c084fc 100%);
+    background: linear-gradient(
+      110deg,
+      var(--la-accent-1) 0%,
+      var(--la-accent-2) 58%,
+      #a5b4fc 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
 
+  /* Kicker consistente para secciones (menos "terminal", más editorial) */
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(82 82 91);
+    background: color-mix(in srgb, var(--la-glass-tint) 86%, transparent);
+    border: 1px solid color-mix(in srgb, var(--la-glass-border) 80%, transparent);
+  }
+
+  :where(.dark) .section-kicker {
+    color: rgb(161 161 170);
+  }
+
+  /* Firma visual sutil para hero (inspiración void/optimus, no invasiva) */
+  .hero-signature {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 52% 44% at 50% 34%,
+        rgba(99, 102, 241, 0.1) 0%,
+        transparent 72%
+      ),
+      conic-gradient(
+        from 180deg at 50% 46%,
+        rgba(91, 124, 250, 0.1),
+        rgba(139, 124, 255, 0.08),
+        rgba(91, 124, 250, 0.1)
+      );
+    mask-image: radial-gradient(circle at center, #000 0%, #000 42%, transparent 78%);
+    -webkit-mask-image: radial-gradient(
+      circle at center,
+      #000 0%,
+      #000 42%,
+      transparent 78%
+    );
+    opacity: 0.5;
+  }
+
+  :where(.dark) .hero-signature {
+    opacity: 0.62;
+  }
+
   .hover-glow {
-    transition: box-shadow 400ms ease, border-color 400ms ease,
+    transition:
+      box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 400ms ease,
       transform 400ms ease;
   }
   .hover-glow:hover {
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      0 0 0 1px rgba(255, 255, 255, 0.12),
-      0 24px 48px -20px rgba(59, 130, 246, 0.3),
-      0 0 80px -10px rgba(139, 92, 246, 0.22);
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark),
+      0 14px 28px -22px rgba(59, 130, 246, 0.08),
+      var(--la-glass-shadow);
   }
 
   /* === Background patterns === */
@@ -341,7 +508,7 @@ html.dark {
 
   .noise-overlay {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
-    opacity: 0.04;
+    opacity: 0.025;
   }
 
   .no-scrollbar {
@@ -382,20 +549,53 @@ html.dark {
     animation: loading 1s ease infinite;
   }
 
+  @keyframes loading-scan {
+    0% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.5;
+    }
+    80% {
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateX(120%);
+      opacity: 0;
+    }
+  }
+  .animate-loading-scan {
+    animation: loading-scan 1.6s ease-in-out infinite;
+  }
+
+  @keyframes caret-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .animate-caret-pulse {
+    animation: caret-pulse 950ms ease-in-out infinite;
+  }
+
   @keyframes blob {
     0%,
     100% {
       transform: translate(0px, 0px) scale(1);
     }
     33% {
-      transform: translate(40px, -60px) scale(1.1);
+      transform: translate(26px, -40px) scale(1.05);
     }
     66% {
-      transform: translate(-30px, 30px) scale(0.92);
+      transform: translate(-20px, 20px) scale(0.96);
     }
   }
   .animate-blob {
-    animation: blob 14s ease-in-out infinite;
+    animation: blob 22s ease-in-out infinite;
   }
   .animation-delay-2000 {
     animation-delay: 2s;
@@ -415,6 +615,41 @@ html.dark {
   }
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .marquee-track {
+    animation: marquee 52s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 15%,
+      #000 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 15%,
+      #000 85%,
+      transparent
+    );
   }
 }
 
@@ -449,12 +684,23 @@ html.dark {
    MOBILE & LOW-END PERFORMANCE OPTIMIZATIONS
    ============================ */
 @media (max-width: 768px) {
-  /* Reduce heavy blur calculations on mobile */
-  .glass-panel {
-    --glass-panel-bf: blur(12px) saturate(150%);
+  :root,
+  :where(.dark) {
+    --la-glass-blur: blur(12px) saturate(130%);
   }
-  .glass-nav {
-    --glass-nav-bf: blur(16px) saturate(150%);
+
+  .marquee-track {
+    animation: none;
+    will-change: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 42rem;
+  }
+
+  .marquee-chip {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
@@ -472,21 +718,34 @@ html.low-end-device.dark .glass-panel { background: rgba(20, 20, 25, 0.96) !impo
 html.low-end-device:not(.dark) .glass-nav { background: rgba(255, 255, 255, 0.96) !important; }
 html.low-end-device.dark .glass-nav { background: rgba(20, 20, 28, 0.96) !important; }
 
-html.low-end-device .glass-panel::before,
-html.low-end-device .glass-nav::before,
+html.low-end-device .siri-glow::before,
 html.low-end-device .siri-glow::after,
+html.low-end-device .siri-glow-skeleton::before,
 html.low-end-device .siri-glow-skeleton::after,
 html.low-end-device .animate-blob,
+html.low-end-device .marquee-track {
+  animation: none !important;
+}
+
+html.low-end-device .siri-glow::before,
+html.low-end-device .siri-glow::after,
+html.low-end-device .siri-glow-skeleton::before,
+html.low-end-device .siri-glow-skeleton::after {
+  opacity: 0 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .glass-panel::before,
-  .glass-nav::before,
   .siri-glow::after,
   .siri-glow-skeleton::after,
-  .animate-blob {
+  .animate-blob,
+  .marquee-track {
     animation: none !important;
   }
-  .glass-panel::before,
-  .glass-nav::before {
-    opacity: 0.1; /* Static subdued border */
+
+  .marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 42rem;
   }
 }

@@ -1,25 +1,18 @@
 import { Trans } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { SiAngular, SiDotnet, SiReact, SiTypescript } from 'react-icons/si';
-import { TbBrandCSharp, TbBrandReactNative } from 'react-icons/tb';
-import { BsFiletypeSql } from 'react-icons/bs';
-import { ArrowRight, ChevronDown, Download } from 'lucide-react';
+import { ArrowRight, ChevronDown, Download, LoaderCircle } from 'lucide-react';
+import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-
-const stack = [
-  { Icon: SiAngular, label: 'Angular', color: 'text-[#DD0031]' },
-  { Icon: SiReact, label: 'React', color: 'text-[#61DAFB]' },
-  { Icon: TbBrandReactNative, label: 'React Native', color: 'text-[#61DAFB]' },
-  { Icon: SiTypescript, label: 'TypeScript', color: 'text-[#3178C6]' },
-  { Icon: SiDotnet, label: '.NET Core', color: 'text-[#7B4DD6]' },
-  { Icon: TbBrandCSharp, label: 'C#', color: 'text-[#239120]' },
-  { Icon: BsFiletypeSql, label: 'SQL Server', color: 'text-[#CC2927]' },
-];
+import { TechMarquee } from '../TechMarquee';
+import { MAIN_TECH_STACK, TECH_STACK } from '../../constants/techStack';
+import { handleLinkClick } from '../../utils/navigation';
 
 export const Home = () => {
   const { t } = useLanguage();
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadCV = () => {
+    setIsDownloading(true);
     const cvUrl = './documents/Ayala Jara Lemuel - CV.pdf';
     const link = document.createElement('a');
     link.href = cvUrl;
@@ -27,30 +20,26 @@ export const Home = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handleNav = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    window.setTimeout(() => setIsDownloading(false), 1100);
   };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-20"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-0 pb-10 pt-24 sm:min-h-screen sm:pb-20 sm:pt-28"
     >
       {/* Animated background orbs — visible in both themes */}
-      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-blue-400/35 dark:bg-blue-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob" />
-      <div className="absolute top-1/3 right-1/4 w-[28rem] h-[28rem] bg-purple-400/35 dark:bg-purple-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[60rem] h-[24rem] bg-indigo-400/20 dark:bg-indigo-500/15 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] animate-blob animation-delay-4000" />
+      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-blue-400/24 dark:bg-blue-500/13 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[118px] animate-blob" />
+      <div className="absolute top-1/3 right-1/4 w-[28rem] h-[28rem] bg-purple-400/24 dark:bg-purple-500/13 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[118px] animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[60rem] h-[24rem] bg-indigo-400/13 dark:bg-indigo-500/10 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[140px] animate-blob animation-delay-4000" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-5 text-center sm:px-6">
         {/* Status pill */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-pill mb-8"
+          className="mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1.5 glass-pill sm:mb-8"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -70,7 +59,7 @@ export const Home = () => {
             delay: 0.1,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[1.05] text-balance"
+          className="text-[2.35rem] font-extrabold leading-[1.02] tracking-tight text-balance sm:text-5xl sm:leading-[1.06] md:text-7xl lg:text-[5.2rem]"
         >
           <span className="block text-zinc-900 dark:text-zinc-100">
             {t('home.titleLine1')}
@@ -85,7 +74,7 @@ export const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed font-light text-pretty"
+          className="mt-4 max-w-2xl text-[13px] font-light leading-relaxed text-pretty text-zinc-600 dark:text-zinc-300 sm:mt-6 sm:text-base md:text-xl"
         >
           <Trans
             i18nKey="home.description"
@@ -97,22 +86,13 @@ export const Home = () => {
           />
         </motion.p>
 
-        {/* Tech Stack Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-2.5 mt-10 max-w-3xl"
+          className="w-full flex justify-center"
         >
-          {stack.map(({ Icon, label, color }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white hover:scale-[1.04] transition-all duration-300 cursor-default"
-            >
-              <Icon className={`w-4 h-4 ${color}`} />
-              {label}
-            </div>
-          ))}
+          <TechMarquee items={TECH_STACK} mobileItems={MAIN_TECH_STACK} />
         </motion.div>
 
         {/* CTAs */}
@@ -120,35 +100,40 @@ export const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto"
+          className="mt-7 flex w-full flex-col items-stretch gap-2.5 sm:mt-12 sm:w-auto sm:flex-row sm:items-center sm:gap-3"
         >
           <a
             href="#projects"
-            onClick={(e) => handleNav(e, '#projects')}
-            className="group w-full sm:w-auto px-7 py-3.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 font-semibold hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,255,0.18)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all duration-300 flex items-center justify-center gap-2"
+            onClick={(e) => handleLinkClick(e, '#projects')}
+            className="btn-premium group flex w-full items-center justify-center gap-2 rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_22px_rgba(255,255,255,0.14)] dark:bg-white dark:text-zinc-950 dark:hover:shadow-[0_0_24px_rgba(255,255,255,0.18)] sm:w-auto sm:px-6 sm:py-3"
           >
             {t('home.projects')}
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </a>
           <button
             onClick={handleDownloadCV}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full glass-pill font-medium text-zinc-800 dark:text-zinc-100 hover:bg-zinc-900/5 dark:hover:bg-white/10 transition-colors flex items-center justify-center gap-2 group"
+            className="group flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-zinc-800 transition-colors glass-pill hover:bg-zinc-900/5 dark:text-zinc-100 dark:hover:bg-white/10 sm:w-auto sm:px-6 sm:py-3"
+            aria-live="polite"
           >
-            <Download className="w-4 h-4 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
-            {t('home.downloadCV')}
+            {isDownloading ? (
+              <LoaderCircle className="w-4 h-4 animate-spin text-zinc-500 dark:text-zinc-300" />
+            ) : (
+              <Download className="w-4 h-4 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+            )}
+            {isDownloading ? t('home.downloadingCV') : t('home.downloadCV')}
           </button>
         </motion.div>
 
         {/* Scroll hint (inline, no longer absolute) */}
         <motion.button
           type="button"
-          onClick={(e) => handleNav(e, '#about')}
+          onClick={(e) => handleLinkClick(e, '#about')}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="mt-10 inline-flex flex-col items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
+          className="mt-7 hidden flex-col items-center gap-1.5 text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white sm:inline-flex sm:mt-10"
         >
-          <ChevronDown className="w-4 h-4 animate-bounce" />
+          <ChevronDown className="w-4 h-4" />
           <span className="text-[10px] uppercase tracking-[0.2em] font-mono">
             {t('home.scrollHint')}
           </span>

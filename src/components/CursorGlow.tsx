@@ -33,13 +33,13 @@ export const CursorGlow = () => {
   const x = useMotionValue(-200);
   const y = useMotionValue(-200);
 
-  // Glow grande con resorte suave
-  const glowX = useSpring(x, { damping: 30, stiffness: 150, mass: 0.6 });
-  const glowY = useSpring(y, { damping: 30, stiffness: 150, mass: 0.6 });
+  // Glow grande: más rápido y contenido (menos sensación de arrastre)
+  const glowX = useSpring(x, { damping: 34, stiffness: 250, mass: 0.42 });
+  const glowY = useSpring(y, { damping: 34, stiffness: 250, mass: 0.42 });
 
   // Dot interior más reactivo
-  const dotX = useSpring(x, { damping: 25, stiffness: 500, mass: 0.3 });
-  const dotY = useSpring(y, { damping: 25, stiffness: 500, mass: 0.3 });
+  const dotX = useSpring(x, { damping: 30, stiffness: 620, mass: 0.25 });
+  const dotY = useSpring(y, { damping: 30, stiffness: 620, mass: 0.25 });
 
   useEffect(() => {
     const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -107,18 +107,18 @@ export const CursorGlow = () => {
   if (isCoarsePointer) return null;
 
   const glowBg = isDark
-    ? 'radial-gradient(circle, rgba(96,165,250,0.22) 0%, rgba(167,139,250,0.12) 35%, transparent 65%)'
-    : 'radial-gradient(circle, rgba(59,130,246,0.28) 0%, rgba(139,92,246,0.18) 40%, rgba(37,99,235,0.08) 58%, transparent 74%)';
+    ? 'radial-gradient(circle, rgba(99,102,241,0.24) 0%, rgba(139,124,255,0.14) 30%, rgba(99,102,241,0.08) 46%, transparent 62%)'
+    : 'radial-gradient(circle, rgba(99,102,241,0.26) 0%, rgba(139,124,255,0.16) 30%, rgba(99,102,241,0.08) 46%, transparent 64%)';
 
   /** Mismo “vidrio” translúcido en ambos temas al hover en controles (como dark). */
   const interactiveDotGlass = {
-    background: 'rgba(255, 255, 255, 0.08)',
+    background: 'rgba(255, 255, 255, 0.14)',
     backdropFilter: 'blur(4px) saturate(180%)',
     WebkitBackdropFilter: 'blur(4px) saturate(180%)',
     border: isDark
-      ? '1px solid rgba(255, 255, 255, 0.35)'
-      : '1px solid rgba(255, 255, 255, 0.38)',
-    boxShadow: '0 0 24px rgba(96, 165, 250, 0.35)',
+      ? '1px solid rgba(255, 255, 255, 0.5)'
+      : '1px solid rgba(255, 255, 255, 0.5)',
+    boxShadow: '0 0 0 1px rgba(255,255,255,0.22), 0 0 14px rgba(99, 102, 241, 0.24)',
   } as const;
 
   const dotStyles = isDark
@@ -137,13 +137,13 @@ export const CursorGlow = () => {
           : 'none',
         boxShadow: isPointer
           ? interactiveDotGlass.boxShadow
-          : '0 0 12px rgba(255,255,255,0.4)',
+          : '0 0 0 1px rgba(255,255,255,0.3), 0 0 7px rgba(255,255,255,0.2)',
       }
     : isPointer
       ? {
           ...interactiveDotGlass,
           /* Borde apenas más marcado en claro para que se lea sobre fondos blancos */
-          border: '1px solid rgba(15, 23, 42, 0.07)',
+          border: '1px solid rgba(15, 23, 42, 0.14)',
         }
       : {
           background: 'rgba(37,99,235,0.95)',
@@ -151,7 +151,7 @@ export const CursorGlow = () => {
           backdropFilter: 'none',
           WebkitBackdropFilter: 'none',
           boxShadow:
-            '0 0 14px rgba(37,99,235,0.55), 0 0 28px rgba(59,130,246,0.35)',
+            '0 0 0 1px rgba(99,102,241,0.45), 0 0 8px rgba(99,102,241,0.34), 0 0 14px rgba(139,124,255,0.2)',
         };
 
   return (
@@ -159,7 +159,7 @@ export const CursorGlow = () => {
       {/* Glow grande */}
       <motion.div
         aria-hidden
-        className={`pointer-events-none fixed left-0 top-0 z-[60] h-[520px] w-[520px] rounded-full ${
+        className={`pointer-events-none fixed left-0 top-0 z-[60] h-[360px] w-[360px] rounded-full ${
           isDark ? 'mix-blend-screen' : ''
         }`}
         style={{
@@ -168,9 +168,9 @@ export const CursorGlow = () => {
           translateX: '-50%',
           translateY: '-50%',
           background: glowBg,
-          filter: isDark ? 'blur(40px)' : 'blur(48px)',
-          opacity: isVisible ? 1 : 0,
-          transition: 'opacity 300ms ease',
+          filter: isDark ? 'blur(24px)' : 'blur(28px)',
+          opacity: isVisible ? 0.74 : 0,
+          transition: 'opacity 180ms ease',
         }}
       />
 
@@ -183,12 +183,12 @@ export const CursorGlow = () => {
           y: dotY,
           translateX: '-50%',
           translateY: '-50%',
-          width: isPointer ? 44 : 8,
-          height: isPointer ? 44 : 8,
+          width: isPointer ? 30 : 6,
+          height: isPointer ? 30 : 6,
           ...dotStyles,
           opacity: isVisible ? 1 : 0,
           transition:
-            'width 200ms ease, height 200ms ease, background 200ms ease, opacity 200ms ease, box-shadow 200ms ease, border 200ms ease',
+            'width 140ms ease, height 140ms ease, background 140ms ease, opacity 140ms ease, box-shadow 140ms ease, border 140ms ease',
         }}
       />
     </>

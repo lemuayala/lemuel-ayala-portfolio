@@ -1,7 +1,8 @@
 import { Moon, Sun, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
-import { links } from '../utils/navigation';
+import type { Dispatch, SetStateAction } from 'react';
+import { useTheme } from '../hooks/useTheme';
+import { links, scrollToSection } from '../utils/navigation';
 
 type MobileMenuProps = {
   menuOpen: boolean;
@@ -10,21 +11,14 @@ type MobileMenuProps = {
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
-
-  useEffect(() => {
-    document.body.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const { theme, toggleTheme } = useTheme();
   const currentLang = i18n.language?.startsWith('en') ? 'en' : 'es';
 
   const handleNav = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     setMenuOpen(false);
     setTimeout(() => {
-      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+      scrollToSection(id);
     }, 250);
   };
 
@@ -47,7 +41,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
 
       {/* Sheet */}
       <div
-        className={`absolute top-4 inset-x-4 glass-panel rounded-3xl p-6 shadow-2xl transition-all duration-500 ${
+        className={`absolute top-4 inset-x-4 glass-panel glass-premium rounded-3xl p-6 shadow-2xl transition-all duration-500 ${
           menuOpen
             ? 'translate-y-0 opacity-100'
             : '-translate-y-4 opacity-0'

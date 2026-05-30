@@ -7,7 +7,10 @@ alwaysApply: false
 # Componentes — UI
 
 - Reutilizar utilidades globales en [`src/index.css`](src/index.css): `glass-panel`, `glass-pill`, `glass-nav`, `siri-glow`, `hover-glow`, `grid-pattern`.
-- **Reveal:** [`RevealOnScroll`](src/components/RevealOnScroll.tsx) anima con clase `.reveal` / `.visible` y **opacity** en el contenedor; evitar montar widgets que fallen dentro de capas con opacity 0 (p. ej. reCAPTCHA se montó fuera del reveal).
-- **Proyectos:** previews desde `project.preview` en i18n → rutas bajo `public/` (p. ej. `previews/foo.png`). Hover zoom solo si hay imagen; mockup sin preview usa estilos light/dark y borde Siri.
+- **Glass:** tokens `--la-glass-*` en `index.css`. Decorativos hijos deben llevar clase `absolute`; no usar `.glass-panel > * { position: relative }` sin excluir `.absolute` (genera huecos arriba).
+- **Marquee:** `TechMarquee` + `TECH_STACK` (iconos en `src/constants/techStack.ts`).
+- **Preview proyecto:** clase `project-preview-frame` (sin `glass-panel` sobre la imagen; ver `Projects.tsx`).
+- **Proyectos:** datos en `projects.items` (i18n); `status` usa `completed` | `inProgress`. Previews en `public/previews/`. Hover zoom solo si hay imagen.
+- **Contacto:** no montar reCAPTCHA dentro de contenedores con `opacity: 0` (animaciones de entrada).
 - **Cursor:** [`CursorGlow`](src/components/CursorGlow.tsx) solo escritorio fino; no romper `cursor-lumos` en body.
 - Mantener coherencia dark/light en nuevos bloques (texto `text-zinc-*`, fondos semitransparentes).
