@@ -3,65 +3,57 @@ import { FaGithub } from 'react-icons/fa';
 import { ArrowUpRight, ExternalLink, Sparkles } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Project } from '../../types/project';
-
-type ExtendedProject = Project & {
-  preview?: string;
-  features?: string[];
-};
+import { getProjects } from '../../utils/i18nContent';
+import { contentReveal, sectionReveal } from '../../utils/motionPresets';
 
 const ACCENTS = [
   {
     badge:
-      'text-blue-600 dark:text-blue-300 bg-blue-500/10 border-blue-500/20',
-    hover: 'group-hover:text-blue-600 dark:group-hover:text-blue-400',
-    glow: 'from-blue-500/20 via-transparent to-transparent',
+      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+    hover: '',
+    glow: 'from-indigo-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-purple-600 dark:text-purple-300 bg-purple-500/10 border-purple-500/20',
-    hover: 'group-hover:text-purple-600 dark:group-hover:text-purple-400',
-    glow: 'from-purple-500/20 via-transparent to-transparent',
+      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+    hover: '',
+    glow: 'from-indigo-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-cyan-600 dark:text-cyan-300 bg-cyan-500/10 border-cyan-500/20',
-    hover: 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400',
-    glow: 'from-cyan-500/20 via-transparent to-transparent',
+      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+    hover: '',
+    glow: 'from-indigo-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-emerald-600 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/20',
-    hover: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400',
-    glow: 'from-emerald-500/20 via-transparent to-transparent',
+      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+    hover: '',
+    glow: 'from-indigo-500/20 via-transparent to-transparent',
   },
 ];
 
 export const Projects = () => {
   const { t } = useLanguage();
-  const projects = t('projects.items', {
-    returnObjects: true,
-  }) as unknown as ExtendedProject[];
+  const projects = getProjects(t);
 
   return (
     <section id="projects" className="relative py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          {...sectionReveal}
           className="flex items-end justify-between mb-14 gap-6 flex-wrap"
         >
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-[0.2em] font-mono text-zinc-600 dark:text-zinc-400 mb-5">
+            <span className="section-kicker mb-5">
               <Sparkles className="w-3 h-3" />
               02 — {t('navbar.projects')}
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-balance">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3 text-balance">
               {t('projects.title')}
             </h2>
-            <p className="text-zinc-600 dark:text-zinc-400 max-w-xl text-base md:text-lg leading-relaxed">
+            <p className="text-zinc-600 dark:text-zinc-400 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed">
               {t('projects.subtitle')}
             </p>
           </div>
@@ -97,78 +89,82 @@ const FeatureProject = ({
   index,
   accent,
 }: {
-  project: ExtendedProject;
+  project: Project;
   index: number;
   accent: (typeof ACCENTS)[number];
 }) => {
   const { t } = useLanguage();
   const reverse = index % 2 === 1;
-  const isInProgress =
-    project.status === 'in-progress' || project.status === 'en-progreso';
+  const isInProgress = project.status === 'inProgress';
+  const statusLabel = isInProgress
+    ? t('projects.statusInProgress')
+    : t('projects.statusCompleted');
   const hasPreview = Boolean(project.preview);
+  const previewSrc = project.preview
+    ? `${import.meta.env.BASE_URL}${project.preview.replace(/^\//, '')}`
+    : undefined;
+  const highlightRows = project.highlights
+    ? [
+        { label: t('projects.roleLabel'), value: project.highlights.role },
+        { label: t('projects.impactLabel'), value: project.highlights.impact },
+        { label: t('projects.scopeLabel'), value: project.highlights.scope },
+      ]
+    : [];
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="group grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center"
+      {...contentReveal}
+      className="group grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-9"
     >
-      {/* Visual */}
+      {/* Visual: con PNG = foto; sin PNG = mockup navegador (mismo marco, sin glass-panel encima) */}
       <div
-        className={`lg:col-span-7 ${
+        className={`project-preview-frame relative aspect-video overflow-hidden rounded-3xl md:aspect-[16/10] lg:col-span-7 ${
           reverse ? 'lg:order-last' : ''
-        } relative aspect-video overflow-hidden rounded-3xl glass-panel siri-glow ${
-          hasPreview ? '' : 'siri-glow-skeleton'
-        } md:aspect-[16/10]`}
+        } ${hasPreview ? 'siri-glow' : 'siri-glow siri-glow-skeleton'}`}
       >
-        {/* Borde interior continuo; por encima del mockup (header z-20) pero debajo del Siri z-40 */}
+        {hasPreview && previewSrc ? (
+          <img
+            src={previewSrc}
+            alt={`${project.title} preview`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 z-[1] h-full w-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 z-[1]">
+            <BrowserMockup index={index} title={project.title} />
+          </div>
+        )}
+
         <div
-          className="pointer-events-none absolute inset-0 z-[36] rounded-3xl ring-1 ring-inset ring-zinc-400/55 dark:ring-white/12"
+          className={`pointer-events-none absolute inset-0 z-[2] rounded-3xl ring-1 ring-inset ring-zinc-400/40 dark:ring-white/10`}
           aria-hidden
         />
-
-        <div
-          className={`pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr ${accent.glow} opacity-60`}
-        />
-
-        <div className="absolute inset-0 overflow-hidden rounded-3xl">
+        {!hasPreview && (
           <div
-            className={`absolute inset-0 ${
-              hasPreview
-                ? 'transition-transform duration-700 ease-out group-hover:scale-[1.04]'
-                : ''
-            }`}
-          >
-            {project.preview ? (
-              <img
-                src={project.preview}
-                alt={`${project.title} preview`}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            ) : (
-              <BrowserMockup index={index} title={project.title} />
-            )}
-          </div>
-        </div>
+            className={`pointer-events-none absolute inset-0 z-[3] bg-gradient-to-tr ${accent.glow} opacity-14`}
+            aria-hidden
+          />
+        )}
+        {hasPreview && (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-2/5 bg-gradient-to-t from-zinc-950/36 to-transparent"
+            aria-hidden
+          />
+        )}
 
-        {/* Status badge — por encima del anillo Siri (z-40) */}
-        <div className="absolute top-4 right-4 z-50 inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[10px] uppercase tracking-wider font-mono">
+        <div className="absolute right-3 top-3 z-50 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-2 rounded-full border border-zinc-900/10 bg-zinc-50/80 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] whitespace-nowrap backdrop-blur-sm md:right-4 md:top-4 md:text-[10px] dark:border-white/10 dark:bg-zinc-950/70">
           <span
-            className={`w-1.5 h-1.5 rounded-full ${
+            className={`h-1.5 w-1.5 rounded-full ${
               isInProgress
-                ? 'bg-amber-400 animate-pulse'
+                ? 'animate-pulse bg-amber-400'
                 : 'bg-emerald-400'
             }`}
           />
           <span className="text-zinc-700 dark:text-zinc-300">
-            {project.status}
+            {statusLabel}
           </span>
         </div>
-
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-200/50 dark:from-zinc-950/40 to-transparent z-10 pointer-events-none" />
       </div>
 
       {/* Content */}
@@ -176,24 +172,38 @@ const FeatureProject = ({
         className={`lg:col-span-5 ${reverse ? 'lg:pr-6' : 'lg:pl-6'}`}
       >
         <div className="flex items-center gap-2 mb-4">
-          <span
-            className={`px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] rounded-full border ${accent.badge}`}
-          >
+          <span className="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] rounded-full border border-zinc-900/10 dark:border-white/10 bg-zinc-900/4 dark:bg-white/6 text-zinc-600 dark:text-zinc-300">
             {project.technologies?.[0] ?? 'Project'}
           </span>
-          <span className="text-[10px] uppercase tracking-[0.18em] font-mono text-zinc-500">
+          <span className="text-[10px] uppercase tracking-[0.14em] font-semibold text-zinc-500">
             0{index + 1}
           </span>
         </div>
 
-        <h3
-          className={`text-2xl md:text-3xl font-bold tracking-tight mb-4 transition-colors duration-300 ${accent.hover}`}
-        >
+        <h3 className="text-xl sm:text-2xl md:text-[1.9rem] font-bold tracking-tight mb-4 text-zinc-900 dark:text-zinc-100">
           {project.title}
         </h3>
         <p className="text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed text-sm md:text-[15px]">
           {project.description}
         </p>
+
+        {highlightRows.length > 0 && (
+          <div className="mb-6 grid gap-2 sm:grid-cols-3">
+            {highlightRows.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-xl border border-zinc-900/8 bg-zinc-900/[0.02] px-3 py-2.5 dark:border-white/8 dark:bg-white/[0.03]"
+              >
+                <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+                  {item.label}
+                </p>
+                <p className="mt-1 text-xs font-medium text-zinc-700 dark:text-zinc-300">
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-7">
           {project.technologies.slice(0, 6).map((tech, i, arr) => (
@@ -226,7 +236,7 @@ const FeatureProject = ({
               href={project.links.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 hover:scale-[1.03] transition-transform text-xs font-semibold"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 hover:opacity-90 transition-opacity text-xs font-semibold"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               {t('projects.liveDemo')}
@@ -247,10 +257,10 @@ const BrowserMockup = ({
   title: string;
 }) => {
   const variants = [
-    'from-purple-200/70 via-zinc-100 to-zinc-50 dark:from-purple-900/40 dark:via-zinc-900 dark:to-zinc-900',
-    'from-blue-200/70 via-zinc-100 to-zinc-50 dark:from-blue-900/40 dark:via-zinc-900 dark:to-zinc-900',
-    'from-cyan-200/70 via-zinc-100 to-zinc-50 dark:from-cyan-900/40 dark:via-zinc-900 dark:to-zinc-900',
-    'from-emerald-200/70 via-zinc-100 to-zinc-50 dark:from-emerald-900/40 dark:via-zinc-900 dark:to-zinc-900',
+    'from-indigo-200/70 via-zinc-100 to-zinc-50 dark:from-indigo-900/35 dark:via-zinc-900 dark:to-zinc-900',
+    'from-violet-200/65 via-zinc-100 to-zinc-50 dark:from-violet-900/35 dark:via-zinc-900 dark:to-zinc-900',
+    'from-slate-200/70 via-zinc-100 to-zinc-50 dark:from-slate-800/45 dark:via-zinc-900 dark:to-zinc-900',
+    'from-indigo-200/60 via-zinc-100 to-zinc-50 dark:from-indigo-900/30 dark:via-zinc-900 dark:to-zinc-900',
   ];
   const bgGradient = variants[index % variants.length];
 
