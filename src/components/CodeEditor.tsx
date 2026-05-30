@@ -1,6 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { buildExperienceCode } from '../utils/buildExperienceCode';
+import { getWorkJobs } from '../utils/i18nContent';
 import { Copy, Check, Terminal } from 'lucide-react';
 
 /**
@@ -153,6 +155,7 @@ interface Tab {
 export const CodeEditor = () => {
   const { t, i18n } = useLanguage();
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es';
+  const jobs = getWorkJobs(t);
 
   const tabs: Tab[] = useMemo(
     () => [
@@ -162,22 +165,22 @@ export const CodeEditor = () => {
         language: 'typescript',
         code:
           lang === 'en'
-            ? `// Software Engineer · Full Stack
+            ? `// Sr Frontend · Full Stack
 const lemuel: Engineer = {
   name: "Lemuel Ayala",
-  role: "Full Stack Software Engineer",
+  role: "Sr Frontend Developer",
   location: "Argentina",
-  experience: 6,
-  available: true,
+  experience: 7,
+  focus: ["Angular micro frontends", "compliance UIs", ".NET APIs"],
   passions: ["clean code", "scalable systems", "fluid UX"],
 };`
-            : `// Ingeniero de Software · Full Stack
+            : `// Sr Frontend · Full Stack
 const lemuel: Engineer = {
   name: "Lemuel Ayala",
-  role: "Ingeniero de Software Full Stack",
+  role: "Sr Frontend Developer",
   location: "Argentina",
-  experience: 6,
-  available: true,
+  experience: 7,
+  focus: ["micro frontends Angular", "UIs de compliance", "APIs .NET"],
   passions: ["código limpio", "sistemas escalables", "UX fluida"],
 };`,
       },
@@ -186,38 +189,20 @@ const lemuel: Engineer = {
         filename: 'stack.ts',
         language: 'typescript',
         code: `export const stack = {
-  frontend: ["Angular", "React", "TypeScript", "TailwindCSS"],
-  backend: [".NET 8", ".NET Core", "ASP.NET MVC", "Web API"],
-  database: ["SQL Server", "Entity Framework", "LINQ", "Dapper"],
-  cloud: ["Azure", "Azure DevOps", "Azure Blob Storage"],
-  ai: ["Semantic Kernel", "Azure OpenAI"],
-  tooling: ["Git", "Docker", "Postman", "CI/CD"],
+  frontend: ["Angular 20", "Module Federation", "React", "TypeScript"],
+  backend: [".NET 9", ".NET Core", "ASP.NET Core", "Web API"],
+  patterns: ["CQRS", "DDD", "Repository", "SOLID"],
+  database: ["SQL Server", "Entity Framework", "Dapper"],
+  cloud: ["Azure DevOps", "Azure OpenAI"],
+  ai: ["Semantic Kernel", "Cursor", "Copilot"],
+  tooling: ["Git", "Docker", "CI/CD"],
 };`,
       },
       {
         id: 'experience',
         filename: 'experience.ts',
         language: 'typescript',
-        code:
-          lang === 'en'
-            ? `const journey = [
-  { company: "CETAP SA", role: "Sr Developer", since: 2024 },
-  { company: "ATIO Group", role: "Software Engineer", year: 2024 },
-  { company: "13:e Protein Import", role: "Frontend", year: 2023 },
-  { company: "Teleperformance", role: "Semi Sr Fullstack", year: 2021 },
-  { company: "Openix IT", role: "Mobile/Web Fullstack", year: 2018 },
-];
-
-// Clients: YPF · Uber · Mercado Libre · Ficohsa`
-            : `const trayectoria = [
-  { empresa: "CETAP SA", rol: "Desarrollador Sr", desde: 2024 },
-  { empresa: "ATIO Group", rol: "Software Engineer", año: 2024 },
-  { empresa: "13:e Protein Import", rol: "Frontend", año: 2023 },
-  { empresa: "Teleperformance", rol: "Semi Sr Fullstack", año: 2021 },
-  { empresa: "Openix IT", rol: "Mobile/Web Fullstack", año: 2018 },
-];
-
-// Clientes: YPF · Uber · Mercado Libre · Ficohsa`,
+        code: buildExperienceCode(jobs, lang),
       },
       {
         id: 'contact',
@@ -247,7 +232,7 @@ const lemuel: Engineer = {
 // Construyamos algo grandioso juntos.`,
       },
     ],
-    [lang]
+    [lang, jobs]
   );
 
   const [active, setActive] = useState(0);
@@ -280,7 +265,7 @@ const lemuel: Engineer = {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-400/25 to-transparent dark:via-white/30" />
 
       {/* Header */}
-      <div className="relative z-10 flex items-center gap-4 border-b border-zinc-200/80 bg-white/85 px-4 py-3 backdrop-blur-md dark:border-white/5 dark:bg-black/20 sm:px-5">
+      <div className="relative z-10 flex items-center gap-4 border-b border-zinc-200/60 px-4 py-3 dark:border-white/5 sm:px-5">
         {/* Mac dots */}
         <div className="flex items-center gap-2 shrink-0">
           <span className="w-3 h-3 rounded-full bg-red-400/80 border border-red-500/30" />
@@ -346,7 +331,7 @@ const lemuel: Engineer = {
       </div>
 
       {/* Code body */}
-      <div className="relative z-10 bg-zinc-50/95 backdrop-blur-md dark:bg-zinc-950/60">
+      <div className="relative z-10 bg-zinc-50/40 dark:bg-zinc-950/30">
         {/* Background grid pattern */}
         <div
           aria-hidden
