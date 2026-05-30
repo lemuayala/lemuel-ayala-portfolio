@@ -195,7 +195,7 @@ export const About = () => {
           {...contentReveal}
           className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-5"
         >
-          <div className="glass-panel rounded-3xl p-7 lg:col-span-1">
+          <div className="glass-panel rounded-3xl p-7 lg:col-span-1 hover-glow">
             <span className="text-[10px] uppercase tracking-[0.14em] font-semibold text-zinc-500">
               {t('about.about')}
             </span>

@@ -8,9 +8,14 @@ import { handleLinkClick, links } from '../utils/navigation';
 type NavBarProps = {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  isVisible?: boolean;
 };
 
-export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
+export const NavBar = ({
+  menuOpen,
+  setMenuOpen,
+  isVisible = true,
+}: NavBarProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -55,6 +60,10 @@ export const NavBar = ({ menuOpen, setMenuOpen }: NavBarProps) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        isVisible
+          ? 'translate-y-0 opacity-100'
+          : 'pointer-events-none -translate-y-4 opacity-0'
+      } ${
         scrolled ? 'pt-3' : 'pt-5'
       }`}
     >

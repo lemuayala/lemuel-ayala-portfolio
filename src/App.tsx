@@ -76,15 +76,11 @@ function App() {
           <CursorGlow />
 
           <Toaster position="bottom-center" reverseOrder={false} />
-          <div
-            className={`transition-all duration-700 ease-[var(--la-motion-ease)] ${
-              showChrome
-                ? 'translate-y-0 opacity-100'
-                : 'pointer-events-none -translate-y-4 opacity-0'
-            }`}
-          >
-            <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-          </div>
+          <NavBar
+            menuOpen={menuOpen}
+            setMenuOpen={setMenuOpen}
+            isVisible={showChrome}
+          />
           {showChrome && (
             <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           )}
