@@ -707,6 +707,17 @@ html.dark {
   :root,
   :where(.dark) {
     --la-glass-blur: blur(12px) saturate(130%);
+    --la-motion-base: 220ms;
+    --la-motion-slow: 280ms;
+  }
+
+  html,
+  body,
+  .glass-panel,
+  .glass-nav,
+  .glass-pill,
+  .marquee-chip {
+    transition-duration: var(--la-motion-base);
   }
 
   .marquee-track {
@@ -721,6 +732,30 @@ html.dark {
   .marquee-chip {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .siri-glow::before,
+  .siri-glow::after,
+  .siri-glow-skeleton::before,
+  .siri-glow-skeleton::after,
+  .hover-glow:hover {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .hover-glow:hover {
+    border-color: var(--la-glass-border);
+    box-shadow:
+      inset 0 1px 0 0 var(--la-glass-inset-light),
+      0 1px 0 0 var(--la-glass-inset-dark),
+      var(--la-glass-shadow);
+  }
+
+  .group:hover .siri-glow::before,
+  .group:hover .siri-glow::after,
+  .group:hover .siri-glow-skeleton::before,
+  .group:hover .siri-glow-skeleton::after {
+    opacity: 0 !important;
   }
 }
 
@@ -744,6 +779,14 @@ html.low-end-device .siri-glow-skeleton::before,
 html.low-end-device .siri-glow-skeleton::after,
 html.low-end-device .animate-blob,
 html.low-end-device .marquee-track {
+  animation: none !important;
+}
+
+html.mobile-device .siri-glow::before,
+html.mobile-device .siri-glow::after,
+html.mobile-device .siri-glow-skeleton::before,
+html.mobile-device .siri-glow-skeleton::after {
+  opacity: 0 !important;
   animation: none !important;
 }
 
