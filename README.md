@@ -117,7 +117,7 @@ Tras cambiar de dominio o de proveedor, define `VITE_PUBLIC_SITE_URL` en `.env` 
 - **LinkedIn:** [linkedin.com/in/lemuayala](https://linkedin.com/in/lemuayala)
 - **GitHub:** [github.com/lemuayala](https://github.com/lemuayala)
 
-Proyecto destacado: [Glass UI](https://github.com/lemuayala/glass-ui) · [Demo](https://v0-glass-ui-flax.vercel.app/)
+Proyecto destacado: [Glass UI](https://github.com/lemuayala/glass-ui) · [Demo](https://glass-ui-play.vercel.app/)
 
 ## Licencia
 
