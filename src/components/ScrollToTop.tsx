@@ -17,7 +17,7 @@ export const ScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: isMobileMotion ? 'auto' : 'smooth' });
   };
 
-  const visible = scrollPosition > (isMobileMotion ? 420 : 240);
+  const visible = scrollPosition > (isMobileMotion ? 200 : 240);
 
   return (
     <div className="fixed bottom-[max(0.9rem,env(safe-area-inset-bottom))] right-4 z-50 sm:bottom-6 sm:right-6">
@@ -35,7 +35,11 @@ export const ScrollToTop = () => {
         }
         onClick={scrollToTop}
         aria-label="Scroll to top"
-        className={`h-11 w-11 rounded-full glass-panel flex items-center justify-center shadow-lg shadow-black/20 transition-colors ${
+        className={`h-11 w-11 rounded-full flex items-center justify-center shadow-lg shadow-black/20 transition-colors ${
+          isMobileMotion
+            ? 'bg-zinc-200/90 dark:bg-zinc-800/90'
+            : 'glass-panel'
+        } ${
           visible ? 'pointer-events-auto' : 'pointer-events-none'
         } hover:bg-zinc-900/5 dark:hover:bg-white/10`}
       >
