@@ -4,7 +4,7 @@ Desarrollador full stack · **React** · **TypeScript** · **.NET**
 
 Portfolio personal con diseño tipo liquid glass (iOS), modo claro/oscuro, animaciones y formulario de contacto.
 
-<img width="1663" height="1138" alt="portfolio" src="https://github.com/user-attachments/assets/d4015be4-ad98-4ec1-a266-78d17c8507f3" />
+<img width="1705" height="1094" alt="image" src="https://github.com/user-attachments/assets/e4254d91-8427-4b5c-ac5f-5173fc5f3fdd" />
 
 ## Características
 
