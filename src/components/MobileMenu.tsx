@@ -1,26 +1,35 @@
+import { useCallback } from 'react';
 import { Moon, Sun, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import type { Dispatch, SetStateAction } from 'react';
 import { useTheme } from '../hooks/useTheme';
-import { links, scrollToSection } from '../utils/navigation';
+import { links } from '../utils/navigation';
 
 type MobileMenuProps = {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
 };
 
+const SCROLL_DELAY = 340;
+
 export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
   const { changeLanguage, t, i18n } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const currentLang = i18n.language?.startsWith('en') ? 'en' : 'es';
 
-  const handleNav = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    setTimeout(() => {
-      scrollToSection(id);
-    }, 250);
-  };
+  const handleNav = useCallback(
+    (e: React.MouseEvent, id: string) => {
+      e.preventDefault();
+      setMenuOpen(false);
+      const el = document.querySelector(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'auto' });
+        }, SCROLL_DELAY);
+      }
+    },
+    [setMenuOpen]
+  );
 
   return (
     <div
@@ -33,7 +42,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
     >
       {/* Backdrop */}
       <div
-        className={`absolute inset-0 bg-zinc-950/60 transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity duration-500 ${
           menuOpen ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={() => setMenuOpen(false)}
@@ -41,10 +50,10 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }: MobileMenuProps) => {
 
       {/* Sheet */}
       <div
-        className={`absolute top-4 inset-x-4 glass-panel glass-premium rounded-3xl p-6 shadow-2xl transition-all duration-500 ${
+        className={`absolute top-4 inset-x-4 max-w-sm mx-auto glass-panel glass-premium rounded-3xl p-6 shadow-2xl transition-all duration-500 ${
           menuOpen
             ? 'translate-y-0 opacity-100'
-            : '-translate-y-4 opacity-0'
+            : '-translate-y-6 opacity-0'
         }`}
       >
         <div className="flex items-center justify-between mb-8">
