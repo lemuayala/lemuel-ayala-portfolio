@@ -318,27 +318,27 @@ const colorMap = {
   blue: {
     shell:
       'bg-zinc-50/85 dark:bg-white/[0.03] border-zinc-900/10 dark:border-white/10',
-    icon: 'text-indigo-600 dark:text-indigo-300',
+    icon: 'text-blue-600 dark:text-blue-400',
   },
   purple: {
     shell:
       'bg-zinc-50/85 dark:bg-white/[0.03] border-zinc-900/10 dark:border-white/10',
-    icon: 'text-indigo-600 dark:text-indigo-300',
+    icon: 'text-purple-600 dark:text-purple-400',
   },
   emerald: {
     shell:
       'bg-zinc-50/85 dark:bg-white/[0.03] border-zinc-900/10 dark:border-white/10',
-    icon: 'text-indigo-600 dark:text-indigo-300',
+    icon: 'text-emerald-600 dark:text-emerald-400',
   },
   cyan: {
     shell:
       'bg-zinc-50/85 dark:bg-white/[0.03] border-zinc-900/10 dark:border-white/10',
-    icon: 'text-indigo-600 dark:text-indigo-300',
+    icon: 'text-cyan-600 dark:text-cyan-400',
   },
   amber: {
     shell:
       'bg-zinc-50/85 dark:bg-white/[0.03] border-zinc-900/10 dark:border-white/10',
-    icon: 'text-indigo-600 dark:text-indigo-300',
+    icon: 'text-amber-600 dark:text-amber-400',
   },
 };
 

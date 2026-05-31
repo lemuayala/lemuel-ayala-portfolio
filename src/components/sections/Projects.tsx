@@ -10,26 +10,22 @@ const ACCENTS = [
   {
     badge:
       'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
-    hover: '',
     glow: 'from-indigo-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
-    hover: '',
-    glow: 'from-indigo-500/20 via-transparent to-transparent',
+      'text-cyan-600 dark:text-cyan-300 bg-cyan-500/10 border-cyan-500/20',
+    glow: 'from-cyan-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
-    hover: '',
-    glow: 'from-indigo-500/20 via-transparent to-transparent',
+      'text-violet-600 dark:text-violet-300 bg-violet-500/10 border-violet-500/20',
+    glow: 'from-violet-500/20 via-transparent to-transparent',
   },
   {
     badge:
-      'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
-    hover: '',
-    glow: 'from-indigo-500/20 via-transparent to-transparent',
+      'text-emerald-600 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/20',
+    glow: 'from-emerald-500/20 via-transparent to-transparent',
   },
 ];
 
