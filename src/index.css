@@ -67,14 +67,15 @@ html.dark {
 }
 
 /* Tokens glass — alineados con glass-ui (gg-glass) */
+/* Por defecto: fondos más opacos para que se vea bien incluso sin backdrop-filter (Linux, Windows, X11). */
 :root {
-  --la-glass-tint: rgba(255, 255, 255, 0.58);
+  --la-glass-tint: rgba(255, 255, 255, 0.88);
   --la-glass-border: rgba(0, 0, 0, 0.08);
   --la-glass-border-strong: rgba(0, 0, 0, 0.12);
   --la-glass-inset-light: rgba(255, 255, 255, 0.88);
   --la-glass-inset-dark: rgba(0, 0, 0, 0.05);
   --la-glass-blur: blur(20px) saturate(140%);
-  --la-glass-chip-bg: rgba(0, 0, 0, 0.03);
+  --la-glass-chip-bg: rgba(0, 0, 0, 0.04);
   --la-glass-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.14);
   --la-glass-sheen: rgba(255, 255, 255, 0.18);
   --la-accent-1: #5b7cfa;
@@ -82,17 +83,29 @@ html.dark {
 }
 
 :where(.dark) {
-  --la-glass-tint: rgba(22, 22, 30, 0.72);
+  --la-glass-tint: rgba(15, 15, 22, 0.92);
   --la-glass-border: rgba(255, 255, 255, 0.08);
   --la-glass-border-strong: rgba(255, 255, 255, 0.13);
   --la-glass-inset-light: rgba(255, 255, 255, 0.1);
   --la-glass-inset-dark: rgba(0, 0, 0, 0.35);
   --la-glass-blur: blur(20px) saturate(150%);
-  --la-glass-chip-bg: rgba(255, 255, 255, 0.04);
+  --la-glass-chip-bg: rgba(255, 255, 255, 0.06);
   --la-glass-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.55);
   --la-glass-sheen: rgba(255, 255, 255, 0.08);
   --la-accent-1: #7092ff;
   --la-accent-2: #9a8bff;
+}
+
+/* Cuando backdrop-filter funciona (iOS, macOS, Windows con GPU moderna): activar el verdadero vidrio translúcido */
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  :root {
+    --la-glass-tint: rgba(255, 255, 255, 0.58);
+    --la-glass-chip-bg: rgba(0, 0, 0, 0.03);
+  }
+  :where(.dark) {
+    --la-glass-tint: rgba(22, 22, 30, 0.72);
+    --la-glass-chip-bg: rgba(255, 255, 255, 0.04);
+  }
 }
 
 ::selection {
@@ -709,6 +722,16 @@ html.dark {
     --la-glass-blur: blur(12px) saturate(130%);
     --la-motion-base: 220ms;
     --la-motion-slow: 280ms;
+  }
+
+  /* En móvil, el blur reducido se compensa con mayor opacidad para que el vidrio no se vea roto */
+  :root {
+    --la-glass-tint: rgba(255, 255, 255, 0.9);
+    --la-glass-chip-bg: rgba(0, 0, 0, 0.05);
+  }
+  :where(.dark) {
+    --la-glass-tint: rgba(15, 15, 22, 0.92);
+    --la-glass-chip-bg: rgba(255, 255, 255, 0.07);
   }
 
   html,

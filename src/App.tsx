@@ -98,15 +98,13 @@ function App() {
           {showChrome && (
             <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           )}
-          <div className="min-h-screen w-full overflow-x-clip">
-            <main>
-              <Home />
-              <About />
-              <Projects />
-              <Contact />
-            </main>
+          <main className="min-h-screen w-full overflow-x-clip">
+            <Home />
+            <About />
+            <Projects />
+            <Contact />
             <Footer />
-          </div>
+          </main>
           <ScrollToTop />
         </div>
       </ThemeProvider>
